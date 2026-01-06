@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CyberGame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game">
+
+    <!-- СЦЕНА -->
+    <div class="scene-frame">
+        <img src="assets/bg.gif" class="background">
+        <img src="assets/hero.png" class="hero">
+    </div>
+
+
+        <!-- HUD -->
+    <div class="hud">
+        <div class="hud-box">УРОВЕНЬ 1 / 6</div>
+        <div class="hud-box">ОЧКИ 1235</div>
+    </div>
+
+    <!-- ЗАДАЧА -->
+    <div class="task">
+        <h3>Задача</h3>
+        <p>Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic!</p>
+    </div>
+
+    <!-- МЕНЮ УРОВНЕЙ -->
+    <div class="menu" id="menu">
+        <h3>Выбери задачу</h3>
+
+        <div class="level active" onclick="startLevel(1)">Старт</div>
+        <div class="level locked">Регистрация</div>
+        <div class="level locked">Пароль</div>
+    </div>
+
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
 
