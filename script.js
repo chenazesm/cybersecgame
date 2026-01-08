@@ -1,11 +1,25 @@
 window.addEventListener('load', () => {
+    
     const curtain = document.getElementById('curtain');
     setTimeout(() => {
         if (curtain) curtain.classList.add('fade-out');
-    }, 1000);
+    }, 500);
 
-    const textToType = "Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic!"; // ТЕКСТ 1 ДИАЛОГА
+    let textToType = "";
+    
+    const path = window.location.pathname;
+
+    if (path.includes('lvl1.html')) {
+        textToType = "Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic!";
+    }
+    if (path.includes('main.html')) {
+        textToType = "Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic!"; 
+    }
+
     const textElement = document.getElementById('typewriter');
+    
+    if (!textElement) return;
+
     const typingSpeed = 30; 
     let charIndex = 0;
 
@@ -16,5 +30,6 @@ window.addEventListener('load', () => {
             setTimeout(typeWriter, typingSpeed);
         }
     }
-    setTimeout(typeWriter, 1500);
+
+    setTimeout(typeWriter, 1000);
 });
