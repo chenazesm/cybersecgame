@@ -8,8 +8,13 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: #000;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /*САН ФРАНЦИСКО*/
+    background-color: #000; /* Цвет фона вокруг рамки */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /*шторка; ПОТОМ МОЖНО УБРАТЬ ЕЁ */
@@ -32,15 +37,23 @@ body {
 }
 
 .scene {
-    position: relative;
-    width: 100%;
-    height: 100%;
+       position: relative;
+
+    width: 90vw;   
+    height: 90vh;  
+    max-width: none; 
+    aspect-ratio: auto; 
     
-    /*40%*/
+    border-radius: 30px;   /* углы */
+    overflow: hidden;     
+    
+    /* обводка МОЖНО УБРАТЬ */
+    box-shadow: 0 0 0 10px #1a1a1a, 0 0 50px rgba(0,0,0,0.8); 
+
+    background-color: #222;
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url('files/gif.gif');
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
