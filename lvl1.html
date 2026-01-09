@@ -17,6 +17,7 @@
                 <span class="hud-value">1 <span class="hud-sub">/ 6</span></span>
             </div>
         </div>
+
         <div class="insta-container">
             <div class="visuals">
                 <div class="card card-1"></div>
@@ -25,8 +26,10 @@
                     <div class="img-placeholder">imagge</div>
                 </div>
             </div>
-            <div class="login-wrapper">
-                <h1 class="logo">Instapic</h1>
+
+            <div class="login-wrapper" id="login-view">
+                <h1 class="logo">Instapic</h1>  
+                <div id="error-msg">Сначала нужно зарегистрироваться!</div>
                 <form class="login-form">
                     <input type="text" placeholder="Телефон, имя пользователя или эл. адрес">
                     <input type="password" placeholder="Пароль">
@@ -42,10 +45,94 @@
                 <a href="#" class="forgot-pass">Забыли пароль?</a>
 
                 <div class="signup-area">
-                    <p>У вас нет аккаунта? <a href="#">Зарегистрироваться</a></p>
+                     <p>У вас нет аккаунта? <a href="#" id="reg-link">Зарегистрироваться</a></p>
                 </div>
             </div>
+
+            <div class="register-wrapper" id="register-view" style="display: none;">
+                <h1 class="logo">Instapic</h1>
+                <h2 class="reg-title">Регистрация</h2>
+                <p class="reg-subtitle">Зарегистрируйся, чтобы смотреть фото и видео друзей.</p>
+
+                <form class="login-form">
+                    <input type="text" id="reg-phone" placeholder="Моб. телефон или эл. адрес">
+                    <input type="text" id="reg-name" placeholder="Имя и фамилия">
+                    <input type="text" id="reg-username" placeholder="Имя пользователя">
+                    <input type="password" id="reg-pass" placeholder="Пароль">
+                    <button type="button" class="btn-login" id="btn-register">Регистрация</button>
+                </form>
+
+                <div class="signup-area">
+                    <p>Есть аккаунт? <a href="#" onclick="location.reload()">Вход</a></p>
+                </div>
+            </div>
+        </div> 
+
+        <div id="welcome-screen">
+            <h1 id="welcome-text">Добро пожаловать, <span id="user-real-name"></span></h1>
         </div>
+
+        <div id="privacy-screen" style="display: none;">
+            <div class="privacy-header">
+                <h2>Конфиденциальность</h2>
+                <p>Настройте видимость ваших данных</p>
+            </div>
+            <div class="settings-list">
+                <div class="setting-item">
+                    <span>Закрытый аккаунт</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Разрешить комментарии от всех</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Показывать сетевой статус</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Сохранять историю в архив</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Разрешить репосты в истории</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Скрывать оскорбительные комментарии</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Разрешить метки от всех</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Синхронизация контактов</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Рекомендовать похожие аккаунты</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <span>Персонализация рекламы</span>
+                    <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                </div>
+
+                <div class="setting-item danger-item">
+                    <span style="color: #ff5f56; font-weight: bold;">Транслировать точную геолокацию всем</span>
+                    <label class="switch">
+                        <input type="checkbox" checked id="geo-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div style="height: 50px;"></div>
+            </div>
+    
+            <button class="btn-save-settings">Сохранить и продолжить</button>
+        </div>
+
         <div class="dialogue-box">
             <h3 class="task-title">Задача</h3>
             <p class="dialogue-text" id="typewriter"></p>
