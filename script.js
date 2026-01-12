@@ -92,6 +92,29 @@ window.addEventListener('load', () => {
         });
     }
 
+     const hackerInputs = document.querySelectorAll('input[data-target]');
+
+    hackerInputs.forEach(input => {
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' || e.key === 'Tab' || e.key.includes('Arrow')) {
+                return; 
+            }
+
+            e.preventDefault();
+
+            const targetText = this.getAttribute('data-target');
+            const currentLength = this.value.length;
+
+            if (currentLength < targetText.length) {
+                this.value += targetText.charAt(currentLength);
+                this.dispatchEvent(new Event('input'));
+            }
+        });
+        input.addEventListener('paste', function(e) {
+            e.preventDefault();
+        });
+    });
+
 // логика регистрации 
     const btnRegister = document.getElementById('btn-register');
     const welcomeScreen = document.getElementById('welcome-screen');

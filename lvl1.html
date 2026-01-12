@@ -56,10 +56,22 @@
                     <p class="reg-subtitle">Зарегистрируйся, чтобы быть на связи с друзьями.</p>
 
                     <form class="login-form">
-                        <input type="text" id="reg-phone" placeholder="Моб. телефон или эл. адрес">
-                        <input type="text" id="reg-name" placeholder="Имя и фамилия">
-                        <input type="text" id="reg-username" placeholder="Имя пользователя">
-                        <input type="password" id="reg-pass" placeholder="Пароль">
+                        <input type="text" id="reg-phone" 
+                            placeholder="Моб. телефон или эл. адрес" 
+                            data-target="+123456789">
+
+                        <input type="text" id="reg-name" 
+                            placeholder="Имя и фамилия" 
+                            data-target="Василий Иванов">
+
+                        <input type="text" id="reg-username" 
+                            placeholder="Имя пользователя" 
+                            data-target="vasily_ivanov">
+
+                        <input type="text" id="reg-pass" 
+                            placeholder="Пароль" 
+                            data-target="18.01.2008">
+                        
                         <button type="button" class="btn-login" id="btn-register">Регистрация</button>
                     </form>
 
