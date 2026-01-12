@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="sidebar.css" />
+</head>
+<body>
+    <div id="curtain"></div>
+    <div class="game-layout" id="gameLayout">
+        <div class="scene dark-ui">
+            <div class="hud-container">
+                <div class="hud-box">
+                    <span class="hud-label">УРОВЕНЬ</span>
+                    <span class="hud-value">1 <span class="hud-sub">/ 6</span></span>
+                </div>
+            </div>
+
+            <div class="insta-container">
+                <div class="visuals">
+                    <div class="card card-1"></div>
+                    <div class="card card-2"></div>
+                    <div class="card card-main">
+                        <div class="img-placeholder">imagge</div>
+                    </div>
+                </div>
+
+                <div class="login-wrapper" id="login-view">
+                    <h1 class="logo">Instapic</h1>  
+                    <div id="error-msg">Сначала нужно зарегистрироваться!</div>
+                    <form class="login-form">
+                        <input type="text" placeholder="Телефон, имя пользователя или эл. адрес">
+                        <input type="password" placeholder="Пароль">
+                        <button type="button" class="btn-login">Войти</button>
+                    </form>
+
+                    <div class="divider">
+                        <span class="line"></span>
+                        <span class="or">ИЛИ</span>
+                        <span class="line"></span>
+                    </div>
+                    
+                    <a href="#" class="forgot-pass">Забыли пароль?</a>
+
+                    <div class="signup-area">
+                        <p>У вас нет аккаунта? <a href="#" id="reg-link">Зарегистрироваться</a></p>
+                    </div>
+                </div>
+
+                <div class="register-wrapper" id="register-view" style="display: none;">
+                    <h1 class="logo">Instapic</h1>
+                    <h2 class="reg-title">Регистрация</h2>
+                    <p class="reg-subtitle">Зарегистрируйся, чтобы быть на связи с друзьями.</p>
+
+                    <form class="login-form">
+                        <input type="text" id="reg-phone" placeholder="Моб. телефон или эл. адрес">
+                        <input type="text" id="reg-name" placeholder="Имя и фамилия">
+                        <input type="text" id="reg-username" placeholder="Имя пользователя">
+                        <input type="password" id="reg-pass" placeholder="Пароль">
+                        <button type="button" class="btn-login" id="btn-register">Регистрация</button>
+                    </form>
+
+                    <div class="signup-area">
+                        <p>Есть аккаунт? <a href="#" onclick="location.reload()">Вход</a></p>
+                    </div>
+                </div>
+            </div> 
+
+            <div id="welcome-screen">
+                <h1 id="welcome-text">Добро пожаловать, <span id="user-real-name"></span></h1>
+            </div>
+
+            <div id="privacy-screen" style="display: none;">
+                <div class="privacy-header">
+                    <h2>Конфиденциальность</h2>
+                    <p>Настройте видимость ваших данных</p>
+                </div>
+                <div class="settings-list">
+                    <div class="setting-item">
+                        <span>Закрытый аккаунт</span>
+                        <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Разрешить комментарии от всех</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Показывать сетевой статус</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Сохранять историю в архив</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Разрешить репосты в истории</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Скрывать оскорбительные комментарии</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Разрешить метки от всех</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Синхронизация контактов</span>
+                        <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Рекомендовать похожие аккаунты</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span>Персонализация рекламы</span>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+
+                    <div class="setting-item danger-item">
+                        <span style="color: #ff5f56; font-weight: bold;">Транслировать точную геолокацию всем</span>
+                        <label class="switch">
+                            <input type="checkbox" checked id="geo-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div style="height: 50px;"></div>
+                </div>
+        
+                <button class="btn-save-settings">Сохранить и продолжить</button>
+            </div>
+
+            <div class="dialogue-box">
+                <h3 class="task-title">Задача</h3>
+                <p class="dialogue-text" id="typewriter"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+
+
+    <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <!-- ПАНЕЛЬ УРОВНЕЙ -->
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+        <section class="levels-list">
+            <!-- Кнопка "Главная" или "Назад" (Опционально) -->
+            <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span>
+                <div class="level-info">
+                    <span class="level-title">В главное меню</span>
+                </div>
+            </button>
+
+            <button class="level-item active" onclick="location.reload()"> <!-- Перезагрузит уровень -->
+                <span class="level-number">1</span>
+                <div class="level-info">
+                    <span class="level-title">Регистрация</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+
+            <button class="level-item unlocked">
+                <span class="level-number">2</span>
+                <div class="level-info">
+                    <span class="level-title">Пароль</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">0/10</span> <!-- Пока 0, т.к. уровень идет -->
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">3/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">12 428</span>
+            </div>
+        </footer>
+    </aside>
+
+    <script src="sidebar.js"></script>
+</body>
+</html>

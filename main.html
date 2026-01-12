@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSGame</title>
+
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+     <div id="curtain"></div>
+     <div class="game-layout" id="gameLayout">
+    <div class="scene">
+        <img src="files/guy.png" alt="Character" class="character">
+        <div class="dialogue-box">
+            <h3 class="task-title">Задача</h3> 
+            <p class="dialogue-text" id="typewriter"></p>
+        </div>
+    </div>
+</div>
+
+
+<!-- КНОПКА ОТКРЫТИЯ ПАНЕЛИ -->
+<button class="sidebar-toggle" id="openSidebar">
+    <div><img src="files/vector_left.png" alt=""></div>
+    
+</button>
+
+<!-- ПАНЕЛЬ УРОВНЕЙ -->
+<aside class="levels-sidebar" id="levelsSidebar">
+
+    <header class="sidebar-header">
+         <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt=""></button>
+        <h2>Выбери задачу</h2>
+        <button class="profile-button" id="profileSidebar"><img src="files/user.png" alt=""></button>
+    </header>
+
+    <section class="levels-list">
+        <!-- УРОВНИ -->
+        <button class="level-item active">
+            <span class="level-number">1</span>
+
+            <div class="level-info" onclick="window.location.href='lvl1.html'">
+                <span class="level-title">Регистрация</span>
+                <span class="level-difficulty easy">Лёгкий</span>
+                
+            </div>
+        </button>
+
+        <button class="level-item unlocked">
+            <span class="level-number">2</span>
+            <div class="level-info">
+
+                <span class="level-title">Пароль</span>
+                <span class="level-difficulty easy">Лёгкий</span>
+            </div>
+        </button>
+
+        <!-- ДОБАВЛЕНЫ УРОВНИ -->
+        <button class="level-item unlocked">
+            <span class="level-number">3</span>
+            <div class="level-info">
+                <span class="level-title">что-то</span>
+                <span class="level-difficulty medium">Средний</span>
+            </div>
+        </button>
+
+        <button class="level-item locked" disabled>
+            <span class="level-number">4</span>
+            <div class="level-info">
+                <span class="level-title">чот-то</span>
+                <span class="level-difficulty medium">Средний</span>
+            </div>
+        </button>
+
+        <button class="level-item locked" disabled>
+            <span class="level-number">5</span>
+            <div class="level-info">
+                <span class="level-title">что-то</span>
+                <span class="level-difficulty hard">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item locked" disabled>
+            <span class="level-number">6</span>
+            <div class="level-info">
+                <span class="level-title">что-то</span>
+                <span class="level-difficulty hard">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item locked" disabled>
+            <span class="level-number">7</span>
+            <div class="level-info">
+                <span class="level-title">что-то</span>
+                <span class="level-difficulty hard">Сложный</span>
+            </div>
+        </button>
+        
+    </section>
+    <footer class="stats-panel">
+    <div class="stat-card stat-completed">
+        <span class="stat-label">Завершено</span>
+        <span class="stat-value" id="completedCount">1/10</span>
+    </div>
+
+    <div class="stat-card stat-stars">
+        <span class="stat-label">Звёзды</span>
+        <span class="stat-value" id="starsCount">3/30</span>
+    </div>
+
+    <div class="stat-card stat-followers">
+        <span class="stat-label">Подписчики</span>
+        <span class="stat-value" id="followersCount">15 748</span>
+    </div>
+</footer>
+
+</aside>
+<script src="script.js"></script>
+<script src="sidebar.js"></script>
+</body>
+</html>
