@@ -1,123 +1,147 @@
 * {
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background: #060b1a;
-  font-family: Inter, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #000; /* Цвет фона вокруг рамки */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.game {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+/*шторка; ПОТОМ МОЖНО УБРАТЬ ЕЁ */
+#curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 9999;
+    
+    transition: opacity 1.5s ease; 
+    opacity: 1;
 }
 
-/* СЦЕНА */
-.scene-frame {
-  position: absolute;
-  inset: 20px 360px 20px 20px; /* оставляем место под меню */
-  border-radius: 24px;
-  overflow: hidden;
-  background: #050a18;
-  box-shadow:
-    0 0 0 2px rgba(255,255,255,0.05),
-    0 20px 40px rgba(0,0,0,0.6);
+#curtain.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
-.background {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.scene {
+    
+    position: relative;
+    
+    width: calc(100vw - var(--scene-margin) * 2);
+    /* width: 90vw;    */
+    height: 90vh;  
+    /* max-width: none; 
+    aspect-ratio: auto;  */
+    
+    border-radius: 30px;   /* углы */
+    overflow: hidden;     
+    
+    /* обводка МОЖНО УБРАТЬ */
+    box-shadow: 0 0 0 2px #1E2939; 
+
+    background-color: #222;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('files/gif.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: pixelated; 
+
+        transition: width 0.4s ease;
 }
 
-.hero {
-  position: absolute;
-  bottom: -30px;
-  left: 70%;
-  width: 15%;
-  image-rendering: pixelated;
-}
+.game-layout {
+    width: 100vw;
+    height: 100vh;
 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
 
-/* HUD */
-.hud {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  gap: 16px;
-}
-
-.hud-box {
-  background: rgba(20, 35, 70, 0.9);
-  padding: 12px 16px;
-  border-radius: 14px;
-  color: #fff;
-  font-size: 14px;
-}
-
-/* ЗАДАЧА */
-.task {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  width: 380px;
-  background: rgba(10, 20, 45, 0.92);
-  padding: 20px;
-  border-radius: 18px;
-  color: white;
-}
-
-/* МЕНЮ */
-.menu {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-
-  width: 320px;
-  height: calc(100% - 40px);
-
-  background: rgba(12, 22, 45, 0.96);
-  border-radius: 24px;
-  padding: 20px;
-  color: white;
-
-  box-shadow:
-    0 0 0 2px rgba(255,255,255,0.05),
-    0 20px 40px rgba(0,0,0,0.6);
-
-  transition: transform 0.4s ease, opacity 0.3s ease;
-}
-
-.card {
-  background: rgba(10, 20, 45, 0.92);
-  border-radius: 18px;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04),
-    0 10px 30px rgba(0,0,0,0.5);
+    padding-left: var(--scene-margin);
+    padding-right: var(--scene-margin);
+    
 }
 
 
-.menu.hidden {
-  transform: translateX(140%);
-  opacity: 0;
-}
-.level {
-  padding: 14px;
-  margin-top: 12px;
-  border-radius: 14px;
-  background: #1c2f5a;
-  cursor: pointer;
+.game-layout.sidebar-open {
+    padding-right: var(--sidebar-width);
 }
 
-.level.active {
-  background: linear-gradient(135deg, #00c9ff, #005eff);
+.game-layout.sidebar-open .scene {
+    width: calc(
+        100vw
+        - var(--scene-margin) * 2
+        - var(--sidebar-width)
+        - 25px
+    );
 }
 
-.level.locked {
-  opacity: 0.4;
-  cursor: not-allowed;
+
+
+
+.character {
+    position: absolute;
+    bottom: -20px;    
+    right: 15%;       
+    
+    height: 350px; 
+    width: auto;
+    
+    image-rendering: pixelated;
+    z-index: 15;
+}
+
+.dialogue-box {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 90%;
+    max-width: 800px;
+    
+    background-color: #0C1322;
+    backdrop-filter: blur(5px);
+    
+    color: #fff;
+    border-radius: 12px;
+    border: 1px solid #343B56;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 20;
+
+    text-align: left; 
+    padding: 25px;    
+}
+
+/*"ЗАДАЧА"*/
+.task-title {
+    color: #8b949e; /* Серый цвет */
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/*текст...*/
+.dialogue-text {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
 }
