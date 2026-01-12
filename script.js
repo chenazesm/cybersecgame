@@ -151,4 +151,32 @@ window.addEventListener('load', () => {
             }
         });
     }
+
+    const btnSaveSettings = document.querySelector('.btn-save-settings');
+
+    if (btnSaveSettings) {
+        btnSaveSettings.addEventListener('click', () => {
+            
+            const allSwitches = document.querySelectorAll('.settings-list input[type="checkbox"]');
+            const settingsState = [];
+
+            allSwitches.forEach((checkbox, index) => {
+                settingsState.push({
+                    index: index,
+                    isChecked: checkbox.checked,
+                    id: checkbox.id || 'generic-switch' 
+                });
+            });
+
+            const geoToggle = document.getElementById('geo-toggle');
+            const isTrapActivated = geoToggle ? geoToggle.checked : false;
+
+            let currentData = JSON.parse(localStorage.getItem('gameUserData')) || {};
+
+            currentData.settings = settingsState;
+            currentData.failedGeoTrap = isTrapActivated; 
+
+            localStorage.setItem('gameUserData', JSON.stringify(currentData));
+        });
+    }
 });
