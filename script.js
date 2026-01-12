@@ -87,7 +87,7 @@ window.addEventListener('load', () => {
             setTimeout(() => {
                 if(loginView) loginView.style.display = 'none';
                 if(registerView) registerView.style.display = 'block';
-                startTyping("Отлично. Теперь придумай правдоподобное имя.");
+                startTyping("Отлично. Теперь заполни свою информацию.");
             }, randomDelay);
         });
     }
