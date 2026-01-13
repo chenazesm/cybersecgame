@@ -34,7 +34,7 @@ window.addEventListener('load', () => {
     let initialText = "";
     const path = window.location.pathname;
 
-    if (path.includes('lvl1.html') || path.includes('level1.html')) {
+    if (path.includes('lvl1.html') || path.includes('lvl1.html')) {
         initialText = "Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic.";
     } else if (path.includes('main.html')) {
         initialText = "Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic!"; 
