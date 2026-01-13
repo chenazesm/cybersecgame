@@ -11,23 +11,40 @@ window.addEventListener('load', () => {
 
 
 // "печатная машинка"
-    let typingTimer = null;
-    const textElement = document.getElementById('typewriter');
+    // --- ИСПРАВЛЕННАЯ ФУНКЦИЯ ПЕЧАТИ ---
+let typingTimer = null;
+const textElement = document.getElementById('typewriter');
 
-    function startTyping(text) {
-        if (!textElement) return;
-        if (typingTimer) clearTimeout(typingTimer);
-        textElement.innerHTML = "";
-        
-        function typeLoop() {
-            if (charIndex < text.length) {
-                textElement.innerHTML += text.charAt(charIndex);
-                charIndex++;
-                typingTimer = setTimeout(typeLoop, typingSpeed);
-            }
-        }
-        typeLoop();
+function startTyping(text) {
+    if (!textElement) return;
+    
+    // 1. Принудительно останавливаем любой предыдущий таймер
+    if (typingTimer) {
+        clearTimeout(typingTimer);
+        typingTimer = null;
     }
+    
+    // 2. Очищаем текст
+    textElement.innerHTML = "";
+    
+    // 3. Запускаем новую печать
+    let charIndex = 0;
+    const typingSpeed = 30;
+
+    function typeLoop() {
+        if (charIndex < text.length) {
+            textElement.innerHTML += text.charAt(charIndex);
+            charIndex++;
+            typingTimer = setTimeout(typeLoop, typingSpeed);
+        } else {
+            // Когда закончили, обнуляем таймер
+            typingTimer = null;
+        }
+    }
+    
+    // Небольшая задержка перед стартом, чтобы браузер успел отрисовать очистку
+    setTimeout(typeLoop, 50);
+}
 
 
 // запуск текста
