@@ -19,7 +19,7 @@ html::-webkit-scrollbar{
 .sidebar-toggle {
     position: fixed;
     top: 70px;
-    right: 20px;
+    right: 0px;
     z-index: 10;
     padding: 18px 16px;
     background-color: #16202E;
@@ -40,7 +40,6 @@ html::-webkit-scrollbar{
 }
 
 
-/*  SIDEBAR  */
 .levels-sidebar {
     
     position: fixed;
@@ -70,7 +69,7 @@ html::-webkit-scrollbar{
 
 
 
-/*  HEADER  */
+
 .sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -97,7 +96,6 @@ html::-webkit-scrollbar{
     cursor: pointer;
 }
 
-/*  LEVELS LIST  */
 .levels-list {
     flex: 1;
     overflow-y: auto;
@@ -111,7 +109,6 @@ html::-webkit-scrollbar{
 }
 
 
-/* LEVEL ITEM  */
 .level-item {
     
     
@@ -131,7 +128,6 @@ html::-webkit-scrollbar{
     
 }
 
-/*  СОСТОЯНИЯ  */
 .level-item.active {
     background: linear-gradient(160deg, #0364F2, #02c494);
     cursor: pointer;
@@ -144,7 +140,6 @@ html::-webkit-scrollbar{
 
 
 
-/* КРУЖОК УРОВНЯ*/
 .level-number {
     
     left: -10px;
@@ -174,7 +169,6 @@ html::-webkit-scrollbar{
 }
 
 
-/* КОНТЕНТ */
 .level-info {
     display: flex;
     flex-direction: column;
@@ -195,7 +189,6 @@ html::-webkit-scrollbar{
 
 
 
-/*  СЛОЖНОСТЬ  */
 .level-difficulty {
     margin-top: 6px;
     padding: 5px 12px;

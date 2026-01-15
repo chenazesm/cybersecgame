@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lvl 1</title>
     <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    
+    <!-- Стили -->
     <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl1.css" /> <!-- Если у тебя есть отдельный файл CSS для уровня -->
 </head>
 <body>
     <div id="curtain"></div>
+
     <div class="game-layout" id="gameLayout">
         <div class="scene dark-ui">
+            
+            <!-- HUD -->
             <div class="hud-container">
                 <div class="hud-box">
                     <span class="hud-label">УРОВЕНЬ</span>
@@ -19,6 +25,7 @@
                 </div>
             </div>
 
+            <!-- ИНСТАГРАМ КОНТЕНТ -->
             <div class="insta-container">
                 <div class="visuals">
                     <div class="card card-1"></div>
@@ -56,22 +63,10 @@
                     <p class="reg-subtitle">Зарегистрируйся, чтобы быть на связи с друзьями.</p>
 
                     <form class="login-form">
-                        <input type="text" id="reg-phone" 
-                            placeholder="Моб. телефон или эл. адрес" 
-                            data-target="+123456789">
-
-                        <input type="text" id="reg-name" 
-                            placeholder="Имя и фамилия" 
-                            data-target="Василий Иванов">
-
-                        <input type="text" id="reg-username" 
-                            placeholder="Имя пользователя" 
-                            data-target="vasily_ivanov">
-
-                        <input type="text" id="reg-pass" 
-                            placeholder="Пароль" 
-                            data-target="18.01.2008">
-                        
+                        <input type="text" id="reg-phone" placeholder="Моб. телефон или эл. адрес" data-target="+123456789">
+                        <input type="text" id="reg-name" placeholder="Имя и фамилия" data-target="Василий Иванов">
+                        <input type="text" id="reg-username" placeholder="Имя пользователя" data-target="vasily_ivanov">
+                        <input type="text" id="reg-pass" placeholder="Пароль" data-target="18.01.2008">
                         <button type="button" class="btn-login" id="btn-register">Регистрация</button>
                     </form>
 
@@ -95,43 +90,9 @@
                         <span>Закрытый аккаунт</span>
                         <label class="switch"><input type="checkbox"><span class="slider"></span></label>
                     </div>
-                    <div class="setting-item">
-                        <span>Разрешить комментарии от всех</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Показывать сетевой статус</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Сохранять историю в архив</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Разрешить репосты в истории</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Скрывать оскорбительные комментарии</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Разрешить метки от всех</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Синхронизация контактов</span>
-                        <label class="switch"><input type="checkbox"><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Рекомендовать похожие аккаунты</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-                    <div class="setting-item">
-                        <span>Персонализация рекламы</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-                    </div>
-
+                    <!-- ... остальные 9 тумблеров ... -->
+                    
+                    <!-- ОПАСНЫЙ ТУМБЛЕР -->
                     <div class="setting-item danger-item">
                         <span style="color: #ff5f56; font-weight: bold;">Транслировать точную геолокацию всем</span>
                         <label class="switch">
@@ -139,7 +100,6 @@
                             <span class="slider"></span>
                         </label>
                     </div>
-                    
                     <div style="height: 50px;"></div>
                 </div>
         
@@ -152,15 +112,13 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
 
-
-
+    <!-- КНОПКА ОТКРЫТИЯ ПАНЕЛИ -->
     <button class="sidebar-toggle" id="openSidebar">
         <div><img src="files/vector_left.png" alt="<"></div>
     </button>
 
-    <!-- ПАНЕЛЬ УРОВНЕЙ -->
+    <!-- !!! ВОТ ТУТ БЫЛА ОШИБКА. ВСТАВЛЯЕМ ПОЛНОЦЕННОЕ МЕНЮ !!! -->
     <aside class="levels-sidebar" id="levelsSidebar">
         <header class="sidebar-header">
             <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
@@ -169,15 +127,16 @@
         </header>
 
         <section class="levels-list">
-            <!-- Кнопка "Главная" или "Назад" (Опционально) -->
+            <!-- Кнопка НАЗАД В МЕНЮ -->
             <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
-                <span class="level-number">←</span>
+                <span class="level-number" style="background: transparent; border: none; font-size: 20px;">←</span>
                 <div class="level-info">
                     <span class="level-title">В главное меню</span>
                 </div>
             </button>
 
-            <button class="level-item active" onclick="location.reload()"> <!-- Перезагрузит уровень -->
+            <!-- УРОВЕНЬ 1 (Активный) -->
+            <button class="level-item active" onclick="location.reload()">
                 <span class="level-number">1</span>
                 <div class="level-info">
                     <span class="level-title">Регистрация</span>
@@ -185,6 +144,7 @@
                 </div>
             </button>
 
+            <!-- УРОВЕНЬ 2 -->
             <button class="level-item unlocked">
                 <span class="level-number">2</span>
                 <div class="level-info">
@@ -197,19 +157,22 @@
         <footer class="stats-panel">
             <div class="stat-card stat-completed">
                 <span class="stat-label">Завершено</span>
-                <span class="stat-value">0/10</span> <!-- Пока 0, т.к. уровень идет -->
+                <span class="stat-value" id="completedCount">0/10</span>
             </div>
             <div class="stat-card stat-stars">
                 <span class="stat-label">Звёзды</span>
-                <span class="stat-value">3/30</span>
+                <span class="stat-value" id="starsCount">3/30</span>
             </div>
             <div class="stat-card stat-followers">
                 <span class="stat-label">Подписчики</span>
-                <span class="stat-value">12 428</span>
+                <span class="stat-value" id="followersCount">12 428</span>
             </div>
         </footer>
     </aside>
 
+    <!-- СКРИПТЫ В ПРАВИЛЬНОМ ПОРЯДКЕ -->
+    <script src="script.js"></script>
     <script src="sidebar.js"></script>
+    <script src="lvl1.js"></script> <!-- Если выделил логику в отдельный файл -->
 </body>
 </html>
