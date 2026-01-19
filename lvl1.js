@@ -52,11 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const hackerInputs = document.querySelectorAll('input[data-target]');
     
     hackerInputs.forEach(input => {
-        
-        // --- !!! ВАЖНОЕ ИЗМЕНЕНИЕ ЗДЕСЬ !!! ---
-        // Если это поле пароля - пропускаем хакерскую логику
+        // Пропускаем поле пароля
         if (input.id === 'reg-pass') return; 
-        // -------------------------------------
 
         input.addEventListener('keydown', function(e) {
             if (e.key === 'Backspace' || e.key === 'Tab' || e.key.includes('Arrow')) return; 
@@ -86,17 +83,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true }); 
     }
 
+    // РАСЧЕТ ВРЕМЕНИ ВЗЛОМА
+    function calculatePasswordTime(password) {
+        let charset = 0;
+        if (/[a-z]/.test(password)) charset += 26;
+        if (/[A-Z]/.test(password)) charset += 26;
+        if (/[0-9]/.test(password)) charset += 10;
+        if (/[^a-zA-Z0-9]/.test(password)) charset += 32;
+
+        if (charset === 0) return "0 секунд";
+
+        const combinations = BigInt(charset) ** BigInt(password.length);
+        const speedPerSecond = 1_000_000_000n; 
+        
+        let seconds = Number(combinations / speedPerSecond);
+
+        if (seconds < 1) return "мгновенно";
+        if (seconds < 60) return Math.ceil(seconds) + " секунд";
+        
+        let minutes = seconds / 60;
+        if (minutes < 60) return Math.ceil(minutes) + " минут";
+        
+        let hours = minutes / 60;
+        if (hours < 24) return Math.ceil(hours) + " часов";
+        
+        let days = hours / 24;
+        if (days < 30) return Math.ceil(days) + " дней";
+        
+        let months = days / 30;
+        if (months < 12) return Math.ceil(months) + " месяцев";
+        
+        let years = days / 365;
+        if (years < 1000) return Math.ceil(years) + " лет";
+        
+        return "тысячу лет";
+    }
+
 
     // 6. КНОПКА РЕГИСТРАЦИИ 
     const btnRegister = document.getElementById('btn-register');
     const welcomeScreen = document.getElementById('welcome-screen');
     const userRealNameSpan = document.getElementById('user-real-name');
     
-    // Восстанавливаем переменные, чтобы код ниже работал
+    const regWrapper = document.getElementById('register-view');
     const inputPhone = document.getElementById('reg-phone');
     const inputName = document.getElementById('reg-name');
     const inputUser = document.getElementById('reg-username');
-    const inputPass = document.getElementById('reg-pass'); // Тот самый пароль
+    const inputPass = document.getElementById('reg-pass');
 
     if (btnRegister) {
         btnRegister.addEventListener('click', () => {
@@ -106,7 +139,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Сохранение (сохраняем всё, включая пароль, который ввел пользователь)
+            // --- ПРОВЕРКА НАДЕЖНОСТИ ПАРОЛЯ ---
+            const timeToCrack = calculatePasswordTime(inputPass.value);
+            
+            if (timeToCrack.includes("секунд") || timeToCrack.includes("минут") || timeToCrack.includes("часов") || timeToCrack.includes("дней") || timeToCrack.includes("мгновенно")) {
+                
+                if (taskTitle) {
+                    taskTitle.innerText = "УГРОЗА";
+                    taskTitle.style.color = "#ff5f56";
+                }
+                
+                startTyping(`Ты уверен? Пароль недостаточно надежен. К слову, чтобы его взломать, мошеннику понадобится около ${timeToCrack}. Попробуй добавить заглавные буквы или символы.`);
+                
+                return; 
+            }
+
+            // Сохранение
             const userData = {
                 phone: inputPhone.value,
                 realName: inputName.value,
@@ -119,16 +167,21 @@ document.addEventListener('DOMContentLoaded', () => {
             btnRegister.innerHTML = '<span class="mac-spinner" style="filter: brightness(10)"></span>';
             
             setTimeout(() => {
+                // 1. Скрываем регистрацию и картинки
                 if(registerView) registerView.style.display = 'none';
                 const visuals = document.querySelector('.visuals');
                 if(visuals) visuals.style.display = 'none';
+                
+                // Скрываем диалог на время приветствия
+                const dialogueBox = document.querySelector('.dialogue-box');
+                if(dialogueBox) dialogueBox.style.display = 'none';
                 
                 if(welcomeScreen) {
                     userRealNameSpan.innerText = userData.realName;
                     welcomeScreen.style.display = 'flex';
                     setTimeout(() => welcomeScreen.classList.add('show'), 50);
 
-                    // Переход к настройкам
+                    // Переход к настройкам через 2 секунды
                     setTimeout(() => {
                         welcomeScreen.classList.remove('show');
                         setTimeout(() => {
@@ -138,6 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (privacyScreen) {
                                 privacyScreen.style.display = 'flex';
                                 setTimeout(() => privacyScreen.classList.add('active'), 50);
+                                
+                                // Возвращаем диалог
+                                if(dialogueBox) dialogueBox.style.display = 'block';
                                 
                                 if (taskTitle) {
                                     taskTitle.innerText = "ЗАДАЧА";
@@ -159,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSaveSettings.innerText = "Сохранено!";
             btnSaveSettings.style.background = "#238636";
             
-            // Логика сохранения чекбоксов (можно добавить позже)
+            // Здесь может быть код сохранения чекбоксов
         });
     }
 
