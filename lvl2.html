@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="lvl2.css" />
+    <link rel="stylesheet" href="sidebar.css" />
+
+</head>
+<body>
+    <!-- OVERLAY -->
+<div class="post-overlay" id="postOverlay">
+
+    <div class="post-modal">
+        <div class="post-header">
+            <span>Создание публикации</span>
+            <button class="close-post" id="closePost">✕</button>
+        </div>
+
+        <div class="post-content">
+            <div class="post-preview">
+                <!-- сюда потом можно вставить canvas / img -->
+                <span>Здесь будет превью</span>
+            </div>
+
+            <div class="post-text">
+                <textarea placeholder="Напишите подпись..."></textarea>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+ <!-- сделать шторку-->
+<div class="insta-container">
+
+
+ <div class="game-layout" id="gameLayout">
+            <div class="scene dark-ui">
+            <div class="hud-container">
+                <div class="hud-box">
+                    <span class="hud-label">УРОВЕНЬ</span>
+                    <span class="hud-value">2 <span class="hud-sub">/ 6</span></span>
+                </div>
+            </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar_left">
+    <div class="icon"><img src="files/inst_icons/home.png" alt=""></div>
+    <div class="icon"><img src="files/inst_icons/send.png" alt=""></div>
+    <div class="icon"><img src="files/inst_icons/compass.png" alt=""></div>
+    <div class="icon"><img src="files/inst_icons/heart.png" alt=""></div>
+    <div class="icon new-post" id="newPostBtn"><img src="files/inst_icons/plus.png" alt=""></div>
+    <div class="icon"><img src="files/inst_icons/menu.png" alt=""></div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="container">
+
+    <div class="profile">
+        <div class="player-inf">
+            <div class="avatar"></div>
+            <div class="user-and-nickname">
+                <h2 class="username">player</h2>
+                <p class="nickname">player</p>
+                <div class="stats">
+                    <span><b>0</b> публикаций</span>
+                    <span><b>0</b> подписчиков</span>
+                    <span><b>0</b> подписок</span>
+                </div>
+            </div>
+      
+        </div>
+      
+
+     
+
+      <div class="profile-actions">
+        <button>Редактировать профиль</button>
+        <button>Посмотреть архив</button>
+      </div>
+    </div>
+
+    <div class="content-placeholder"></div>
+  <div class="dialogue-box">
+                <h3 class="task-title">Задача</h3>
+                <p class="dialogue-text" id="typewriter"></p>
+            </div>
+  </main>
+
+  <!-- Task -->
+            
+          
+        </div>
+    </div>
+ 
+ 
+
+
+
+
+  <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <!-- ПАНЕЛЬ УРОВНЕЙ -->
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+
+
+        <section class="levels-list">
+            <!-- Кнопка "Главная" или "Назад" (Опционально) -->
+            <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span>
+                <div class="level-info">
+                    <span class="level-title">В главное меню</span>
+                </div>
+            </button>
+
+            <button class="level-item active"  onclick="window.location.href='lvl1.html'"> <!-- Перезагрузит уровень -->
+                <span class="level-number">1</span>
+                <div class="level-info">
+                    <span class="level-title">Регистрация</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+
+            <button class="level-item active" onclick="location.reload()">
+                <span class="level-number">2</span>
+                <div class="level-info">
+                    <span class="level-title">Пароль</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">1/10</span> <!-- Пока 0, т.к. уровень идет -->
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">3/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">13 428</span>
+            </div>
+        </footer>
+    </aside>
+
+    <script src="sidebar.js"></script>
+   <script src="script.js"></script>
+    <script src="lvl2.js"></script>
+
+
+
+</body>
+</html>
