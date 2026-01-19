@@ -125,10 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeScreen = document.getElementById('welcome-screen');
     const userRealNameSpan = document.getElementById('user-real-name');
     
-    const regWrapper = document.getElementById('register-view');
-    const inputPhone = document.getElementById('reg-phone');
-    const inputName = document.getElementById('reg-name');
-    const inputUser = document.getElementById('reg-username');
     const inputPass = document.getElementById('reg-pass');
 
     if (btnRegister) {
@@ -156,9 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Сохранение
             const userData = {
-                phone: inputPhone.value,
-                realName: inputName.value,
-                username: inputUser.value,
                 password: inputPass.value
             };
             localStorage.setItem('gameUserData', JSON.stringify(userData));
