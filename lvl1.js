@@ -156,9 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Сохранение
             const userData = {
-                phone: inputPhone.value,
-                realName: inputName.value,
-                username: inputUser.value,
                 password: inputPass.value
             };
             localStorage.setItem('gameUserData', JSON.stringify(userData));
