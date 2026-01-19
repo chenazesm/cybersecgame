@@ -55,6 +55,8 @@ function startTyping(text) {
         initialText = "Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic.";
     } else if (path.includes('main.html')) {
         initialText = "Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic!"; 
+    } else if (path.includes('lvl2.html')) {
+        initialText = "Помоги Васе создать первую публикацию!"; 
     } else {
         initialText = "Привет мир";
     }

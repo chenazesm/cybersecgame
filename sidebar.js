@@ -51,5 +51,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (stats.completed) stats.completed.textContent = "1/10";
     if (stats.stars) stats.stars.textContent = "3/30";
-    if (stats.followers) stats.followers.textContent = "12 428 934";
+    if (stats.followers) stats.followers.textContent = "12 428";
 });
