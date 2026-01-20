@@ -12,28 +12,31 @@
 
 </head>
 <body>
+    <!-- Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    
+
     <!-- OVERLAY -->
-<div class="post-overlay" id="postOverlay">
-
-    <div class="post-modal">
-        <div class="post-header">
-            <span>Создание публикации</span>
-            <button class="close-post" id="closePost">✕</button>
-        </div>
-
-        <div class="post-content">
-            <div class="post-preview">
-                <!-- сюда потом можно вставить canvas / img -->
-                <span>Здесь будет превью</span>
+    <div class="post-overlay" id="postOverlay">
+        <div class="post-modal">
+            <div class="post-header">
+                <button class="close-post" id="closePost">✕</button>
+                <span>Создание публикации</span>
+                <button class="publish-btn" id="publishBtn">Поделиться</button>
             </div>
 
-            <div class="post-text">
-                <textarea placeholder="Напишите подпись..."></textarea>
+            <div class="post-content">
+                <div class="post-preview">
+                    <div class="preview-image"></div> 
+                </div>
+
+                <div class="post-text">
+                    <textarea id="postCaption" placeholder="Добавьте подпись..."></textarea>
+                </div>
             </div>
         </div>
     </div>
-
-</div>
 
  <!-- сделать шторку-->
 <div class="insta-container">
@@ -58,40 +61,115 @@
     <div class="icon"><img src="files/inst_icons/menu.png" alt=""></div>
   </aside>
 
-  <!-- Main content -->
-  <main class="container">
 
-    <div class="profile">
-        <div class="player-inf">
-            <div class="avatar"></div>
-            <div class="user-and-nickname">
-                <h2 class="username">player</h2>
-                <p class="nickname">player</p>
-                <div class="stats">
-                    <span><b>0</b> публикаций</span>
-                    <span><b>0</b> подписчиков</span>
-                    <span><b>0</b> подписок</span>
+
+  <!-- Main content -->
+
+
+       <main class="container">
+            <div class="profile">
+                <div class="player-inf">
+                    <div class="avatar"></div>
+                    <div class="user-and-nickname">
+                        <h2 class="username">player_one</h2>
+                        <div class="stats">
+                            <li><b id="postsCount">0</b> публикаций</li>
+                            <li><b>125</b> подписчиков</li>
+                            <li><b>54</b> подписок</li>
+                        </div>
+                        <p class="nickname">Digital Creator | Gamer</p>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button>Редактировать</button>
+                    <button>Архив</button>
                 </div>
             </div>
-      
-        </div>
-      
-
      
 
-      <div class="profile-actions">
-        <button>Редактировать профиль</button>
-        <button>Посмотреть архив</button>
-      </div>
-    </div>
+             <div class="posts-grid" id="postsGrid"></div>
 
-    <div class="content-placeholder"></div>
-  <div class="dialogue-box">
+            <div class="dialogue-box">
                 <h3 class="task-title">Задача</h3>
                 <p class="dialogue-text" id="typewriter"></p>
             </div>
-  </main>
 
+            
+        </main>
+   <!-- Direct Messages Overlay -->
+    <div class="overlay-bg" id="chatOverlay">
+        <div class="direct-modal">
+            <div class="chats-list">
+                <div class="chats-header">
+                    <span>player_one</span>
+                </div>
+                <div class="chat-item active">
+                    <div class="chat-avatar" style="background: linear-gradient(45deg, #f09433, #dc2743); display:flex; align-items:center; justify-content:center;">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/instagram-new.png" width="28">
+                    </div>
+                    <div class="chat-info">
+                        <span class="name">Instagram Support ✔</span>
+                        <span class="msg">Важное уведомление</span>
+                    </div>
+                </div>
+                <!-- Mock chats -->
+                <div class="chat-item">
+                    <div class="chat-avatar" style="background: #262626;"></div>
+                    <div class="chat-info"><span class="name">friend_42</span><span class="msg" style="color:#888;">Видел пост?</span></div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-avatar" style="background: #262626;"></div>
+                    <div class="chat-info"><span class="name">goodbooks_official</span><span class="msg" style="color:#888;">Новая коллекция уже...</span></div>
+                </div>
+            </div>
+            <div class="chat-content">
+                <div class="modal-header" style="height:75px; border-bottom:1px solid #262626; padding:0 25px;">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="width:34px; height:34px; border-radius:50%; background: linear-gradient(45deg, #f09433, #dc2743); display:flex; align-items:center; justify-content:center;">
+                             <img src="https://img.icons8.com/material-outlined/16/ffffff/instagram-new.png">
+                        </div>
+                        <span style="font-weight:600;">Instagram Support</span>
+                    </div>
+                    <div style="display:flex; gap: 15px;">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/info.png" style="cursor:pointer; opacity:0.8;">
+                        <button style="background:none; border:none; color:white; font-size:24px; cursor:pointer;" onclick="closeAll()">✕</button>
+                    </div>
+                </div>
+                
+                <div class="messages-container">
+                    <div style="text-align:center; margin-bottom: 20px;">
+                        <div style="width:60px; height:60px; border-radius:50%;  display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                            
+                        </div>
+                        <h4 style="margin:0;">Instagram Support</h4>
+                        <span style="font-size:12px; color:#8e8e8e;"></span>
+                    </div>
+
+                    <div class="message-bubble message-received">
+                        Здравствуйте! Мы обнаружили подозрительную активность в вашем аккаунте из необычного местоположения (г. Ханой, Вьетнам).
+                    </div>
+
+                    <div class="message-bubble message-received">
+                        В целях безопасности ваш аккаунт был временно ограничен. Чтобы восстановить доступ, пожалуйста, подтвердите свою личность, перейдя по официальной ссылке ниже:
+                        <span class="phishing-link" id="fakeConfirmBtn">https://instagram.security-check.com/verify/player_one</span>
+                        <br>
+                        С уважением, команда безопасности Instagram.
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="input-box">
+                        <img src="https://img.icons8.com/material-outlined/24/8e8e8e/image.png">
+                        <div style="flex:1;">Напишите сообщение...</div>
+                        <img src="https://img.icons8.com/material-outlined/24/8e8e8e/like--v1.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
   <!-- Task -->
             
           
@@ -99,9 +177,6 @@
     </div>
  
  
-
-
-
 
   <button class="sidebar-toggle" id="openSidebar">
         <div><img src="files/vector_left.png" alt="<"></div>
