@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true }); 
     }
 
-    // РАСЧЕТ ВРЕМЕНИ ВЗЛОМА
     function calculatePasswordTime(password) {
         let charset = 0;
         if (/[a-z]/.test(password)) charset += 26;
@@ -139,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // --- ПРОВЕРКА НАДЕЖНОСТИ ПАРОЛЯ ---
             const timeToCrack = calculatePasswordTime(inputPass.value);
             
             if (timeToCrack.includes("секунд") || timeToCrack.includes("минут") || timeToCrack.includes("часов") || timeToCrack.includes("дней") || timeToCrack.includes("мгновенно")) {
