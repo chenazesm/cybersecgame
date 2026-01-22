@@ -233,7 +233,7 @@
     color: #0095f6;
     font-size: 14px;
     font-weight: 600;
-    cursor: pointer;
+    cursor: pointer;        
     transition: color 0.2s;
 }
 
@@ -307,21 +307,6 @@
     opacity: 1;
 }
 
-       /* --- Overlays --- */
-        .overlay-bg {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .overlay-bg.open {
-            display: flex;
-        }
-
         /* --- Post Modal --- */
         .post-modal {
             width: 800px;
@@ -333,6 +318,7 @@
             overflow: hidden;
         }
 
+        
         .modal-header {
             height: 42px;
             border-bottom: 1px solid #363636;
@@ -345,12 +331,13 @@
 
         /* --- Direct (Chats) Interface --- */
         .direct-modal {
-            width: 90%;
-            height: 90%;
-            max-width: 1200px;
-            background: #000;
-            border: 1px solid #262626;
-            border-radius: 4px;
+            width: 100%;
+            height: 100%;
+            
+            background: #0C1014;
+            border-radius: 30px;
+            border: 1px solid #1a2026;
+            
             display: flex;
         }
 
@@ -359,6 +346,7 @@
             border-right: 1px solid #262626;
             display: flex;
             flex-direction: column;
+            color: white;
         }
 
         .chats-header {
@@ -369,6 +357,7 @@
             border-bottom: 1px solid #262626;
             font-size: 20px;
             font-weight: 700;
+            
         }
 
         .chat-item {
@@ -377,6 +366,7 @@
             align-items: center;
             gap: 12px;
             cursor: pointer;
+            
         }
 
         .chat-item.active {
@@ -388,12 +378,17 @@
             height: 56px;
             border-radius: 50%;
             background: #262626;
+            background: linear-gradient(45deg, #f09433, #dc2743);
+            display:flex;
+            align-items:center; 
+            justify-content:center;
         }
 
         .chat-info .name {
             display: block;
             font-weight: 400;
             font-size: 15px;
+            color: #ffffff;
         }
 
         .chat-info .msg {
@@ -465,11 +460,12 @@
             font-size: 14px;
         }
 
-        /* --- Toast Notification (iOS Style) --- */
+        /* --- Toast Notification --- */
         .toast-container {
             position: fixed;
             top: 20px;
             right: 20px;
+            color: white;
             z-index: 3000;
         }
 
