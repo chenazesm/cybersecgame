@@ -52,7 +52,7 @@
 
 .profile {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 5px;
 }
 
 .player-inf {
@@ -101,7 +101,7 @@
     color: white;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 8px 0 8px 0;
 }
 
 .stats li {
@@ -443,6 +443,42 @@
             text-decoration: underline;
         }
 
+               /* --- Security Warning Header (The Choice) --- */
+        .security-banner {
+            background: #1a1a1a;
+            padding: 15px 20px;
+            border-bottom: 1px solid #262626;
+            text-align: center;
+        }
+
+        .security-banner-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            color:white
+        }
+
+        .security-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sec-btn {
+            background: #262626;
+            border: 1px solid #363636;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .sec-btn-danger {
+            color: #ef4444;
+        }
         /* --- Chat Input Area --- */
         .chat-footer {
             padding: 20px;

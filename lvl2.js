@@ -7,6 +7,28 @@ const postsCountEl = document.getElementById('postsCount');
 const postCaptionInput = document.getElementById('postCaption');
 const typewriterEl = document.getElementById('typewriter');
 const toastContainer = document.getElementById('toastContainer');
+const explanationBad = `ОШИБКА ОШИБКА: Это было фишинговое письмо! Вы только что передали данные злоумышленникам!
+ Ссылка вела на 'security-check.com', а не на 'instagram.com'. 
+ Всегда проверяйте адрес сайта перед вводом данных!
+
+
+Это было фишинговое письмо!
+Вы перешли по ссылке и передали данные злоумышленникам.
+
+
+Признаки фишинга:
+• срочность («аккаунт будет заблокирован»)
+• ссылка вне Instagram
+• просьба ввести логин и пароль`;
+
+const explanationGood = `Отличная работа! 
+
+
+Вы НЕ перешли по ссылке и не ввели данные.
+Так действуют грамотные пользователи:
+• проверяют отправителя
+• не переходят по срочным ссылкам
+• игнорируют подозрительные сообщения`;
         const chatOverlay = document.getElementById('chatOverlay');
 
         function closeAll() {
@@ -53,11 +75,36 @@ const toastContainer = document.getElementById('toastContainer');
             container.appendChild(toast);
         }
 
+        let phishingClicked = false;
+
         document.getElementById('fakeConfirmBtn').onclick = () => {
+            phishingClicked = true;
             closeAll();
             typewriterEl.style.color = "#ef4444";
-            startTyping("ОШИБКА: Это было фишинговое письмо! Вы только что передали данные злоумышленникам.");
+            startTyping(explanationBad);
         };
+        
+       // --- Обработка правильных действий ---
+        function blockChat() {
+            securityBanner.style.display = 'none';
+            closeAll();
+             typewriterEl.style.color = "#1db225";
+            startTyping("Молодец! Ты распознал угрозу и заблокировал отправителя. Официальная поддержка никогда не пишет в Директ со ссылками на сторонние домены. Вы НЕ перешли по ссылке и не ввели данные. Так действуют грамотные пользователи: • проверяют отправителя • не переходят по срочным ссылкам • игнорируют подозрительные сообщения");
+            document.getElementById('supportChatItem').style.opacity = "0.3";
+            document.getElementById('lastMsgPreview').textContent = "Аккаунт заблокирован";
+        }
+
+        function ignoreChat() {
+            securityBanner.style.display = 'none';
+            closeAll();
+            typewriterEl.style.color = "#1db225";
+            startTyping("Хороший выбор. Игнорирование подозрительных сообщений — первый шаг к безопасности. Помни: не нужно переходить по ссылкам от незнакомцев. Официальная поддержка никогда не пишет в Директ со ссылками на сторонние домены. Вы НЕ перешли по ссылке и не ввели данные. Так действуют грамотные пользователи: • проверяют отправителя • не переходят по срочным ссылкам • игнорируют подозрительные сообщения");
+            document.getElementById('supportChatItem').remove();
+        }
+
+
+
+        
 
         function startTyping(text) {
             typewriterEl.textContent = "";
