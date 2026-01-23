@@ -68,7 +68,7 @@ body {
     height: 90vh;  
     border-radius: 30px;
     overflow: hidden;     
-    box-shadow: 0 0 0 10px #1a1a1a; 
+    box-shadow: 0 0 0 2px #363636; 
     background-color: #222;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('files/gif.gif');
     background-size: cover;
@@ -104,19 +104,15 @@ body {
     transform: translateX(-50%);
     width: 90%;
     max-width: 800px;
-    
-    background-color: rgba(20, 23, 28, 0.95);
+    background-color: #0c1322b2;
     backdrop-filter: blur(5px);
-    
     color: #fff;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #343B56;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    
+    z-index: 20;
     text-align: left; 
     padding: 25px;    
-
-    z-index: 100; 
 }
 
 .task-title {
@@ -177,4 +173,20 @@ body {
     font-size: 14px;
     font-weight: 400;
     opacity: 0.6;
+}
+
+.game-over-text {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    opacity: 0; /* Сначала невидимый */
+    transition: opacity 0.5s ease;
+}
+
+#curtain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

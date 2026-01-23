@@ -1,0 +1,544 @@
+* {
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+}
+
+.scene.dark-ui {
+    background-image: none;
+    background-color: #0C1014; 
+}
+/* Sidebar */
+.sidebar_left {
+    position: absolute;
+    left: 18px;
+    top: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.sidebar_left .icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #0c1322b2;
+    border:1px solid #343b5680;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.sidebar_left .icon:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.new-post {
+    box-shadow: 0px 0px 20px #a0abff;
+    background: rgba(97, 127, 227, 0.2) !important;
+    border-color: #617fe3 !important;
+}
+
+/* Scene */
+.container {
+    height: auto;
+    padding: 0px 80px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.player-inf {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start;
+    padding-left: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    flex-shrink: 0;
+    border: 2px solid #0C1014;
+    box-shadow: 0 0 0 2px #343b56;
+}
+
+.user-and-nickname {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.username {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.nickname {
+    margin: 4px 0 14px;
+    opacity: 0.6;
+    font-size: 14px;
+    color: #fff;
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    font-size: 16px;
+    opacity: 0.9;
+    color: white;
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 8px 0;
+}
+
+.stats li {
+    display: flex;
+    gap: 5px;
+}
+
+.profile-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.profile-actions button {
+    background: #25292E;
+    border: 1px solid #363636;
+    font-size: 14px;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* --- Posts Grid --- */
+.posts-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-top: 20px;
+    border-top: 1px solid #262626;
+    padding-top: 20px;
+}
+
+.posts-grid:empty {
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    border-top: 1px solid #262626;
+}
+
+.posts-grid:empty::after {
+    content: "Нет публикаций";
+}
+
+.post-item {
+    aspect-ratio: 1 / 1;
+    background-color: #222;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    position: relative;
+    background-image: url('files/cool-guy.png');
+}
+
+.post-item:hover {
+    opacity: 0.9;
+}
+
+/* --- OVERLAY & MODAL --- */
+.post-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.post-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.post-modal {
+    width: 800px;
+    max-width: 90vw;
+    height: 500px;
+    background: #262626;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    border: 1px solid #363636;
+}
+
+.post-overlay.open .post-modal {
+    transform: scale(1);
+}
+
+/* HEADER */
+.post-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-bottom: 1px solid #363636;
+    color: #fff;
+    font-weight: 600;
+    background: #262626;
+}
+
+.close-post {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.publish-btn {
+    background: none;
+    border: none;
+    color: #0095f6;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;        
+    transition: color 0.2s;
+}
+
+.publish-btn:hover {
+    color: #fff;
+}
+
+/* CONTENT */
+.post-content {
+    display: flex;
+    flex: 1;
+    height: calc(100% - 50px);
+}
+
+.post-preview {
+    flex: 1.5;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    overflow: hidden;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: url('files/cool-guy.png') center/cover;
+}
+
+/* TEXT */
+.post-text {
+    flex: 1;
+    border-left: 1px solid #363636;
+    padding: 16px;
+    background: #262626;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-text textarea {
+    width: 100%;
+    height: 150px;
+    resize: none;
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+/* --- Overlays (Universal) --- */
+.overlay-bg{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none; /* Скрыто по умолчанию */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-bg.open {
+    display: flex; /* Показываем только при активации */
+    opacity: 1;
+}
+
+        /* --- Post Modal --- */
+        .post-modal {
+            width: 800px;
+            height: 500px;
+            background: #262626;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        
+        .modal-header {
+            height: 42px;
+            border-bottom: 1px solid #363636;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            font-weight: 600;
+        }
+
+        /* --- Direct (Chats) Interface --- */
+        .direct-modal {
+            width: 100%;
+            height: 100%;
+            
+            background: #0C1014;
+            border-radius: 30px;
+            border: 1px solid #1a2026;
+            
+            display: flex;
+        }
+
+        .chats-list {
+            width: 350px;
+            border-right: 1px solid #262626;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .chats-header {
+            height: 75px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #262626;
+            font-size: 20px;
+            font-weight: 700;
+            
+        }
+
+        .chat-item {
+            display: flex;
+            padding: 12px 20px;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            
+        }
+
+        .chat-item.active {
+            background: #121212;
+        }
+
+        .chat-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #262626;
+            background: linear-gradient(45deg, #f09433, #dc2743);
+            display:flex;
+            align-items:center; 
+            justify-content:center;
+        }
+
+        .chat-info .name {
+            display: block;
+            font-weight: 400;
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        .chat-info .msg {
+            font-size: 13px;
+            color: #ef4444; 
+        }
+
+        .chat-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #000;
+        }
+
+        /* --- Chat Messages Area --- */
+        .messages-container {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 10px;
+            overflow-y: auto;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 22px;
+            font-size: 14px;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .message-received {
+            background-color: #262626;
+            color: #fff;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .phishing-link {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .phishing-link:hover {
+            text-decoration: underline;
+        }
+
+               /* --- Security Warning Header (The Choice) --- */
+        .security-banner {
+            background: #1a1a1a;
+            padding: 15px 20px;
+            border-bottom: 1px solid #262626;
+            text-align: center;
+        }
+
+        .security-banner-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            color:white
+        }
+
+        .security-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sec-btn {
+            background: #262626;
+            border: 1px solid #363636;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .sec-btn-danger {
+            color: #ef4444;
+        }
+        /* --- Chat Input Area --- */
+        .chat-footer {
+            padding: 20px;
+            border-top: none;
+        }
+
+        .input-box {
+            border: 1px solid #262626;
+            border-radius: 25px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #8e8e8e;
+            font-size: 14px;
+        }
+
+        /* --- Toast Notification --- */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: white;
+            z-index: 3000;
+        }
+
+        .toast {
+            background: rgba(28, 28, 30, 0.9);
+            backdrop-filter: blur(15px);
+            width: 360px;
+            padding: 12px;
+            border-radius: 20px;
+            display: flex;
+            gap: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            border: 0.5px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+#curtain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: black;
+    z-index: 9999;
+    transition: opacity 1.5s ease; 
+    opacity: 1;
+}
+
+#curtain.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+        
+
+
+        @keyframes slideDown {
+            from { transform: translateY(-120%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+
+        

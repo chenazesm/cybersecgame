@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    
+    <!-- СТИЛИ -->
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl2.css" />
+</head>
+<body>
+
+    <!-- Уведомления -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Шторка -->
+    <div id="curtain"></div>
+
+    <!-- ГЛАВНЫЙ КОНТЕЙНЕР ИГРЫ -->
+    <div class="game-layout" id="gameLayout">
+        
+        <!-- МОНИТОР (СЦЕНА) -->
+        <div class="scene dark-ui">
+            
+            <!-- HUD -->
+            <div class="hud-container">
+                <div class="hud-box">
+                    <span class="hud-label">УРОВЕНЬ</span>
+                    <span class="hud-value">2 <span class="hud-sub">/ 6</span></span>
+                </div>
+            </div>
+
+            <!-- ИНТЕРФЕЙС INSTAGRAM -->
+            <div class="insta-container">
+                
+                <!-- Левое меню (внутри Инстаграма) -->
+                <aside class="sidebar_left">
+                    <div class="icon"><img src="files/inst_icons/home.png" alt=""></div>
+                    <div class="icon"><img src="files/inst_icons/send.png" alt=""></div>
+                    <div class="icon"><img src="files/inst_icons/compass.png" alt=""></div>
+                    <div class="icon"><img src="files/inst_icons/heart.png" alt=""></div>
+                    <div class="icon new-post" id="newPostBtn"><img src="files/inst_icons/plus.png" alt=""></div>
+                    <div class="icon"><img src="files/inst_icons/menu.png" alt=""></div>
+                </aside>
+
+                <!-- Основной контент профиля -->
+                <main class="container">
+                    <div class="profile">
+                        <div class="player-inf">
+                            <div class="avatar"></div>
+                            <div class="user-and-nickname">
+                                <h2 class="username">vasya_player_the_best</h2>
+                                <div class="stats">
+                                    <li><b id="postsCount">0</b> публикаций</li>
+                                    <li><b>125</b> подписчиков</li>
+                                    <li><b>54</b> подписок</li>
+                                </div>
+                                <p class="nickname">Digital Creator | Gamer</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-actions">
+                            <button>Редактировать</button>
+                            <button>Архив</button>
+                        </div>
+                    </div>
+            
+                    <div class="posts-grid" id="postsGrid"></div>
+                </main>
+
+            </div> <!-- Конец insta-container -->
+
+            <!-- ДИАЛОГОВОЕ ОКНО (Внутри сцены, поверх всего) -->
+            <div class="dialogue-box">
+                <h3 class="task-title">Задача</h3>
+                <p class="dialogue-text" id="typewriter"></p>
+            </div>
+
+            <!-- МОДАЛЬНЫЕ ОКНА (Внутри сцены, но скрыты) -->
+            
+            <!-- 1. Создание поста -->
+            <div class="post-overlay" id="postOverlay">
+                <div class="post-modal">
+                    <div class="post-header">
+                        <button class="close-post" id="closePost">✕</button>
+                        <span>Создание публикации</span>
+                        <button class="publish-btn" id="publishBtn">Поделиться</button>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-preview">
+                            <div class="preview-image"></div> 
+                        </div>
+                        <div class="post-text">
+                            <textarea id="postCaption" placeholder="Добавьте подпись..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Чат (Фишинг) -->
+            <div class="overlay-bg" id="chatOverlay">
+                <div class="direct-modal">
+                    <div class="chats-list">
+                        <div class="chats-header">
+                            <span>vasya_player_the_best</span>
+                        </div>
+                        <div class="chat-item active">
+                            <div class="chat-avatar">
+                                <img src="https://img.icons8.com/material-outlined/24/ffffff/instagram-new.png" width="28">
+                            </div>
+                            <div class="chat-info">
+                                <span class="name">Instapic Support ✔</span>
+                                <span class="msg">Важное уведомление</span>
+                            </div>
+                        </div>
+                        <div class="chat-item">
+                            <div class="chat-avatar" style="background: #262626;"></div>
+                            <div class="chat-info"><span class="name">friend_42</span><span class="msg" style="color:#888;">Видел пост?</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-content">
+                        <div class="modal-header" style="height:75px; border-bottom:1px solid #262626; padding:0 25px;">
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <div style="width:34px; height:34px; border-radius:50%; background: linear-gradient(45deg, #f09433, #dc2743); display:flex; align-items:center; justify-content:center;">
+                                     <img src="https://img.icons8.com/material-outlined/16/ffffff/instagram-new.png">
+                                </div>
+                                <span style="color:white; font-weight:600;">Instapic Support ✔</span>
+                            </div>
+                            <div style="display:flex; gap: 15px;">
+                                <button style="background:none; border:none; color:white; font-size:24px; cursor:pointer;" onclick="closeAll()">✕</button>
+                            </div>
+                        </div>
+                        
+                        <div class="security-banner" id="securityBanner">
+                            <span class="security-banner-title">Это сообщение кажется подозрительным?</span>
+                            <div class="security-actions">
+                                <button class="sec-btn sec-btn-danger" onclick="blockChat()">Заблокировать</button>
+                                <button class="sec-btn" onclick="ignoreChat()">Удалить</button>
+                            </div>
+                        </div>
+                        
+                        <div class="messages-container">
+                            <div style="text-align:center; margin-bottom: 20px;">
+                                <h4 style="margin:0;">Instapic Support</h4>
+                            </div>
+
+                            <div class="message-bubble message-received">
+                                Здравствуйте! Мы обнаружили подозрительную активность в вашем аккаунте.
+                            </div>
+
+                            <div class="message-bubble message-received">
+                                Чтобы восстановить доступ, перейдите по ссылке:
+                                <span class="phishing-link" id="fakeConfirmBtn">https://instapic.security-check.com/verify</span>
+                            </div>
+                        </div>
+
+                        <div class="chat-footer">
+                            <div class="input-box">
+                                <div style="flex:1;">Напишите сообщение...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Конец .scene -->
+    </div> <!-- Конец .game-layout -->
+
+
+    <!-- БОКОВАЯ ПАНЕЛЬ (МЕНЮ) -->
+    <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+        <section class="levels-list">
+            <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span>
+                <div class="level-info"><span class="level-title">В главное меню</span></div>
+            </button>
+
+            <button class="level-item active" onclick="window.location.href='lvl1.html'">
+                <span class="level-number">1</span>
+                <div class="level-info">
+                    <span class="level-title">Регистрация</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+
+            <button class="level-item active" onclick="location.reload()">
+                <span class="level-number">2</span>
+                <div class="level-info">
+                    <span class="level-title">Пароль</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">1/10</span>
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">3/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">13 428</span>
+            </div>
+        </footer>
+    </aside>
+
+    <!-- СКРИПТЫ -->
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl2.js"></script>
+
+</body>
+</html>

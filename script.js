@@ -1,13 +1,10 @@
-// --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ---
+
 let typingTimer = null;
 const textElement = document.getElementById('typewriter');
 
-// --- ФУНКЦИЯ ПЕЧАТНОЙ МАШИНКИ (доступна всем) ---
-function startTyping(text) {
-    // Если элемента нет (например, другая страница), выходим
+function startTyping(text, onComplete = null) {
     if (!textElement) return;
     
-    // Сброс предыдущего таймера
     if (typingTimer) {
         clearTimeout(typingTimer);
         typingTimer = null;
@@ -25,10 +22,12 @@ function startTyping(text) {
             typingTimer = setTimeout(typeLoop, typingSpeed);
         } else {
             typingTimer = null;
+            if (onComplete) {
+                onComplete();
+            }
         }
     }
     
-    // Небольшая задержка перед стартом
     setTimeout(typeLoop, 50);
 }
 
