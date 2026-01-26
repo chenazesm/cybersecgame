@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Сохранение
             const userData = {
+                realName: inputName.value,
                 password: inputPass.value
             };
             localStorage.setItem('gameUserData', JSON.stringify(userData));
@@ -184,35 +185,51 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             welcomeScreen.style.display = 'none';
                             
-                            const privacyScreen = document.getElementById('privacy-screen');
-                            if (privacyScreen) {
-                                privacyScreen.style.display = 'flex';
-                                setTimeout(() => privacyScreen.classList.add('active'), 50);
-                                
-                                // Возвращаем диалог
-                                if(dialogueBox) dialogueBox.style.display = 'block';
-                                
-                                if (taskTitle) {
-                                    taskTitle.innerText = "ЗАДАЧА";
-                                    taskTitle.style.color = "#8b949e";
-                                }
-                                startTyping("Внимательно проверь настройки приватности. Пролистай список до самого конца.");
-                            }
-                        }, 400); 
+                            // ... (код выше: welcomeScreen.style.display = 'none';) ...
+                    
+                    const privacyScreen = document.getElementById('privacy-screen');
+                    if (privacyScreen) {
+                        privacyScreen.style.display = 'flex';
+                        setTimeout(() => privacyScreen.classList.add('active'), 50);
+                        
+                        const db = document.querySelector('.dialogue-box');
+                        if (db) {
+                            db.style.display = 'block'; // Включаем
+                            db.style.zIndex = "1000";   // Поднимаем поверх черного фона
+                        }
+                        // ========================================================
+                        
+                        if (taskTitle) {
+                            taskTitle.innerText = "ЗАДАЧА";
+                            taskTitle.style.color = "#8b949e";
+                        }
+                        startTyping("Внимательно проверь настройки приватности. Пролистай список до самого конца.");
+                    }
+                        }, 500); 
                     }, 2000); 
                 }
             }, 1500);
         });
     }
 
-    // 7. СОХРАНЕНИЕ НАСТРОЕК
+    // 7. СОХРАНЕНИЕ НАСТРОЕК И ПЕРЕХОД НА УРОВЕНЬ 2
     const btnSaveSettings = document.querySelector('.btn-save-settings');
+    
     if (btnSaveSettings) {
         btnSaveSettings.addEventListener('click', () => {
-            btnSaveSettings.innerText = "Сохранено!";
-            btnSaveSettings.style.background = "#238636";
             
-            // Здесь может быть код сохранения чекбоксов
+            btnSaveSettings.innerText = "Сохранено!";
+            btnSaveSettings.style.background = "#525252";
+            
+            const curtain = document.getElementById('curtain');
+            if (curtain) {
+                curtain.classList.remove('fade-out');
+            }
+
+            // 4. Ждем 0.3 секунды и переходим
+            setTimeout(() => {
+                window.location.href = 'lvl2.html';
+            }, 300); // 300 миллисекунд
         });
     }
 
