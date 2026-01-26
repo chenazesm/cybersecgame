@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl3.css" />
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+    <div id="curtain"></div>
+
+    <div class="game-layout" id="gameLayout">
+        <div class="scene dark-ui">
+            <div class="hud-container">
+                <div class="hud-box">
+                    <span class="hud-label">УРОВЕНЬ</span>
+                    <span class="hud-value">3 <span class="hud-sub">/ 6</span></span>
+                </div>
+            </div>
+
+            <div class="insta-container">
+                <aside class="sidebar_left">
+                    <div class="icon"><img src="files/inst_icons/home.png"></div>
+                    <div class="icon" id="dmBtn" style="position: relative;">
+                        <img src="files/inst_icons/send.png">
+                        <div class="notification-badge" id="badge" style="display: none;">1</div>
+                    </div>
+                    <div class="icon"><img src="files/inst_icons/compass.png"></div>
+                    <div class="icon"><img src="files/inst_icons/heart.png"></div>
+                    <div class="icon" id="newPostBtn" style="opacity: 0.3; cursor: not-allowed;"><img src="files/inst_icons/plus.png"></div>
+                    <div class="icon"><img src="files/inst_icons/menu.png"></div>
+                </aside>
+
+                <main class="container">
+                    <div class="profile">
+                        <div class="player-inf">
+                            <div class="avatar"></div>
+                            <div class="user-and-nickname">
+                                <h2 class="username">vasya_player_the_best</h2>
+                                <div class="stats">
+                                    <li><b>1</b> публикаций</li>
+                                    <li><b id="followersCount">125</b> подписчиков</li>
+                                    <li><b id="followingCount">54</b> подписок</li>
+                                </div>
+                                <p class="nickname">Digital Creator | Gamer</p>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button>Редактировать</button>
+                            <button>Архив</button>
+                        </div>
+                    </div>
+                    <div class="posts-grid">
+                        <div class="post-item" style="background-image: url('files/cool-guy.png');"></div>
+                    </div>
+                </main>
+            </div>
+
+            <div class="dialogue-box">
+                <h3 class="task-title">Задача</h3>
+                <p class="dialogue-text" id="typewriter"></p>
+            </div>
+
+            <!-- MESSENGER OVERLAY -->
+            <div class="overlay-bg" id="chatOverlay">
+                <div class="direct-modal">
+                    <div class="chats-list">
+                        <div class="chats-header"><span>vasya_player_the_best</span></div>
+                        <div class="chat-item active">
+                            <div class="chat-avatar">🚀</div>
+                            <div class="chat-info">
+                                <span class="name">HypeManager_Bot</span>
+                                <span class="msg">Уникальное предложение</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-content">
+                        <div class="modal-header">
+                            <span>Диалог с менеджером</span>
+                            <button style="background:none; border:none; color:white; font-size:24px; cursor:pointer;" onclick="closeDM()">✕</button>
+                        </div>
+                        <div class="messages-container">
+                            <div class="message-bubble message-received">
+                                Привет! Твой аккаунт цветет! Хочешь получить 10 000 подписчиков прямо сейчас БЕСПЛАТНО? 
+                                <br><br>
+                                Только сегодня раздача донатов и лайков:
+                                <span class="phishing-link" id="scamLink">https://instapic-boost-free.net/get_bonus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="sidebar-toggle" id="openSidebar"><div><img src="files/vector_left.png"></div></button>
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <!-- Сюда вставь свой стандартный сайдбар с уровнями -->
+    </aside>
+
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl3.js"></script>
+</body>
+</html>
