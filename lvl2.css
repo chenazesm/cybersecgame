@@ -250,7 +250,7 @@
 
 .post-preview {
     flex: 1.5;
-    background: #000;
+    background: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -264,6 +264,23 @@
     object-fit: cover;
     background: url('files/cool-guy.png') center/cover;
 }
+/* --- 2. ЦЕНТРАЛЬНЫЙ КОНТЕЙНЕР (ПРОФИЛЬ) --- */
+.container {
+    height: 100%;
+    /* Вернул отступ сверху 80px, чтобы профиль был ниже */
+    padding: 80px 80px 120px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+/* Исправляем layout, чтобы контейнер не улетал вверх */
+.scene.dark-ui {
+    /* Убрали flex-start, вернули как было, но с контролем */
+    justify-content: flex-start !important; 
+    padding-top: 0; /* Убрали лишний паддинг, он есть в .container */
+}
+
 
 /* TEXT */
 .post-text {
@@ -307,217 +324,217 @@
     opacity: 1;
 }
 
-        /* --- Post Modal --- */
-        .post-modal {
-            width: 800px;
-            height: 500px;
-            background: #262626;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
+/* --- Post Modal --- */
+.post-modal {
+    width: 800px;
+    height: 500px;
+    background: #262626;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 
-        
-        .modal-header {
-            height: 42px;
-            border-bottom: 1px solid #363636;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            font-weight: 600;
-        }
 
-        /* --- Direct (Chats) Interface --- */
-        .direct-modal {
-            width: 100%;
-            height: 100%;
-            
-            background: #0C1014;
-            border-radius: 30px;
-            border: 1px solid #1a2026;
-            
-            display: flex;
-        }
+.modal-header {
+    height: 42px;
+    border-bottom: 1px solid #363636;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-weight: 600;
+}
 
-        .chats-list {
-            width: 350px;
-            border-right: 1px solid #262626;
-            display: flex;
-            flex-direction: column;
-            color: white;
-        }
+/* --- Direct (Chats) Interface --- */
+.direct-modal {
+    width: 100%;
+    height: 100%;
+    
+    background: #0C1014;
+    border-radius: 30px;
+    border: 1px solid #1a2026;
+    
+    display: flex;
+}
 
-        .chats-header {
-            height: 75px;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #262626;
-            font-size: 20px;
-            font-weight: 700;
-            
-        }
+.chats-list {
+    width: 350px;
+    border-right: 1px solid #262626;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
 
-        .chat-item {
-            display: flex;
-            padding: 12px 20px;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            
-        }
+.chats-header {
+    height: 75px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #262626;
+    font-size: 20px;
+    font-weight: 700;
+    
+}
 
-        .chat-item.active {
-            background: #121212;
-        }
+.chat-item {
+    display: flex;
+    padding: 12px 20px;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    
+}
 
-        .chat-avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: #262626;
-            background: linear-gradient(45deg, #f09433, #dc2743);
-            display:flex;
-            align-items:center; 
-            justify-content:center;
-        }
+.chat-item.active {
+    background: #121212;
+}
 
-        .chat-info .name {
-            display: block;
-            font-weight: 400;
-            font-size: 15px;
-            color: #ffffff;
-        }
+.chat-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #262626;
+    background: linear-gradient(45deg, #f09433, #dc2743);
+    display:flex;
+    align-items:center; 
+    justify-content:center;
+}
 
-        .chat-info .msg {
-            font-size: 13px;
-            color: #ef4444; 
-        }
+.chat-info .name {
+    display: block;
+    font-weight: 400;
+    font-size: 15px;
+    color: #ffffff;
+}
 
-        .chat-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background-color: #000;
-        }
+.chat-info .msg {
+    font-size: 13px;
+    color: #ef4444; 
+}
 
-        /* --- Chat Messages Area --- */
-        .messages-container {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            gap: 10px;
-            overflow-y: auto;
-        }
+.chat-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+}
 
-        .message-bubble {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 22px;
-            font-size: 14px;
-            line-height: 1.4;
-            position: relative;
-        }
+/* --- Chat Messages Area --- */
+.messages-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    overflow-y: auto;
+}
 
-        .message-received {
-            background-color: #262626;
-            color: #fff;
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
+.message-bubble {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 22px;
+    font-size: 14px;
+    line-height: 1.4;
+    position: relative;
+}
 
-        .phishing-link {
-            color: #0095f6;
-            text-decoration: none;
-            font-weight: 600;
-            display: block;
-            margin-top: 8px;
-            cursor: pointer;
-        }
+.message-received {
+    background-color: #262626;
+    color: #fff;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
 
-        .phishing-link:hover {
-            text-decoration: underline;
-        }
+.phishing-link {
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    margin-top: 8px;
+    cursor: pointer;
+}
 
-               /* --- Security Warning Header (The Choice) --- */
-        .security-banner {
-            background: #1a1a1a;
-            padding: 15px 20px;
-            border-bottom: 1px solid #262626;
-            text-align: center;
-        }
+.phishing-link:hover {
+    text-decoration: underline;
+}
 
-        .security-banner-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: block;
-            color:white
-        }
+        /* --- Security Warning Header (The Choice) --- */
+.security-banner {
+    background: #1a1a1a;
+    padding: 15px 20px;
+    border-bottom: 1px solid #262626;
+    text-align: center;
+}
 
-        .security-actions {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
+.security-banner-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+    color:white
+}
 
-        .sec-btn {
-            background: #262626;
-            border: 1px solid #363636;
-            color: #fff;
-            padding: 6px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+.security-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 
-        .sec-btn-danger {
-            color: #ef4444;
-        }
-        /* --- Chat Input Area --- */
-        .chat-footer {
-            padding: 20px;
-            border-top: none;
-        }
+.sec-btn {
+    background: #262626;
+    border: 1px solid #363636;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
 
-        .input-box {
-            border: 1px solid #262626;
-            border-radius: 25px;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #8e8e8e;
-            font-size: 14px;
-        }
+.sec-btn-danger {
+    color: #ef4444;
+}
+/* --- Chat Input Area --- */
+.chat-footer {
+    padding: 20px;
+    border-top: none;
+}
 
-        /* --- Toast Notification --- */
-        .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            color: white;
-            z-index: 3000;
-        }
+.input-box {
+    border: 1px solid #262626;
+    border-radius: 25px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8e8e8e;
+    font-size: 14px;
+}
 
-        .toast {
-            background: rgba(28, 28, 30, 0.9);
-            backdrop-filter: blur(15px);
-            width: 360px;
-            padding: 12px;
-            border-radius: 20px;
-            display: flex;
-            gap: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            border: 0.5px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-            animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+/* --- Toast Notification --- */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    z-index: 3000;
+}
+
+.toast {
+    background: rgba(28, 28, 30, 0.9);
+    backdrop-filter: blur(15px);
+    width: 360px;
+    padding: 12px;
+    border-radius: 20px;
+    display: flex;
+    gap: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
 #curtain {
     position: fixed;
