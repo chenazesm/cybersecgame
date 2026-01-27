@@ -12,10 +12,11 @@
 </head>
 
 <body id="gameBody">
-
+     <!-- Тень волнения -->
+    <div id="stressVignette"></div>
         <div class="toast-container" id="toastContainer"></div>
         <div id="curtain"></div>
- 
+
 
     <!-- Стартовый оверлей -->
     <div class="game-modal" id="startOverlay">
@@ -54,7 +55,7 @@
         <div class="game-modal-content">
             <h1 style="color: var(--success-green);">Победа! Профиль в безопасности.</h1>
             <p style="text-align: center;">Ты отлично справился! Вася сохранил ментальное здоровье, а его сообщество стало чище.</p>
-            <button class="modal-btn-large" style="background: var(--success-green);" onclick="restartGame()">Играть еще раз</button>
+          <button class="modal-btn-large" style="background: var(--success-green);" onclick="window.location.href='lvl5.html'">Следующий уровень</button>
         </div>
     </div>
 
