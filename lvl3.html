@@ -15,6 +15,7 @@
 
     <div class="game-layout" id="gameLayout">
         <div class="scene dark-ui">
+            
             <div class="hud-container">
                 <div class="hud-box">
                     <span class="hud-label">УРОВЕНЬ</span>
@@ -54,7 +55,8 @@
                             <button>Архив</button>
                         </div>
                     </div>
-                    <div class="posts-grid">
+                    
+                    <div class="posts-grid" id="postsGrid">
                         <div class="post-item" style="background-image: url('files/cool-guy.png');"></div>
                     </div>
                 </main>
@@ -65,41 +67,81 @@
                 <p class="dialogue-text" id="typewriter"></p>
             </div>
 
-            <!-- MESSENGER OVERLAY -->
             <div class="overlay-bg" id="chatOverlay">
-                <div class="direct-modal">
+                <div class="direct-modal" id="directModal">
                     <div class="chats-list">
                         <div class="chats-header"><span>vasya_player_the_best</span></div>
                         <div class="chat-item active">
-                            <div class="chat-avatar">🚀</div>
+                            <div class="chat-avatar" style="background: #333; font-size: 24px;">🚀</div>
                             <div class="chat-info">
-                                <span class="name">HypeManager_Bot</span>
-                                <span class="msg">Уникальное предложение</span>
+                                <span class="name">oleg710</span>
+                                <span class="msg">Уникальное предложение!</span>
                             </div>
                         </div>
+                        <div class="chat-item">
+                            <div class="chat-avatar" style="background: #262626;"></div>
+                            <div class="chat-info"><span class="name">friend_42</span><span class="msg" style="color:#888;">Видел пост?</span></div>
+                        </div>
                     </div>
+                    
                     <div class="chat-content">
                         <div class="modal-header">
-                            <span>Диалог с менеджером</span>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width:34px; height:34px; border-radius:50%; background: #333; display:flex; align-items:center; justify-content:center; font-size: 18px;">🚀</div>
+                                <span>oleg710</span>
+                            </div>
                             <button style="background:none; border:none; color:white; font-size:24px; cursor:pointer;" onclick="closeDM()">✕</button>
                         </div>
-                        <div class="messages-container">
+                        
+                        <div class="security-banner" id="securityBanner">
+                            <span class="security-banner-title">Это сообщение кажется подозрительным?</span>
+                            <div class="security-actions">
+                                <button class="sec-btn sec-btn-danger" onclick="blockChat()">Заблокировать</button>
+                                <button class="sec-btn" onclick="ignoreChat()">Удалить</button>
+                            </div>
+                        </div>
+
+                        <div class="messages-container" id="messagesContainer">
+                            <div class="message-bubble message-received">привет</div>
                             <div class="message-bubble message-received">
-                                Привет! Твой аккаунт цветет! Хочешь получить 10 000 подписчиков прямо сейчас БЕСПЛАТНО? 
-                                <br><br>
-                                Только сегодня раздача донатов и лайков:
-                                <span class="phishing-link" id="scamLink">https://instapic-boost-free.net/get_bonus</span>
+                                я скинул тебе 100 рублей доната, но банк заморозил перевод. они просят, чтобы ты перевел мне 50 рублей для верификации.
+                                <img src="files/qp-finance.jpg" class="scam-image-preview">
+                            </div>
+                        </div>
+
+                        <div class="chat-footer" id="chatFooter">
+                            <div class="input-box" id="fakeInput" tabindex="0">
+                                <div style="flex:1;" class="shimmer-text" id="inputText">Напишите сообщение...</div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+    </div>
+
+    <div id="paymentModal" class="payment-window">
+        <div class="payment-icon">⏳</div>
+        <div id="paymentStatus">Платеж обрабатывается...</div>
+    </div>
+</div>
         </div>
     </div>
 
     <button class="sidebar-toggle" id="openSidebar"><div><img src="files/vector_left.png"></div></button>
+    
     <aside class="levels-sidebar" id="levelsSidebar">
-        <!-- Сюда вставь свой стандартный сайдбар с уровнями -->
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+        <section class="levels-list">
+            <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span><div class="level-info"><span class="level-title">В главное меню</span></div>
+            </button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Регистрация</span></div></button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Пароль</span></div></button>
+            <button class="level-item active"><span class="level-number">3</span><div class="level-info"><span class="level-title">Мошенничество</span><span class="level-difficulty medium">Средний</span></div></button>
+        </section>
     </aside>
 
     <script src="script.js"></script>

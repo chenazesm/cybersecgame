@@ -545,6 +545,46 @@
     opacity: 1;
 }
 
+/* --- Модальные окна --- */
+.game-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+    display: flex; align-items: center; justify-content: center; z-index: 2000;
+    text-align: center; padding: 20px;
+}
+.game-modal-content { 
+    max-width: 550px; padding: 40px; 
+    background: #111; 
+    border-radius: 24px; 
+    border: 1px solid var(--border-color); }
+.game-modal h1 { font-size: 28px; margin-bottom: 24px; color: var(--accent-blue); }
+.game-modal p { font-size: 16px; line-height: 1.6; margin-bottom: 32px; color: #ccc; text-align: left; }
+.game-modal b { color: #fff; }
+
+.modal-btn-large {
+    padding: 18px 48px; background: var(--accent-blue); border: none;
+    border-radius: 14px; color: #fff; font-weight: 700; font-size: 18px;
+    cursor: pointer; transition: transform 0.2s, background 0.2s;
+}
+.modal-btn-large:hover { 
+    background: #0077c7; 
+    transform: scale(1.05); }
+
+.modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    display: none; align-items: center; justify-content: center; z-index: 1000;
+}
+.modal-content { background: #2c2c2e; width: 420px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.modal-header { padding: 25px 20px; border-bottom: 1px solid #3a3a3c; text-align: center; font-size: 15px; line-height: 1.4; color: #efeff4; }
+.modal-btn { 
+    width: 100%; padding: 16px; background: none; border: none; 
+    border-bottom: 1px solid #3a3a3c; color: #0a84ff; cursor: pointer; font-size: 16px; font-weight: 500;
+}
+.modal-btn.danger { color: #ff453a; font-weight: 700; }
+.modal-btn.neutral { color: #8e8e93; }
+.modal-btn:last-child { border-bottom: none; }
+.modal-btn:hover { background: rgba(255,255,255,0.05); }
+
+
 #curtain.fade-out {
     opacity: 0;
     pointer-events: none;

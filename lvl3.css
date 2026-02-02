@@ -1,12 +1,22 @@
-/* =========================================
-   СТИЛИ УРОВНЯ 3 (Точная копия LVL 2)
-   ========================================= */
+.scene.dark-ui {
+    justify-content: flex-start !important;
+    padding-top: 0;
+    background-color: #0C1014;
+}
 
-/* --- 1. ЛЕВОЕ МЕНЮ (SIDEBAR) --- */
+.container {
+    height: 100%;
+    padding: 80px 80px 120px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .sidebar_left {
     position: absolute;
     left: 18px;
-    top: 220px; /* Вернул 220px как на скрине */
+    top: 220px; 
     display: flex;
     flex-direction: column;
     gap: 22px;
@@ -23,41 +33,12 @@
     justify-content: center;
     cursor: pointer;
     opacity: 0.85;
-    position: relative; /* Для бейджика */
+    position: relative; 
 }
 
 .sidebar_left .icon:hover {
     opacity: 1;
     transform: scale(1.05);
-}
-
-.new-post {
-    box-shadow: 0px 0px 20px #a0abff;
-    background: rgba(97, 127, 227, 0.2) !important;
-    border-color: #617fe3 !important;
-}
-
-/* --- 2. ЦЕНТРАЛЬНЫЙ КОНТЕЙНЕР (ПРОФИЛЬ) --- */
-.container {
-    height: 100%;
-    /* Вернул отступ сверху 80px, чтобы профиль был ниже */
-    padding: 80px 80px 120px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-/* Исправляем layout, чтобы контейнер не улетал вверх */
-.scene.dark-ui {
-    /* Убрали flex-start, вернули как было, но с контролем */
-    justify-content: flex-start !important; 
-    padding-top: 0; /* Убрали лишний паддинг, он есть в .container */
-}
-
-.profile {
-    width: 100%;
-    margin-bottom: 5px;
 }
 
 .player-inf {
@@ -109,11 +90,6 @@
     margin: 8px 0 8px 0;
 }
 
-.stats li {
-    display: flex;
-    gap: 5px;
-}
-
 .profile-actions {
     margin-top: 16px;
     display: flex;
@@ -150,14 +126,12 @@
     background-size: cover;
     cursor: pointer;
     position: relative;
-    background-image: url('files/cool-guy.png');
 }
 
-/* --- 3. МЕССЕНДЖЕР (DIRECT) --- */
 .overlay-bg {
-    position: absolute; /* Внутри монитора */
+    position: absolute; 
     inset: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.85); 
     backdrop-filter: blur(4px);
     z-index: 500;
     display: none;
@@ -170,11 +144,11 @@
 .overlay-bg.open { display: flex; opacity: 1; }
 
 .direct-modal {
-    width: 90%; /* Ширина как на скрине */
-    height: 80%;
-    background: #0C1014;
-    border-radius: 30px; /* Скругление */
-    border: 1px solid #1a2026;
+    width: 90%; 
+    height: 95%;
+    background: #000; 
+    border-radius: 16px; 
+    border: 1px solid #262626; 
     display: flex;
     overflow: hidden;
 }
@@ -184,17 +158,21 @@
     border-right: 1px solid #262626;
     display: flex;
     flex-direction: column;
-    color: white;
+    background: #000; 
 }
 
+
+
 .chats-header {
-    height: 75px;
+    height: 60px;
     padding: 0 20px;
     display: flex;
     align-items: center;
+    justify-content: center; 
     border-bottom: 1px solid #262626;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
+    color: #fff;
 }
 
 .chat-item {
@@ -205,7 +183,7 @@
     cursor: pointer;
 }
 
-.chat-item.active { background: #121212; }
+.chat-item.active { background: #1a1a1a; } 
 
 .chat-avatar {
     width: 56px;
@@ -216,11 +194,20 @@
     align-items: center;
     justify-content: center;
     font-size: 24px;
+    flex-shrink: 0;
 }
 
-.chat-info { display: flex; flex-direction: column; }
-.chat-info .name { font-weight: 400; font-size: 15px; color: #ffffff; }
-.chat-info .msg { font-size: 13px; color: #ef4444; }
+.chat-info .name {
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.chat-info .msg {
+    font-size: 13px;
+    color: #a8a8a8;
+}
 
 .chat-content {
     flex: 1;
@@ -230,12 +217,13 @@
 }
 
 .modal-header {
-    height: 75px;
+    height: 60px;
     border-bottom: 1px solid #262626;
-    padding: 0 25px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: white;
 }
 
 .messages-container {
@@ -247,36 +235,77 @@
     overflow-y: auto;
 }
 
+.messages-container > :first-child {
+    margin-top: auto;
+}
+
 .message-bubble {
-    max-width: 70%;
-    padding: 12px 16px;
+    max-width: 60%; 
+    padding: 16px;
     border-radius: 22px;
     font-size: 14px;
     line-height: 1.4;
-    position: relative;
+    background-color: #262626; 
+    color: #fff;
+    align-self: flex-start; 
+    border-bottom-left-radius: 4px; 
+}
+
+.scam-image-preview {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: block;
+    border: 1px solid #444;
+    transition: transform 0.2s;
+}
+
+.scam-image-preview:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+.security-banner {
+    background: #1a1a1a;
+    padding: 15px 20px;
+    border-bottom: 1px solid #262626;
+    text-align: center;
+}
+
+.security-banner-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
     color: white;
 }
 
-.message-received {
-    background-color: #262626;
-    color: #fff;
-    align-self: flex-start;
-    border-bottom-left-radius: 4px;
+.security-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-.phishing-link {
-    color: #0095f6;
-    text-decoration: none;
+.sec-btn {
+    background: #262626;
+    border: 1px solid #363636;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 13px;
     font-weight: 600;
-    display: block;
-    margin-top: 8px;
     cursor: pointer;
 }
 
-/* Input (фейковый) */
+.sec-btn-danger {
+    color: #ef4444;
+    border-color: #ef4444;
+}
+
 .chat-footer {
     padding: 20px;
-    border-top: none;
 }
 
 .input-box {
@@ -290,7 +319,6 @@
     font-size: 14px;
 }
 
-/* Уведомление на иконке (красный кружок) */
 .notification-badge {
     position: absolute;
     top: -5px;
@@ -308,7 +336,6 @@
     border: 2px solid #0c1322;
 }
 
-/* Всплывающее уведомление (Toast) */
 .toast-container {
     position: fixed;
     top: 20px;
@@ -328,10 +355,186 @@
     border: 0.5px solid rgba(255,255,255,0.1);
     cursor: pointer;
     color: white;
-    animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideDown 0.5s forwards;
 }
 
 @keyframes slideDown {
     from { transform: translateY(-120%); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+.messages-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+.messages-container {
+    scrollbar-width: thin;
+    scrollbar-color: #333 #000;
+}
+
+.shimmer-text {
+    color: #8e8e8e; 
+    background: linear-gradient(
+        to right, 
+        #8e8e8e 0%, 
+        #8e8e8e 45%, 
+        #ffffff 50%, 
+        #8e8e8e 55%, 
+        #8e8e8e 100%
+    );
+    
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 200% center;
+    }
+    50% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.blur-filter {
+    filter: blur(8px);
+    transition: filter 0.3s ease;
+    pointer-events: none;
+}
+
+.payment-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    background: rgba(25, 25, 25, 0.95);
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.payment-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    animation: pulse 1s infinite alternate;
+}
+
+.restricted-notice {
+    text-align: center;
+    color: #8e8e8e;
+    font-size: 13px;
+    padding: 15px;
+    width: 100%;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.messages-container > :first-child {
+    margin-top: auto;
+}
+
+.input-box {
+    cursor: text;
+    transition: border-color 0.2s;
+}
+
+.input-box:focus {
+    outline: none;
+    border-color: #0095f6 !important;
+}
+
+.blur-filter {
+    filter: blur(10px);
+    pointer-events: none;
+    transition: filter 0.3s ease;
+}
+
+.payment-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    z-index: 2000;
+    display: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.payment-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.restricted-notice {
+    text-align: center;
+    color: #8e8e8e;
+    font-size: 13px;
+    padding: 10px;
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+}
+
+.dialogue-box {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    background-color: #0c1322f0;
+    backdrop-filter: blur(5px);
+    color: #fff;
+    border-radius: 12px;
+    border: 1px solid #343B56;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    padding: 25px;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.dialogue-box.visible {
+    opacity: 1;
+    pointer-events: auto;
 }

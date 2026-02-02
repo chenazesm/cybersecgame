@@ -151,7 +151,9 @@ function blockChat() {
     closeAll();
     if(typewriterEl) typewriterEl.style.color = "#1db225"; // Зеленый
     if (typeof startTyping === 'function') startTyping(explanationGood);
-    
+            setTimeout(() => {
+            document.getElementById('winOverlay').style.display = 'flex';
+        }, 6000);
     // Визуально блокируем чат
     const chatItem = document.querySelector('.chat-item.active'); // или по ID
     if(chatItem) chatItem.style.opacity = "0.3";
@@ -163,4 +165,7 @@ function ignoreChat() {
     closeAll();
     if(typewriterEl) typewriterEl.style.color = "#1db225";
     if (typeof startTyping === 'function') startTyping(explanationGood);
+            setTimeout(() => {
+            document.getElementById('winOverlay').style.display = 'flex';
+        }, 1000);
 }
