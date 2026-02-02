@@ -43,7 +43,7 @@ window.addEventListener('load', () => {
     
     if (path.includes('main.html') || path.includes('index.html') || path.endsWith('/')) {
         setTimeout(() => {
-            startTyping("Привет мир. Выбери задачу в меню справа."); 
+            startTyping("Добро пожаловать. Выберите первый уровень в меню справа, чтобы начать"); 
         }, 1000);
     }
 });

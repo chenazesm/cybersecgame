@@ -14,12 +14,12 @@ const chatOverlay = document.getElementById('chatOverlay');
 const securityBanner = document.getElementById('securityBanner');
 
 // Тексты
-const explanationBad = `ОШИБКА: Это было фишинговое письмо! Вы только что перешли по фишинговой ссылке!
- Она вела на 'security-check.com', а не на 'instagram.com'. 
+const explanationBad = `Вы только что перешли по фишинговой ссылке.
+ Она вела на 'security-check.com', а не на 'instapic.com'. 
  Всегда проверяйте адрес сайта перед вводом данных!`;
 
 const explanationGood = `Отличная работа! 
-Вы НЕ перешли по ссылке и не ввели данные.
+Вы НЕ перешли по ссылке, которая была отправлена "модерацией".
 Так действуют грамотные пользователи: проверяют отправителя, не переходят по срочным ссылкам.`;
 
 // --- ФУНКЦИИ УПРАВЛЕНИЯ ОКНАМИ ---
