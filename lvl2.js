@@ -145,22 +145,26 @@ if(fakeBtn) {
     };
 }
 
-// Кнопка "Заблокировать" (ХОРОШО)
 function blockChat() {
     if(securityBanner) securityBanner.style.display = 'none';
     closeAll();
-    if(typewriterEl) typewriterEl.style.color = "#1db225"; // Зеленый
-    if (typeof startTyping === 'function') startTyping(explanationGood);
+    if(typewriterEl) typewriterEl.style.color = "#1db225"; 
     
-    // Визуально блокируем чат
-    const chatItem = document.querySelector('.chat-item.active'); // или по ID
-    if(chatItem) chatItem.style.opacity = "0.3";
+    if (typeof startTyping === 'function') {
+        startTyping(explanationGood, () => {
+            goToLevel('lvl3.html');
+        });
+    }
 }
 
-// Кнопка "Удалить/Игнорировать" (ХОРОШО)
 function ignoreChat() {
     if(securityBanner) securityBanner.style.display = 'none';
     closeAll();
     if(typewriterEl) typewriterEl.style.color = "#1db225";
-    if (typeof startTyping === 'function') startTyping(explanationGood);
+
+    if (typeof startTyping === 'function') {
+        startTyping(explanationGood, () => {
+            goToLevel('lvl3.html');
+        });
+    }
 }

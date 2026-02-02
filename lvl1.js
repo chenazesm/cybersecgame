@@ -154,14 +154,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 return; 
             }
 
-            // Сохранение
-            const userData = {
-                realName: inputName.value,
-                password: inputPass.value
-            };
-            localStorage.setItem('gameUserData', JSON.stringify(userData));
+            // --- ОБРАБОТЧИК СОБЫТИЯ: РЕГИСТРАЦИЯ ---
+    btnRegister.addEventListener('click', () => {
+        
+        // 1. ВАЛИДАЦИЯ ДАННЫХ
+        // Проверяем, что все поля заполнены
+        const isValid = 
+            inputPhone.value.trim() !== "" &&
+            inputName.value.trim() !== "" &&
+            inputUser.value.trim() !== "" &&
+            inputPass.value.trim() !== "";
 
-            // Анимация загрузки
+        if (!isValid) {
+            console.warn("Ошибка: Пустые поля");
+            alert("Заполните все поля!");
+            return;
+        }
+
+        const currentSessionData = {
+            timestamp:  Date.now(),
+            level: 1,
+            password:   inputPass.value,
+            settings:   {} // будет заполнено позже
+        };
+
+        try {
+            const dataString = JSON.stringify(
+                currentSessionData
+            );
+            
+            localStorage.setItem(
+                'gameUserData', 
+                dataString
+            );
+            
+            console.log("Данные сохранены успешно");
+
+            btnRegister.innerHTML = 
+                '<span class="mac-spinner"></span>';
+            btnRegister.disabled = true;
+
+        } catch (error) {
+            console.error("Ошибка записи:", error);
+        }
+    })
+
             btnRegister.innerHTML = '<span class="mac-spinner" style="filter: brightness(10)"></span>';
             
             setTimeout(() => {
@@ -212,7 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. СОХРАНЕНИЕ НАСТРОЕК И ПЕРЕХОД НА УРОВЕНЬ 2
     const btnSaveSettings = document.querySelector('.btn-save-settings');
     
     if (btnSaveSettings) {

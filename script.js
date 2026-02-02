@@ -47,3 +47,14 @@ window.addEventListener('load', () => {
         }, 1000);
     }
 });
+
+function goToLevel(url) {
+    const curtain = document.getElementById('curtain');
+    if (curtain) {
+        curtain.classList.remove('fade-out');
+    }
+
+    setTimeout(() => {
+        window.location.href = url;
+    }, 400);
+}

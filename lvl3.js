@@ -80,20 +80,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function blockChat() {
-    closeDM();
+    closeDM(); 
     const dialogueBox = document.querySelector('.dialogue-box');
-    if (dialogueBox) dialogueBox.classList.add('visible');
+    if (dialogueBox) {
+        dialogueBox.classList.add('visible');
+    }
+    // -------------------------
+
     const typewriter = document.getElementById('typewriter');
-    if(typewriter) typewriter.style.color = "#ffffff"; 
+    if(typewriter) typewriter.style.color = "#ffffff";
 
     if (typeof startTyping === 'function') {
-        startTyping("Ты правильно отреагировал. Если приходит сообщение от незнакомцев, следует сразу блокировать контакт.");
+        startTyping("Отлично! Ты распознал мошенника. Бесплатный сыр только в мышеловке. Уровень пройден!", () => {
+            goToLevel('lvl4.html');
+        });
     }
 }
 
 function ignoreChat() {
     blockChat();
 }
+
 
 const targetMsg = "окей, я согласен";
 let currentTypeIndex = 0;

@@ -26,6 +26,7 @@ const events = [
     { user: "best_fan", text: "Не слушай хейтеров, они просто завидуют успеху!", type: "positive" }
 ];
 
+
 let currentIdx = 0;
 
 function updateLog(msg) {
@@ -34,27 +35,36 @@ function updateLog(msg) {
 
 function updateMood(change) {
     mood = Math.max(0, Math.min(100, mood + change));
+    
+    // ЛОГИКА ТЕНИ ВОЛНЕНИЯ (Shadow Vignette)
+    if (mood <= 45) {
+        stressVignette.classList.add('active-stress');
+        // Усиливаем интенсивность тени в зависимости от критичности
+        let intensity = (45 - mood) * 2; 
+        stressVignette.style.boxShadow = `inset 0 0 ${60 + intensity}px rgba(237, 73, 86, 0.6)`;
+    } else {
+        stressVignette.classList.remove('active-stress');
+        stressVignette.style.boxShadow = `inset 0 0 100px rgba(237, 73, 86, 0)`;
+    }
+
     let emoji = "😊";
     let color = "var(--success-green)";
     
     body.classList.remove('stress-mode');
 
     if (mood < 70) { emoji = "😐"; color = "var(--warning-yellow)"; }
-    if (mood <= 40) { 
-        emoji = "😟"; 
-        color = "var(--danger-red)"; 
-        body.classList.add('stress-mode'); 
-        if (mood > 20) {updateLog("ВНИМАНИЕ: Настроение критическое. Еще немного, и Вася не выдержит!");
-            color = "var(--warning-yellow)"; }
-    }
+    if (mood <= 45) { emoji = "😟"; color = "var(--danger-red)"; }
     if (mood <= 25) { emoji = "😭"; color = "#721c24"; }
     
-    if (mood <= 20 && simulationStarted) gameOver();
+    if (mood <= 20 && simulationStarted) {
+        gameOver();
+    }
 
     moodDisplay.innerText = `${emoji} ${mood}%`;
     moodBar.style.width = `${mood}%`;
     moodBar.style.backgroundColor = color;
 }
+
 
 function spawnComment() {
     if(!simulationStarted || currentIdx >= events.length) return;
