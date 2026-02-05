@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. ЗАПУСК ТЕКСТА ЗАДАЧИ
+
     setTimeout(() => {
+        const dialogueBox = document.querySelector('.dialogue-box');
+        if (dialogueBox) dialogueBox.classList.add('visible');
+
         if (typeof startTyping === 'function') {
             startTyping("Вася хочет стать популярным. Помоги ему зарегистрироваться в instapic.");
         }
     }, 1000); 
 
 
-    // 2. ОШИБКА ПРИ ВВОДЕ (ЛОГИН)
     const errorMsg = document.getElementById('error-msg');
     let errorTimeout;
     const loginInputs = document.querySelectorAll('.login-form input'); 
@@ -16,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loginInputs.forEach(input => {
         input.addEventListener('input', () => {
             const loginView = document.getElementById('login-view');
-            // Если мы в блоке логина
             if(loginView && getComputedStyle(loginView).display !== 'none') {
                  if(errorMsg) {
                     errorMsg.innerText = "Сначала нужно зарегистрироваться!";
@@ -29,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 3. ПЕРЕХОД К РЕГИСТРАЦИИ
     const regLink = document.getElementById('reg-link');
     const loginView = document.getElementById('login-view');
     const registerView = document.getElementById('register-view');
@@ -48,11 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // 4. ХАКЕРСКИЙ ВВОД (АВТОЗАПОЛНЕНИЕ)
     const hackerInputs = document.querySelectorAll('input[data-target]');
     
     hackerInputs.forEach(input => {
-        // Пропускаем поле пароля
         if (input.id === 'reg-pass') return; 
 
         input.addEventListener('keydown', function(e) {
@@ -69,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 5. НАПОМИНАНИЕ ПРО ПАРОЛЬ
     const passInput = document.getElementById('reg-pass');
     const taskTitle = document.querySelector('.task-title');
 
@@ -83,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true }); 
     }
 
-    // РАСЧЕТ ВРЕМЕНИ ВЗЛОМА
     function calculatePasswordTime(password) {
         let charset = 0;
         if (/[a-z]/.test(password)) charset += 26;
@@ -92,122 +88,66 @@ document.addEventListener('DOMContentLoaded', () => {
         if (/[^a-zA-Z0-9]/.test(password)) charset += 32;
 
         if (charset === 0) return "0 секунд";
-
         const combinations = BigInt(charset) ** BigInt(password.length);
         const speedPerSecond = 1_000_000_000n; 
-        
         let seconds = Number(combinations / speedPerSecond);
 
         if (seconds < 1) return "мгновенно";
         if (seconds < 60) return Math.ceil(seconds) + " секунд";
-        
         let minutes = seconds / 60;
         if (minutes < 60) return Math.ceil(minutes) + " минут";
-        
         let hours = minutes / 60;
         if (hours < 24) return Math.ceil(hours) + " часов";
-        
         let days = hours / 24;
         if (days < 30) return Math.ceil(days) + " дней";
-        
         let months = days / 30;
         if (months < 12) return Math.ceil(months) + " месяцев";
-        
         let years = days / 365;
         if (years < 1000) return Math.ceil(years) + " лет";
-        
         return "тысячу лет";
     }
 
 
-    // 6. КНОПКА РЕГИСТРАЦИИ 
-    const btnRegister = document.getElementById('btn-register');
-    const welcomeScreen = document.getElementById('welcome-screen');
-    const userRealNameSpan = document.getElementById('user-real-name');
     
-    const regWrapper = document.getElementById('register-view');
-    const inputPhone = document.getElementById('reg-phone');
-    const inputName = document.getElementById('reg-name');
-    const inputUser = document.getElementById('reg-username');
-    const inputPass = document.getElementById('reg-pass');
-
+    const btnRegister = document.getElementById('btn-register');
     if (btnRegister) {
         btnRegister.addEventListener('click', () => {
-            // Проверка на пустоту
+            
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const userRealNameSpan = document.getElementById('user-real-name');
+            const inputPhone = document.getElementById('reg-phone');
+            const inputName = document.getElementById('reg-name');
+            const inputUser = document.getElementById('reg-username');
+            const inputPass = document.getElementById('reg-pass');
+
             if (!inputPhone.value || !inputName.value || !inputUser.value || !inputPass.value) {
-                alert("Заполните все поля!"); 
                 return;
             }
-
-            // --- ПРОВЕРКА НАДЕЖНОСТИ ПАРОЛЯ ---
             const timeToCrack = calculatePasswordTime(inputPass.value);
-            
             if (timeToCrack.includes("секунд") || timeToCrack.includes("минут") || timeToCrack.includes("часов") || timeToCrack.includes("дней") || timeToCrack.includes("мгновенно")) {
-                
                 if (taskTitle) {
                     taskTitle.innerText = "УГРОЗА";
                     taskTitle.style.color = "#ff5f56";
                 }
-                
-                startTyping(`Ты уверен? Пароль недостаточно надежен. К слову, чтобы его взломать, мошеннику понадобится около ${timeToCrack}. Попробуй добавить заглавные буквы или символы.`);
-                
+                startTyping(`Ты уверен? Пароль недостаточно надежен. Чтобы его взломать, понадобится около ${timeToCrack}.`);
                 return; 
             }
 
-            // --- ОБРАБОТЧИК СОБЫТИЯ: РЕГИСТРАЦИЯ ---
-    btnRegister.addEventListener('click', () => {
-        
-        // 1. ВАЛИДАЦИЯ ДАННЫХ
-        // Проверяем, что все поля заполнены
-        const isValid = 
-            inputPhone.value.trim() !== "" &&
-            inputName.value.trim() !== "" &&
-            inputUser.value.trim() !== "" &&
-            inputPass.value.trim() !== "";
-
-        if (!isValid) {
-            console.warn("Ошибка: Пустые поля");
-            alert("Заполните все поля!");
-            return;
-        }
-
-        const currentSessionData = {
-            timestamp:  Date.now(),
-            level: 1,
-            password:   inputPass.value,
-            settings:   {} // будет заполнено позже
-        };
-
-        try {
-            const dataString = JSON.stringify(
-                currentSessionData
-            );
-            
-            localStorage.setItem(
-                'gameUserData', 
-                dataString
-            );
-            
-            console.log("Данные сохранены успешно");
-
-            btnRegister.innerHTML = 
-                '<span class="mac-spinner"></span>';
-            btnRegister.disabled = true;
-
-        } catch (error) {
-            console.error("Ошибка записи:", error);
-        }
-    })
+            const userData = {
+                phone: inputPhone.value,
+                realName: inputName.value,
+                username: inputUser.value,
+                password: inputPass.value
+            };
+            localStorage.setItem('gameUserData', JSON.stringify(userData));
 
             btnRegister.innerHTML = '<span class="mac-spinner" style="filter: brightness(10)"></span>';
             
             setTimeout(() => {
-                // 1. Скрываем регистрацию и картинки
                 if(registerView) registerView.style.display = 'none';
                 const visuals = document.querySelector('.visuals');
                 if(visuals) visuals.style.display = 'none';
                 
-                // Скрываем диалог на время приветствия
                 const dialogueBox = document.querySelector('.dialogue-box');
                 if(dialogueBox) dialogueBox.style.display = 'none';
                 
@@ -216,33 +156,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     welcomeScreen.style.display = 'flex';
                     setTimeout(() => welcomeScreen.classList.add('show'), 50);
 
-                    // Переход к настройкам через 2 секунды
                     setTimeout(() => {
                         welcomeScreen.classList.remove('show');
                         setTimeout(() => {
                             welcomeScreen.style.display = 'none';
                             
-                            // ... (код выше: welcomeScreen.style.display = 'none';) ...
-                    
-                    const privacyScreen = document.getElementById('privacy-screen');
-                    if (privacyScreen) {
-                        privacyScreen.style.display = 'flex';
-                        setTimeout(() => privacyScreen.classList.add('active'), 50);
-                        
-                        const db = document.querySelector('.dialogue-box');
-                        if (db) {
-                            db.style.display = 'block'; // Включаем
-                            db.style.zIndex = "1000";   // Поднимаем поверх черного фона
-                        }
-                        // ========================================================
-                        
-                        if (taskTitle) {
-                            taskTitle.innerText = "ЗАДАЧА";
-                            taskTitle.style.color = "#8b949e";
-                        }
-                        startTyping("Внимательно проверь настройки приватности. Пролистай список до самого конца.");
-                    }
-                        }, 500); 
+                            const privacyScreen = document.getElementById('privacy-screen');
+                            if (privacyScreen) {
+                                privacyScreen.style.display = 'flex';
+                                setTimeout(() => privacyScreen.classList.add('active'), 50);
+                                
+                                if(dialogueBox) {
+                                    dialogueBox.style.display = 'block';
+                                    dialogueBox.classList.add('visible');
+                                    dialogueBox.style.zIndex = "1000";
+                                }
+                                
+                                if (taskTitle) {
+                                    taskTitle.innerText = "ЗАДАЧА";
+                                    taskTitle.style.color = "#8b949e";
+                                }
+                                startTyping("Внимательно проверь настройки приватности. Пролистай список до самого конца.");
+                            }
+                        }, 400); 
                     }, 2000); 
                 }
             }, 1500);
@@ -250,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const btnSaveSettings = document.querySelector('.btn-save-settings');
-    
     if (btnSaveSettings) {
         btnSaveSettings.addEventListener('click', () => {
             
@@ -262,10 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 curtain.classList.remove('fade-out');
             }
 
-            // 4. Ждем 0.3 секунды и переходим
             setTimeout(() => {
                 window.location.href = 'lvl2.html';
-            }, 300); // 300 миллисекунд
+            }, 300);
         });
     }
 

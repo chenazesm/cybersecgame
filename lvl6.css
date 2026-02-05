@@ -1,0 +1,190 @@
+
+.hud-container {
+    top: 50px !important; 
+}
+
+#curtain {
+    transition: opacity 0.1s ease !important; /* Очень быстрое появление */
+}
+
+.scene.dark-ui {
+    justify-content: center !important;
+    padding-top: 0;
+    background: #000;
+}
+
+.stream-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.stream-view {
+    flex: 1; 
+    background: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #333;
+}
+
+.game-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-overlay-text {
+    font-size: 40px;
+    font-weight: 800; /* San Francisco Heavy */
+    color: rgba(255,255,255,0.05);
+    transform: rotate(-15deg);
+    letter-spacing: -1px;
+}
+
+.stream-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.live-badge {
+    background: #ff453a; /* Mac Red */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700; /* Bold */
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 10px rgba(255, 69, 58, 0.5);
+    animation: pulseLive 2s infinite;
+}
+
+@keyframes pulseLive {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.viewers-count {
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500; /* Medium */
+    backdrop-filter: blur(5px);
+    font-variant-numeric: tabular-nums;
+}
+
+.webcam-box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 160px;
+    height: 90px;
+    background: #222;
+    border: 2px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.avatar-cam {
+    width: 100%; height: 100%;
+    background: url('files/cool-guy.png') center/cover; /*!*/
+}
+
+
+.stream-chat {
+    width: 30%; 
+    min-width: 300px;
+    background: #1e1e1e; /* Mac Dark Grey */
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #333;
+}
+
+.chat-top-bar {
+    height: 40px;
+    background: #252525;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b0b0b0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600; /* Semibold */
+}
+
+.chat-messages-area {
+    flex: 1;
+    overflow-y: hidden;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    gap: 6px;
+}
+
+.chat-msg {
+    font-size: 13px;
+    line-height: 1.35;
+    animation: slideUp 0.15s ease-out;
+    -webkit-font-smoothing: antialiased;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.chat-user {
+    font-weight: 700; 
+    margin-right: 4px;
+    font-size: 13px;
+}
+
+.chat-text {
+    color: #e0e0e0;
+    font-weight: 400;
+}
+
+.u-red { color: #ff5b50; }
+.u-blue { color: #409cff; }
+.u-green { color: #32d74b; }
+.u-yellow { color: #ffcc00; }
+.u-purple { color: #bf5af2; }
+
+.chat-input-area {
+    padding: 15px;
+    background: #252525;
+    border-top: 1px solid #333;
+}
+
+.chat-input-area input {
+    width: 100%;
+    background: #1c1c1c;
+    border: 1px solid #3a3a3a;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    font-family: inherit; /* Наследует San Francisco */
+    font-weight: 400;
+}
+.chat-input-area input::placeholder {
+    color: #666;
+}

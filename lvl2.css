@@ -346,7 +346,6 @@
     font-weight: 600;
 }
 
-/* --- Direct (Chats) Interface --- */
 .direct-modal {
     width: 90%;
     height: 95%;
@@ -420,7 +419,6 @@
     background-color: #000;
 }
 
-/* --- Chat Messages Area --- */
 .messages-container {
     flex: 1;
     padding: 20px;
@@ -460,7 +458,6 @@
     text-decoration: underline;
 }
 
-        /* --- Security Warning Header (The Choice) --- */
 .security-banner {
     background: #1a1a1a;
     padding: 15px 20px;
@@ -496,7 +493,6 @@
 .sec-btn-danger {
     color: #ef4444;
 }
-/* --- Chat Input Area --- */
 .chat-footer {
     padding: 20px;
     border-top: none;
@@ -513,7 +509,6 @@
     font-size: 14px;
 }
 
-/* --- Toast Notification --- */
 .toast-container {
     position: fixed;
     top: 20px;

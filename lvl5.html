@@ -9,8 +9,8 @@
     <!-- СТИЛИ -->
     <link rel="stylesheet" href="sidebar.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="lvl3.css" /> <!-- Используем стили 3 уровня как базу -->
-    <link rel="stylesheet" href="lvl5.css" /> <!-- Доп. стили для установщика -->
+    <link rel="stylesheet" href="lvl3.css" />
+    <link rel="stylesheet" href="lvl5.css" /> 
 </head>
 <body>
     <div id="curtain"></div>
@@ -25,8 +25,6 @@
                     <span class="hud-value">5 <span class="hud-sub">/ 6</span></span>
                 </div>
             </div>
-
-            <!-- ФОН (Инстаграм, как в 3 уровне) -->
             <div class="insta-container">
                 <aside class="sidebar_left">
                     <div class="icon"><img src="files/inst_icons/home.png"></div>
@@ -60,7 +58,6 @@
                 </main>
             </div>
 
-            <!-- ДИАЛОГОВОЕ ОКНО -->
             <div class="dialogue-box">
                 <h3 class="task-title">Задача</h3>
                 <p class="dialogue-text" id="typewriter"></p>
@@ -80,20 +77,16 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Окно переписки -->
                     <div class="chat-content">
                         <div class="modal-header">
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <div style="width:34px; height:34px; border-radius:50%; background: #444; display:flex; align-items:center; justify-content:center;">S</div>
                                 <span>sanyaXD</span>
                             </div>
-                            <!-- Крестик заблокирован по сюжету -->
                             <button style="background:none; border:none; color:#555; font-size:24px; cursor:not-allowed;">✕</button>
                         </div>
                         
                         <div class="messages-container" id="messagesArea">
-                            <!-- Сообщения появятся через JS -->
                         </div>
 
                         <div class="chat-footer">
@@ -104,8 +97,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- === ОКНО УСТАНОВКИ (MAC OS STYLE) === -->
             <div class="macos-overlay" id="installerOverlay">
                 <div class="macos-window">
                     <div class="macos-titlebar">
@@ -121,7 +112,6 @@
                         <img src="files/folder.png" class="app-icon-large">
                         <h2 id="installHeader">Установка VideoRed</h2>
                         
-                        <!-- Компонент, который сейчас ставится -->
                         <p id="installStatus" style="height: 20px;">Подготовка...</p>
                         
                         <div class="macos-progress-bg">
@@ -137,8 +127,6 @@
 
         </div>
     </div>
-
-    <!-- Сайдбар -->
     <button class="sidebar-toggle" id="openSidebar"><div><img src="files/vector_left.png"></div></button>
     <aside class="levels-sidebar" id="levelsSidebar">
         <header class="sidebar-header">
@@ -153,7 +141,6 @@
             <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Пароль</span></div></button>
             <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Мошенничество</span></div></button>
             <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Права доступа</span></div></button>
-            <!-- Текущий -->
             <button class="level-item active"><span class="level-number">5</span><div class="level-info"><span class="level-title">Вирусы</span><span class="level-difficulty hard">Сложный</span></div></button>
         </section>
     </aside>

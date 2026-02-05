@@ -85,8 +85,6 @@ function blockChat() {
     if (dialogueBox) {
         dialogueBox.classList.add('visible');
     }
-    // -------------------------
-
     const typewriter = document.getElementById('typewriter');
     if(typewriter) typewriter.style.color = "#ffffff";
 

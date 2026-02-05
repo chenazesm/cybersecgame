@@ -5,38 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lvl 2</title>
     <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
-    
-    <!-- СТИЛИ -->
+
     <link rel="stylesheet" href="sidebar.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="lvl2.css" />
 </head>
 <body>
 
-    <!-- Уведомления -->
     <div class="toast-container" id="toastContainer"></div>
-
-    <!-- Шторка -->
     <div id="curtain"></div>
-
-    <!-- ГЛАВНЫЙ КОНТЕЙНЕР ИГРЫ -->
     <div class="game-layout" id="gameLayout">
-        
-        <!-- МОНИТОР (СЦЕНА) -->
         <div class="scene dark-ui">
-            
-            <!-- HUD -->
             <div class="hud-container">
                 <div class="hud-box">
                     <span class="hud-label">УРОВЕНЬ</span>
                     <span class="hud-value">2 <span class="hud-sub">/ 6</span></span>
                 </div>
             </div>
-
-            <!-- ИНТЕРФЕЙС INSTAGRAM -->
             <div class="insta-container">
-                
-                <!-- Левое меню (внутри Инстаграма) -->
                 <aside class="sidebar_left">
                     <div class="icon"><img src="files/inst_icons/home.png" alt=""></div>
                     <div class="icon"><img src="files/inst_icons/send.png" alt=""></div>
@@ -45,8 +31,6 @@
                     <div class="icon new-post" id="newPostBtn"><img src="files/inst_icons/plus.png" alt=""></div>
                     <div class="icon"><img src="files/inst_icons/menu.png" alt=""></div>
                 </aside>
-
-                <!-- Основной контент профиля -->
                 <main class="container">
                     <div class="profile">
                         <div class="player-inf">
@@ -71,17 +55,12 @@
                     <div class="posts-grid" id="postsGrid"></div>
                 </main>
 
-            </div> <!-- Конец insta-container -->
+            </div>
 
-            <!-- ДИАЛОГОВОЕ ОКНО (Внутри сцены, поверх всего) -->
             <div class="dialogue-box">
                 <h3 class="task-title">Задача</h3>
                 <p class="dialogue-text" id="typewriter"></p>
             </div>
-
-            <!-- МОДАЛЬНЫЕ ОКНА (Внутри сцены, но скрыты) -->
-            
-            <!-- 1. Создание поста -->
             <div class="post-overlay" id="postOverlay">
                 <div class="post-modal">
                     <div class="post-header">
@@ -99,8 +78,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 2. Чат (Фишинг) -->
             <div class="overlay-bg" id="chatOverlay">
                 <div class="direct-modal">
                     <div class="chats-list">
@@ -167,11 +144,8 @@
                 </div>
             </div>
 
-        </div> <!-- Конец .scene -->
-    </div> <!-- Конец .game-layout -->
-
-
-    <!-- БОКОВАЯ ПАНЕЛЬ (МЕНЮ) -->
+        </div>
+    </div> 
     <button class="sidebar-toggle" id="openSidebar">
         <div><img src="files/vector_left.png" alt="<"></div>
     </button>
@@ -222,7 +196,6 @@
         </footer>
     </aside>
 
-    <!-- СКРИПТЫ -->
     <script src="script.js"></script>
     <script src="sidebar.js"></script>
     <script src="lvl2.js"></script>

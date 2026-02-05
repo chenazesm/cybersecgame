@@ -28,7 +28,6 @@
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
-/* Левая колонка */
 .chats-list {
     width: 300px;
     border-right: 1px solid #262626;
@@ -55,7 +54,6 @@
 .chat-info .name { color: #fff; font-size: 14px; }
 .chat-info .msg { font-size: 13px; color: #a8a8a8; }
 
-/* Правая колонка (Чат) */
 .chat-content {
     flex: 1; display: flex; flex-direction: column; background-color: #000;
 }
@@ -78,18 +76,17 @@
     color: #555; font-size: 14px; background: #000;
 }
 
-/* --- СТИЛЬ ФАЙЛА В ЧАТЕ (ИСПРАВЛЕННЫЙ) --- */
 .file-attachment {
     display: flex;
-    align-items: center; /* Выравнивание по центру по вертикали */
+    align-items: center; 
     gap: 15px;
-    background: #151515; /* Чуть темнее фона сообщения */
+    background: #151515; 
     border: 1px solid #333;
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.2s;
-    width: 100%; /* Занимает всю ширину баббла */
+    width: 100%; 
     min-width: 200px;
 }
 .file-attachment:hover { background: #222; border-color: #555; }
@@ -124,12 +121,11 @@
 }
 
 
-/* --- ОКНО УСТАНОВКИ (MAC OS DARK) --- */
 .macos-overlay {
     position: absolute; inset: 0;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(5px);
-    z-index: 2500; /* Поверх диалога и чата */
+    z-index: 2500;
     display: none; justify-content: center; align-items: center;
 }
 

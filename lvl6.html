@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl6.css" />
+</head>
+<body>
+    <div id="curtain"></div>
+
+    <div class="game-layout" id="gameLayout">
+        <div class="scene dark-ui">
+            <div class="hud-container">
+                <div class="hud-box">
+                    <span class="hud-label">УРОВЕНЬ</span>
+                    <span class="hud-value">4 <span class="hud-sub">/ 6</span></span>
+                </div>
+            </div>
+            <div class="stream-container">
+    
+                <div class="stream-view">
+                    <div class="stream-header">
+                        <div class="live-badge">🔴 LIVE</div>
+                        <div class="viewers-count">👁 12 405 зрителей</div>
+                    </div>
+                    <div class="game-screen">
+                        <div class="game-overlay-text">тут будет стрим (майнкрафт)</div>
+                    </div>
+                    <div class="webcam-box">
+                        <div class="avatar-cam"></div>
+                    </div>
+                </div>
+                <div class="stream-chat">
+                    <div class="chat-top-bar">Чат трансляции</div>
+                    
+                    <div class="chat-messages-area" id="streamChat"></div>
+                    <div class="chat-input-area">
+                        <input type="text" placeholder="Отправить сообщение..." disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-box">
+                <h3 class="task-title">Задача</h3>
+                <p class="dialogue-text" id="typewriter"></p>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="sidebar-toggle" id="openSidebar"><div><img src="files/vector_left.png"></div></button>
+    
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png"></button>
+            <h2>Выбери задачу</h2>
+        </header>
+        <section class="levels-list">
+             <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span><div class="level-info"><span class="level-title">В меню</span></div>
+            </button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Регистрация</span></div></button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Пароль</span></div></button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Мошенничество</span></div></button>
+            <button class="level-item active"><span class="level-number">4</span><div class="level-info"><span class="level-title">Донаты</span><span class="level-difficulty medium">Средний</span></div></button>
+        </section>
+    </aside>
+
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl6.js"></script>
+</body>
+</html>

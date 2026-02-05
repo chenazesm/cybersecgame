@@ -26,7 +26,6 @@ body {
     height: 0;
 }
 
-  /* ЭФФЕКТ ТЕНИ ВОЛНЕНИЯ (Vignette Shadow) */
         #stressVignette {
             position: fixed;
             top: 0;
@@ -39,8 +38,6 @@ body {
             transition: box-shadow 0.5s ease;
             display: block;
         }
-
-        /* Анимация пульсации для тени */
         @keyframes pulseStress {
             0% { box-shadow: inset 0 0 60px rgba(237, 73, 86, 0.4); }
             50% { box-shadow: inset 0 0 150px rgba(237, 73, 86, 0.8); }
@@ -51,11 +48,10 @@ body {
             animation: pulseStress 1.5s infinite ease-in-out !important;
         }
 
- /* --- 1. ЛЕВОЕ МЕНЮ (SIDEBAR) --- */
 .sidebar_left {
     position: absolute;
     left: 18px;
-    top: 220px; /* Вернул 220px как на скрине */
+    top: 220px; 
     display: flex;
     flex-direction: column;
     gap: 22px;
@@ -72,7 +68,7 @@ body {
     justify-content: center;
     cursor: pointer;
     opacity: 0.85;
-    position: relative; /* Для бейджика */
+    position: relative;
 }
 
 .sidebar_left .icon:hover {
@@ -90,15 +86,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-/*  Профиль пользователя */
 .profile {
     width: 100%;
     margin-bottom: 5px;
@@ -197,28 +184,18 @@ background-image: url('files/cool-guy.png'); background-size: cover; background-
     background-image: url('files/cool-guy.png');
 }
 
-/* --- 2. ЦЕНТРАЛЬНЫЙ КОНТЕЙНЕР (ПРОФИЛЬ) --- */
 .container {
     height: 100%;
-    /* Вернул отступ сверху 80px, чтобы профиль был ниже */
     padding: 80px 80px 120px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
-/* Исправляем layout, чтобы контейнер не улетал вверх */
 .scene.dark-ui {
-    /* Убрали flex-start, вернули как было, но с контролем */
     justify-content: flex-start !important; 
-    padding-top: 0; /* Убрали лишний паддинг, он есть в .container */
+    padding-top: 0; 
 }
-
-
-
-
-
-
 
 .profile-grid {
     max-width: 935px; margin: 0 auto;
@@ -240,7 +217,6 @@ background-image: url('files/cool-guy.png'); background-size: cover; background-
 .grid-item:hover { opacity: 0.8; }
 .grid-item img { width: 100%; height: 100%; object-fit: cover; }
 
-/* --- Оверлей с Постом --- */
 .post-overlay {
     position: fixed; inset: 0;
     background: rgba(0, 0, 0, 0.85);
@@ -273,7 +249,6 @@ background-image: url('files/cool-guy.png'); background-size: cover; background-
 .post-actions { display: flex; gap: 16px; margin-bottom: 12px; }
 .post-actions img { width: 24px; filter: invert(1); cursor: pointer; }
 
-/* --- Диалоговое окно --- */
 .dialogue-box {
     position: fixed;
     z-index: 200; 
@@ -295,7 +270,6 @@ background-image: url('files/cool-guy.png'); background-size: cover; background-
     display: flex; align-items: center; gap: 15px; backdrop-filter: blur(10px);
 }
 
-/* --- Модальные окна --- */
 .game-modal {
     position: fixed; inset: 0; background: rgba(0,0,0,0.95);
     display: flex; align-items: center; justify-content: center; z-index: 2000;
@@ -348,19 +322,11 @@ background-image: url('files/cool-guy.png'); background-size: cover; background-
     opacity: 0;
     pointer-events: none;
 }
-        
 
-
-        @keyframes slideDown {
-            from { transform: translateY(-120%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-
-
-
-
-
+@keyframes slideDown {
+    from { transform: translateY(-120%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
 @media (max-width: 800px) {
     .post-container { flex-direction: column; height: 95vh; 

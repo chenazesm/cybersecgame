@@ -6,14 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // box.style.zIndex = '90000000';
     const dialogueBox = document.querySelector('.dialogue-box');
     if (dialogueBox) {
-        dialogueBox.style.display = 'block'; // Убеждаемся, что блок есть
-        // Небольшая задержка, чтобы сработала CSS анимация
+        dialogueBox.style.display = 'block'; 
         setTimeout(() => {
-            dialogueBox.classList.add('visible'); // Делаем непрозрачным (opacity: 1)
+            dialogueBox.classList.add('visible'); 
         }, 100);
     }
 
-    // --- 2. Старт текста ---
     if (typeof startTyping === 'function') {
         startTyping("Твой видеоредактор сломался. Друг предлагает помощь. Посмотрим, что он прислал.");
     }
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progressBar');
     const installStatus = document.getElementById('installStatus');
     
-    // --- ЧАТ ---
     setTimeout(() => {
         addMessage("блин, премьер опять крашится на рендере. а у меня проект горит", "message-bubble message-received", "right");
     }, 1000);
@@ -67,15 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('downloadFileBtn').addEventListener('click', openInstaller);
     }
-
-    // --- УСТАНОВКА (ИГРА) ---
     let installInterval;
     let isTrapActive = false;
 
     function openInstaller() {
         installerOverlay.style.display = 'flex';
-        
-        // Убеждаемся, что диалог виден поверх затемнения
         if (dialogueBox) {
             dialogueBox.style.display = 'block';
             dialogueBox.classList.add('visible');
@@ -131,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50); 
     }
 
-    // КНОПКА ОТМЕНА
     document.getElementById('cancelInstallBtn').addEventListener('click', () => {
         clearInterval(installInterval);
         installerOverlay.style.display = 'none';
@@ -142,31 +134,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (isTrapActive) {
-            // ПОБЕДА
             const typewriter = document.getElementById('typewriter');
 
-            startTyping("Отлично! Ты заметил скрытый майнер. Всегда читай, что устанавливаешь, даже если файл от друга.", () => {
-                 setTimeout(() => alert("Уровень пройден!"), 1000);
-            });
+            startTyping("Отлично! Ты заметил скрытый майнер. Всегда читай, что устанавливаешь, даже если файл от друга.");
             
         } else {
-            // Нейтрально
             startTyping("Ты отменил установку. Лучше перестраховаться.");
         }
     });
 
     function gameOver() {
-        // Останавливаем установку и скрываем окно
         clearInterval(installInterval);
         installerOverlay.style.display = 'none';
-        
-        // Делаем текст в диалоге красным
+    
         const typewriter = document.getElementById('typewriter');
-        
-        // Пишем объяснение ошибки
         startTyping("Ты пропустил установку скрытого файла CryptoMiner.exe. Твой компьютер начинает тормозить...", () => {
             
-            // --- ЭТОТ КОД ЗАПУСТИТСЯ ПОСЛЕ ПЕЧАТИ ТЕКСТА ---
             const curtain = document.getElementById('curtain');
             
             if (curtain) {

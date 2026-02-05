@@ -12,13 +12,9 @@
 </head>
 
 <body id="gameBody">
-     <!-- Тень волнения -->
     <div id="stressVignette"></div>
         <div class="toast-container" id="toastContainer"></div>
         <div id="curtain"></div>
-
-
-    <!-- Стартовый оверлей -->
     <div class="game-modal" id="startOverlay">
         <div class="game-modal-content">
             <h1>Популярность Васи: Испытание</h1>
@@ -26,8 +22,6 @@
             <button class="modal-btn-large" onclick="startGame()">Отлично</button>
         </div>
     </div>
-
-    <!-- Оверлей ГРАМОТНОЙ борьбы с хейтом (появляется после открытия поста) -->
     <div class="game-modal" id="tutorialOverlay" style="display: none;">
         <div class="game-modal-content">
             <h1>Как грамотно бороться с хейтом?</h1>
@@ -40,8 +34,6 @@
             <button class="modal-btn-large" onclick="startSimulation()">Я всё понял</button>
         </div>
     </div>
-
-    <!-- Оверлей Рестарта -->
     <div class="game-modal" id="restartOverlay" style="display: none;">
         <div class="game-modal-content">
             <h1 style="color: var(--danger-red);">Нервный срыв...</h1>
@@ -49,8 +41,6 @@
             <button class="modal-btn-large" style="background: var(--danger-red);" onclick="restartGame()">Попробовать снова</button>
         </div>
     </div>
-
-    <!-- Оверлей Победы -->
     <div class="game-modal" id="winOverlay" style="display: none;">
         <div class="game-modal-content">
             <h1 style="color: var(--success-green);">Победа! Профиль в безопасности.</h1>
@@ -87,8 +77,6 @@
             <div class="icon" ><img src="files/inst_icons/plus.png"></div>
             <div class="icon"><img src="files/inst_icons/menu.png"></div>
         </aside>
-
-
         <main class="container">
                 <div class="profile">
                     <div class="player-inf">
@@ -108,9 +96,6 @@
                         <button>Архив</button>
                     </div>
                 </div>
-
-                <!-- changes -->
-
             <div class="posts-grid">
                 <div class="post-item" onclick="openPost()"  style="background-image: url('files/cool-guy-beachh.png');"></div>
                 <div class="post-item"  style="background-image: url('files/cool-guy.png');"></div>
@@ -157,13 +142,6 @@
             <button class="modal-btn neutral" onclick="takeAction('ignore')">Игнорировать</button>
         </div>
     </div>
-
-
-
-
-
-
-    <!-- БОКОВАЯ ПАНЕЛЬ (МЕНЮ) -->
     <button class="sidebar-toggle" id="openSidebar">
         <div><img src="files/vector_left.png" alt="<"></div>
     </button>
@@ -213,8 +191,6 @@
             </div>
         </footer>
     </aside>
-
-        <!-- СКРИПТЫ -->
     <script src="script.js"></script>
     <script src="sidebar.js"></script>
     <script src="lvl4.js"></script>
