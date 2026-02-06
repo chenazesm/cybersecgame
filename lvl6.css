@@ -1,0 +1,361 @@
+:root {
+    --bg-dark: #000000;
+    --card-bg: #121212;
+    --border: #262626;
+    --accent: #0095f6;
+    --danger: #ed4956;
+    --success: #00ff88;
+    --warning: #ffcc00;
+    --text: #ffffff;
+    --text-dim: #a8a8a8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+.message-center::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text); 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    overflow: hidden; 
+}
+/* Start Overlay */
+#startOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.intro-card {
+    max-width: 500px;
+    background: #1c1c1c;
+    padding: 40px;
+    border-radius: 32px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 50px rgba(0, 149, 246, 0.2);
+}
+
+.intro-logo {
+    font-family: 'Grand Hotel', cursive;
+    font-size: 48px;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.intro-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.intro-text {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+
+/* Top Bar */
+.top-bar {
+    padding: 12px 20px;
+    /* border-bottom: 1px solid var(--border); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: #000; */
+    z-index: 100;
+}
+
+.logo { font-family: 'Grand Hotel', cursive; font-size: 28px; color: #fff; }
+
+.stats { display: flex; gap: 15px; }
+.status-pill {
+    background: #1a1a1a;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 140px;
+}
+
+.status-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    font-weight: 700;
+}
+
+.bar-bg { width: 100%; height: 6px; background: #333; border-radius: 3px; overflow: hidden; }
+.bar-fill { width: 100%; height: 100%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* Game Layout */
+.game-area {
+    flex: 1;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1800px;
+    margin: 0 auto;
+    width: 100%;
+    height: calc(100vh - 100px);
+    position: relative;
+}
+
+/* Phone Mockup */
+.phone-mockup {
+    flex: 1;
+    max-width: 380px;
+    background: #000;
+    border: 10px solid #1a1a1a;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 40px rgba(0, 149, 246, 0.15);
+}
+
+.phone-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #000;
+}
+
+.video-player {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: filter 0.3s;
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 0; width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+.live-tag {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: var(--danger);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Messaging UI */
+.message-center {
+    flex: 1.2;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.msg-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    .bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+}
+
+.received { background: #262626; align-self: flex-start; border-bottom-left-radius: 4px; }
+.sent { background: var(--accent); align-self: flex-end; border-bottom-right-radius: 4px; }
+
+/* Typing Indicator in Chat */
+.typing-indicator {
+    align-self: flex-start;
+    background: #1a1a1a;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 14px;
+    border-bottom-left-radius: 4px;
+    display: none;
+    align-items: center;
+    gap: 5px;
+}
+
+.dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; animation: bounce 1s infinite; }
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+.system-alert { 
+    background: rgba(237, 73, 86, 0.1); 
+    border: 1px solid var(--danger); 
+    color: var(--danger);
+    align-self: center; text-align: center; width: 90%; 
+}
+
+/* Interactive Controls */
+.action-tray {
+    padding: 20px;
+    background: #000;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice-btn {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.choice-btn:hover:not(:disabled) {
+    background: #262626;
+    border-color: var(--accent);
+}
+
+/* --- Плавающее диалоговое окно (Рекомендации) --- */
+.dialogue-box {
+    position: absolute;
+    bottom: 40px; 
+    left: 20px; 
+    width: 360px; 
+    background-color: #0c1322e6; 
+    backdrop-filter: blur(10px);
+    color: #fff;
+    border-radius: 12px;
+    border: 1px solid #343B56;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    z-index: 300; 
+    text-align: left; 
+    padding: 16px;
+    pointer-events: none; 
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    display: none;
+}
+
+.dialogue-box.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.task-title {
+    color: #8b949e; 
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dialogue-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Animations */
+@keyframes slideUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.glitch-active { animation: glitch 0.15s infinite; }
+@keyframes glitch {
+    0% { transform: translate(0); }
+    25% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+    50% { transform: translate(2px, -2px); filter: contrast(2); }
+    75% { transform: translate(-1px, -1px); filter: invert(0.1); }
+    100% { transform: translate(0); }
+}
+
+/* Modal */
+.modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.98);
+    display: none; align-items: center; justify-content: center; z-index: 1000;
+    padding: 20px;
+}
+.modal-body {
+    background: #1c1c1c; padding: 30px; border-radius: 24px; 
+    max-width: 600px; width: 100%; border: 1px solid #333;
+    max-height: 90vh; overflow-y: auto;
+    text-align: center;
+}
+
+.final-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background: #262626;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+
+.stat-card .val { font-size: 24px; font-weight: bold; display: block; }
+.stat-card .lbl { font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
+
+.edu-note {
+    background: #262626;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 20px 0;
+    text-align: left;
+    font-size: 13px;
+    border-left: 4px solid var(--accent);
+}
+
+.edu-note h4 { color: var(--accent); margin-bottom: 8px; text-transform: uppercase; font-size: 11px; }

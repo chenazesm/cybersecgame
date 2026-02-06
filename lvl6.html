@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl6.css" />
+
+
+</head>
+<body>
+    
+    <!-- Intro Overlay -->
+    <div id="startOverlay">
+        <div class="intro-card">
+            <div class="intro-logo">Instapic</div>
+            <h2 class="intro-title">Вася в прямом эфире!</h2>
+            <p class="intro-text">
+                Популярный блогер @vasya_player_the_best запустил стрим для общения с фанатами. 
+                Пока он занят камерой, ты отвечаешь за его безопасность в Директе. 
+                Помни: на пике популярности активизируются не только фанаты, но и те, кто хочет нажиться на чужом успехе. 
+                Не подведи Васю и его аудиторию.
+            </p>
+            <button class="choice-btn" style="text-align: center; background: var(--accent);" onclick="startGame()">Начать трансляцию</button>
+        </div>
+    </div>
+
+
+        <div class="game-layout" id="gameLayout">
+    <div class="scene dark-ui">
+        <div class="hud-container">
+            <div class="hud-box">
+                <span class="hud-label">УРОВЕНЬ</span>
+                <span class="hud-value">6 <span class="hud-sub">/ 6</span></span>
+                
+                
+            </div>    <div class="top-bar">
+        <!-- <div class="logo">Instapic</div> -->
+        <div class="stats">
+            <div class="status-pill">
+                <span class="status-label">Безопасность</span>
+                <div class="bar-bg"><div class="bar-fill" id="securityBar" style="background: var(--success); width: 100%;"></div></div>
+            </div>
+            <div class="status-pill">
+                <span class="status-label">Репутация</span>
+                <div class="bar-bg"><div class="bar-fill" id="reputationBar" style="background: var(--accent); width: 100%;"></div></div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+
+    <div class="game-area">
+        <div class="phone-mockup">
+            <div class="phone-screen">
+                <div class="video-player" id="videoFeed" style="background-image: url('files/vasya_in_the_club.png');">
+                    <div class="live-tag">LIVE</div>
+                    <div class="video-overlay">
+                        <div style="font-weight: bold; font-size: 14px;">vasya_player_the_best</div>
+                        <div id="videoStatus" style="font-size: 12px; color: #ccc;">Прямой эфир: Ответы на вопросы</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-center">
+            <div class="msg-header">
+                <span style="font-weight: bold;">Директ</span>
+                <span id="typingStatus" style="font-size: 12px; color: var(--accent); display: none; ">печатает...</span>
+            </div>
+            <div class="chat-area" id="chatArea">
+                <div class="bubble system-alert" style="background: rgba(0,255,136,0.1); border-color: var(--success); color: var(--success);">
+                    Вася, эфир идет отлично! Будь осторожен с входящими.
+                </div>
+                                <!-- Typing Indicator inside chat area -->
+                <div class="typing-indicator" id="chatTypingIndicator">
+                    печатает<div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                </div>
+            </div>
+            <div class="action-tray" id="actionTray"></div>
+        </div>
+
+        <div class="dialogue-box" id="dialogueBox">
+            <div class="task-title" id="diagTitle">РЕКОМЕНДАЦИИ</div>
+            <p class="dialogue-text" id="logText"></p>
+        </div>
+    </div>
+
+    <div class="modal" id="endModal">
+        <div class="modal-body">
+            <h1 id="endTitle" style="margin-bottom: 10px;"></h1>
+            <p id="endDesc" style="margin-bottom: 20px; color: #ddd;"></p>
+            
+            <div class="final-stats">
+                <div class="stat-card">
+                    <span class="val" id="finalSecurity">0%</span>
+                    <span class="lbl">Безопасность</span>
+                </div>
+                <div class="stat-card">
+                    <span class="val" id="finalReputation">0%</span>
+                    <span class="lbl">Репутация</span>
+                </div>
+            </div>
+
+       <div id="educationalBlock"></div>
+
+            <div id="endActionContainer">
+                <!-- Кнопка будет генерироваться через JavaScript в зависимости от результата -->
+            </div>
+        </div>
+    </div>
+    </div></div>
+
+
+    <!-- БОКОВАЯ ПАНЕЛЬ (МЕНЮ) -->
+    <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+        <section class="levels-list">
+            <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span>
+                <div class="level-info"><span class="level-title">В главное меню</span></div>
+            </button>
+
+            <button class="level-item active" onclick="window.location.href='lvl1.html'">
+                <span class="level-number">1</span>
+                <div class="level-info">
+                    <span class="level-title">Регистрация</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+
+            <button class="level-item active" onclick="location.reload()">
+                <span class="level-number">2</span>
+                <div class="level-info">
+                    <span class="level-title">Пароль</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">1/10</span>
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">3/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">13 428</span>
+            </div>
+        </footer>
+    </aside>
+
+        <!-- СКРИПТЫ -->
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl6.js"></script>
+</body>
+</html>
