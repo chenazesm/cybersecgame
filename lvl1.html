@@ -6,10 +6,11 @@
     <title>Lvl 1</title>
     <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
     
-    <!-- Стили -->
+    
     <link rel="stylesheet" href="sidebar.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="lvl1.css" /> <!-- Если у тебя есть отдельный файл CSS для уровня -->
+    <link rel="stylesheet" href="lvl1.css" /> 
+    
 </head>
 <body>
     <div id="curtain"></div>
@@ -17,7 +18,7 @@
     <div class="game-layout" id="gameLayout">
         <div class="scene dark-ui">
             
-            <!-- HUD -->
+            
             <div class="hud-container">
                 <div class="hud-box">
                     <span class="hud-label">УРОВЕНЬ</span>
@@ -25,7 +26,7 @@
                 </div>
             </div>
 
-            <!-- ИНСТАГРАМ КОНТЕНТ -->
+            
             <div class="insta-container">
                 <div class="visuals">
                     <div class="card card-1"></div>
@@ -65,7 +66,7 @@
                     <form class="login-form">
                         <input type="text" id="reg-phone" placeholder="Моб. телефон или эл. адрес" data-target="+123456789">
                         <input type="text" id="reg-name" placeholder="Имя и фамилия" data-target="Василий Иванов">
-                        <input type="text" id="reg-username" placeholder="Имя пользователя" data-target="vasily_ivanov">
+                        <input type="text" id="reg-username" placeholder="Имя пользователя" data-target="vasya_player_the_best">
                         <input type="text" id="reg-pass" placeholder="Пароль" data-target="18.01.2008">
                         <button type="button" class="btn-login" id="btn-register">Регистрация</button>
                     </form>
@@ -91,9 +92,9 @@
                         <label class="switch"><input type="checkbox"><span class="slider"></span></label>
                     </div>
                     
-                    <!-- ОПАСНЫЙ ТУМБЛЕР -->
+                    
                     <div class="setting-item danger-item">
-                        <span style="color: #ff5f56; font-weight: bold;">Транслировать точную геолокацию всем</span>
+                        <span style="color: #f1f1f1; font-weight: bold;">Транслировать точную геолокацию всем</span>
                         <label class="switch">
                             <input type="checkbox" checked id="geo-toggle">
                             <span class="slider"></span>
@@ -112,12 +113,11 @@
         </div>
     </div>
 
-    <!-- КНОПКА ОТКРЫТИЯ ПАНЕЛИ -->
+    
     <button class="sidebar-toggle" id="openSidebar">
         <div><img src="files/vector_left.png" alt="<"></div>
     </button>
-
-    <!-- !!! ВОТ ТУТ БЫЛА ОШИБКА. ВСТАВЛЯЕМ ПОЛНОЦЕННОЕ МЕНЮ !!! -->
+    
     <aside class="levels-sidebar" id="levelsSidebar">
         <header class="sidebar-header">
             <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
@@ -126,7 +126,7 @@
         </header>
 
         <section class="levels-list">
-            <!-- Кнопка НАЗАД В МЕНЮ -->
+            
             <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
                 <span class="level-number" style="background: transparent; border: none; font-size: 20px;">←</span>
                 <div class="level-info">
@@ -134,7 +134,7 @@
                 </div>
             </button>
 
-            <!-- УРОВЕНЬ 1 (Активный) -->
+            
             <button class="level-item active" onclick="location.reload()">
                 <span class="level-number">1</span>
                 <div class="level-info">
@@ -143,7 +143,7 @@
                 </div>
             </button>
 
-            <!-- УРОВЕНЬ 2 -->
+            
             <button class="level-item unlocked">
                 <span class="level-number">2</span>
                 <div class="level-info">
@@ -168,10 +168,10 @@
             </div>
         </footer>
     </aside>
-
-    <!-- СКРИПТЫ В ПРАВИЛЬНОМ ПОРЯДКЕ -->
+    
     <script src="script.js"></script>
     <script src="sidebar.js"></script>
-    <script src="lvl1.js"></script> <!-- Если выделил логику в отдельный файл -->
+    <script src="lvl1.js"></script> 
+    
 </body>
 </html>

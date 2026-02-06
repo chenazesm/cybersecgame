@@ -24,10 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (newPostBtn) newPostBtn.onclick = (e) => e.preventDefault();
 
     setTimeout(() => {
+        const dialogueBox = document.querySelector('.dialogue-box');
+        if (dialogueBox) dialogueBox.classList.add('visible');
+        
         if (typeof startTyping === 'function') {
             startTyping("Твой аккаунт постепенно развивается. Популярность растет на глазах!");
         }
-
         animateNumbers("followersCount", 125, 1250, 4000);
         animateNumbers("followingCount", 54, 540, 4000);
     }, 1000); 
@@ -37,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (badge) badge.style.display = 'flex';
         
         let container = document.getElementById('toastContainer');
-        
         if (!container) {
             container = document.createElement('div');
             container.id = 'toastContainer';
@@ -47,43 +48,155 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const toast = document.createElement('div');
         toast.className = 'toast';
-        toast.style.display = 'flex'; // Гарантируем видимость
-        toast.innerHTML = `<strong>HypeManager_Bot</strong><br><small>У вас новое сообщение!</small>`;
+        toast.style.display = 'flex'; 
+        toast.innerHTML = `<strong>oleg710</strong><br><small>У вас новое сообщение!</small>`;
         
         toast.onclick = () => {
             toast.remove();
+            const dialogueBox = document.querySelector('.dialogue-box');
+            if (dialogueBox) dialogueBox.classList.remove('visible');
+
             const chat = document.getElementById('chatOverlay');
             if (chat) {
                 chat.style.display = 'flex';
                 setTimeout(() => chat.classList.add('open'), 10);
-                if (typeof startTyping === 'function') {
-                    startTyping("Кто-то предлагает тебе легкий способ стать еще популярнее. Будь осторожен.");
-                }
             }
         };
         container.appendChild(toast);
-        
     }, 5500);
 
     const scamLink = document.getElementById('scamLink');
     if (scamLink) {
         scamLink.onclick = (e) => {
             e.preventDefault();
-            closeDM();
-            if (typeof startTyping === 'function') {
-                startTyping("ОШИБКА! Это был типичный скам. Ты ввел данные на подозрительном сайте, надеясь на легкие деньги. Аккаунт потерян.", () => {
-                    const curtain = document.getElementById('curtain');
-                    if (curtain) {
-                        curtain.innerHTML = '<div class="game-over-text">Тебя обманули!<br>Легких денег не бывает.</div>';
-                        curtain.classList.remove('fade-out');
-                        setTimeout(() => {
-                            const goText = curtain.querySelector('.game-over-text');
-                            if(goText) goText.style.opacity = '1';
-                        }, 100);
-                        setTimeout(() => location.reload(), 4000);
-                    }
-                });
+            const securityBanner = document.getElementById('securityBanner');
+            if (securityBanner) {
+                securityBanner.style.display = 'block';
+                const dialogueBox = document.querySelector('.dialogue-box');
+                if (dialogueBox) dialogueBox.classList.add('visible');
             }
         };
     }
 });
+
+function blockChat() {
+    closeDM(); 
+    const dialogueBox = document.querySelector('.dialogue-box');
+    if (dialogueBox) {
+        dialogueBox.classList.add('visible');
+    }
+    const typewriter = document.getElementById('typewriter');
+    if(typewriter) typewriter.style.color = "#ffffff";
+
+    if (typeof startTyping === 'function') {
+        startTyping("Отлично! Ты распознал мошенника. Бесплатный сыр только в мышеловке. Уровень пройден!", () => {
+            goToLevel('lvl4.html');
+        });
+    }
+}
+
+function ignoreChat() {
+    blockChat();
+}
+
+
+const targetMsg = "окей, я согласен";
+let currentTypeIndex = 0;
+const fakeInput = document.getElementById('fakeInput');
+const inputText = document.getElementById('inputText');
+const directModal = document.getElementById('directModal');
+const paymentModal = document.getElementById('paymentModal');
+const paymentStatus = document.getElementById('paymentStatus');
+const messagesContainer = document.getElementById('messagesContainer');
+const chatFooter = document.getElementById('chatFooter');
+
+if (fakeInput) {
+    fakeInput.addEventListener('keydown', (e) => {
+        if (document.activeElement !== fakeInput) return;
+        e.preventDefault();
+        if (currentTypeIndex < targetMsg.length) {
+            if (currentTypeIndex === 0) {
+                inputText.classList.remove('shimmer-text');
+                inputText.innerHTML = "";
+                inputText.style.color = "white";
+            }
+            inputText.innerHTML += targetMsg[currentTypeIndex];
+            currentTypeIndex++;
+            if (currentTypeIndex === targetMsg.length) {
+                setTimeout(startPaymentSequence, 500);
+            }
+        }
+    });
+}
+
+function startPaymentSequence() {
+    const directModal = document.getElementById('directModal');
+    const paymentModal = document.getElementById('paymentModal');
+    const paymentStatus = document.getElementById('paymentStatus');
+    const dialogueBox = document.querySelector('.dialogue-box');
+
+    if (directModal) directModal.classList.add('blur-filter');
+    if (paymentModal) paymentModal.style.display = 'block';
+
+    setTimeout(() => {
+        if (paymentStatus) paymentStatus.innerHTML = "Платёж успешно выполнен!<br><span style='color:#ff5f56; font-weight:bold;'>-50 BYN</span>";
+        const icon = document.querySelector('.payment-icon');
+        if (icon) icon.innerHTML = "✅";
+        
+        setTimeout(() => {
+            if (paymentModal) paymentModal.style.display = 'none';
+            if (directModal) directModal.classList.remove('blur-filter');
+            
+            const userMsg = document.createElement('div');
+            userMsg.className = "message-bubble";
+            userMsg.style.cssText = "align-self: flex-end; background-color: #0095f6; color: white; border-bottom-right-radius: 4px; border-bottom-left-radius: 22px;";
+            userMsg.innerHTML = targetMsg;
+            if (messagesContainer) {
+                messagesContainer.appendChild(userMsg);
+                messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
+            }
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = "message-bubble message-received";
+                botMsg.innerHTML = "неплохо, спасибо";
+                if (messagesContainer) {
+                    messagesContainer.appendChild(botMsg);
+                    messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
+                }
+
+                setTimeout(() => {
+                    if (chatFooter) chatFooter.innerHTML = '<div class="restricted-notice">Пользователь ограничил отправку сообщений</div>';
+                    
+                    setTimeout(() => {
+                        if (dialogueBox) {
+                            dialogueBox.classList.add('visible');
+                            const taskTitle = dialogueBox.querySelector('.task-title');
+                            if (taskTitle) {
+                                taskTitle.innerText = "ПОЯСНЕНИЕ";
+                                taskTitle.style.color = "#8b949e";
+                            }
+                            const finalExplanation = "Это типичная схема мошенничества. Настоящие сервисы банков всегда берут комиссию ИЗ суммы перевода, а не просят оплатить ее отдельно.";
+                            if (typeof startTyping === "function") {
+                                startTyping(finalExplanation, () => {
+                                    setTimeout(() => {
+                                        const curtain = document.getElementById('curtain');
+                                        if (curtain) {
+                                            curtain.innerHTML = '<div class="game-over-text">Неудачная попытка.<br>Попробуйте еще раз</div>';
+                                            curtain.classList.remove('fade-out');
+                                            setTimeout(() => {
+                                                const goText = curtain.querySelector('.game-over-text');
+                                                if(goText) goText.style.opacity = '1';
+                                            }, 100);
+                                            setTimeout(() => location.reload(), 4000);
+                                        }
+                                    }, 1500);
+                                });
+                            }
+                        }
+                    }, 2000);
+                }, 300);
+            }, 1000);
+        }, 1500);
+    }, 1500);
+}

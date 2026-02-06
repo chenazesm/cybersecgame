@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    
+    <!-- СТИЛИ -->
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl3.css" />
+    <link rel="stylesheet" href="lvl5.css" /> 
+</head>
+<body>
+    <div id="curtain"></div>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="game-layout" id="gameLayout">
+        <div class="scene dark-ui">
+            
+            <div class="hud-container">
+                <div class="hud-box">
+                    <span class="hud-label">УРОВЕНЬ</span>
+                    <span class="hud-value">5 <span class="hud-sub">/ 6</span></span>
+                </div>
+            </div>
+            <div class="insta-container">
+                <aside class="sidebar_left">
+                    <div class="icon"><img src="files/inst_icons/home.png"></div>
+                    <div class="icon" id="dmBtn"><img src="files/inst_icons/send.png"></div>
+                    <div class="icon"><img src="files/inst_icons/compass.png"></div>
+                    <div class="icon"><img src="files/inst_icons/heart.png"></div>
+                    <div class="icon" style="opacity: 0.3;"><img src="files/inst_icons/plus.png"></div>
+                    <div class="icon"><img src="files/inst_icons/menu.png"></div>
+                </aside>
+
+                <main class="container">
+                    <div class="profile">
+                        <div class="player-inf">
+                            <div class="avatar"></div>
+                            <div class="user-and-nickname">
+                                <h2 class="username">vasya_player_the_best</h2>
+                                <div class="stats">
+                                    <li><b>15</b> публикаций</li>
+                                    <li><b>15k</b> подписчиков</li>
+                                    <li><b>120</b> подписок</li>
+                                </div>
+                                <p class="nickname">Digital Creator | Gamer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="posts-grid">
+                        <div class="post-item" style="background-image: url('files/cool-guy.png');"></div>
+                        <div class="post-item" style="background-color: #333;"></div>
+                        <div class="post-item" style="background-color: #444;"></div>
+                    </div>
+                </main>
+            </div>
+
+            <div class="dialogue-box">
+                <h3 class="task-title">Задача</h3>
+                <p class="dialogue-text" id="typewriter"></p>
+            </div>
+
+            <!-- МЕССЕНДЖЕР (ОТКРЫТ СРАЗУ) -->
+            <div class="overlay-bg open" id="chatOverlay" style="display: flex;">
+                <div class="direct-modal">
+                    <!-- Список чатов -->
+                    <div class="chats-list">
+                        <div class="chats-header"><span>vasya_player_the_best</span></div>
+                        <div class="chat-item active">
+                            <div class="chat-avatar" style="background: #444; font-size: 16px;">S</div>
+                            <div class="chat-info">
+                                <span class="name">sanyaXD</span>
+                                <span class="msg"> Сообщения</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-content">
+                        <div class="modal-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width:34px; height:34px; border-radius:50%; background: #444; display:flex; align-items:center; justify-content:center;">S</div>
+                                <span>sanyaXD</span>
+                            </div>
+                            <button style="background:none; border:none; color:#555; font-size:24px; cursor:not-allowed;">✕</button>
+                        </div>
+                        
+                        <div class="messages-container" id="messagesArea">
+                        </div>
+
+                        <div class="chat-footer">
+                            <div class="input-box">
+                                <div style="flex:1; color: #555;">Напишите сообщение...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="macos-overlay" id="installerOverlay">
+                <div class="macos-window">
+                    <div class="macos-titlebar">
+                        <div class="traffic-lights">
+                            <div class="traffic-light close"></div>
+                            <div class="traffic-light minimize"></div>
+                            <div class="traffic-light maximize"></div>
+                        </div>
+                        <div class="macos-title-text">Установщик VideoRed</div>
+                    </div>
+                    
+                    <div class="macos-content">
+                        <img src="files/folder.png" class="app-icon-large">
+                        <h2 id="installHeader">Установка VideoRed</h2>
+                        
+                        <p id="installStatus" style="height: 20px;">Подготовка...</p>
+                        
+                        <div class="macos-progress-bg">
+                            <div class="macos-progress-fill" id="progressBar"></div>
+                        </div>
+
+                        <div class="macos-buttons">
+                            <button class="macos-btn cancel" id="cancelInstallBtn">ОТМЕНА</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <button class="sidebar-toggle" id="openSidebar"><div><img src="files/vector_left.png"></div></button>
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png"></button>
+            <h2>Выбери задачу</h2>
+        </header>
+        <section class="levels-list">
+             <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span><div class="level-info"><span class="level-title">В меню</span></div>
+            </button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Регистрация</span></div></button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Пароль</span></div></button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Мошенничество</span></div></button>
+            <button class="level-item completed"><span class="level-number">✓</span><div class="level-info"><span class="level-title">Права доступа</span></div></button>
+            <button class="level-item active"><span class="level-number">5</span><div class="level-info"><span class="level-title">Вирусы</span><span class="level-difficulty hard">Сложный</span></div></button>
+        </section>
+    </aside>
+
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl5.js"></script>
+</body>
+</html>

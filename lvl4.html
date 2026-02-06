@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl4.css" />
+</head>
+
+<body id="gameBody">
+    <div id="stressVignette"></div>
+        <div class="toast-container" id="toastContainer"></div>
+        <div id="curtain"></div>
+    <div class="game-modal" id="startOverlay">
+        <div class="game-modal-content">
+            <h1>Популярность Васи: Испытание</h1>
+            <p style="text-align: center;">Вася опубликовал новое фото! <br><br><b>Внимание:</b> Если настроение опустится ниже 20%, Вася сдастся и удалит аккаунт. <br>Фильтруй токсичность и защищай своего друга!</p>
+            <button class="modal-btn-large" onclick="startGame()">Отлично</button>
+        </div>
+    </div>
+    <div class="game-modal" id="tutorialOverlay" style="display: none;">
+        <div class="game-modal-content">
+            <h1>Как грамотно бороться с хейтом?</h1>
+            <p>
+                1. <b>Не корми троллей:</b> Вступая в спор (Ответ), ты только увеличиваешь охваты хейтера и тратишь нервы Васи.<br><br>
+                2. <b>Используй инструменты:</b> Удаляй спам и жалобу на прямые угрозы. Это официальные способы защиты.<br><br>
+                3. <b>Поддержка важнее:</b> Всегда отвечай на добрые слова. Положительные эмоции помогают Васе держаться.<br><br>
+                4. <b>Игнорируй мелочи:</b> Мелкий негатив лучше просто не замечать, чтобы не тратить ресурс.
+            </p>
+            <button class="modal-btn-large" onclick="startSimulation()">Я всё понял</button>
+        </div>
+    </div>
+    <div class="game-modal" id="restartOverlay" style="display: none;">
+        <div class="game-modal-content">
+            <h1 style="color: var(--danger-red);">Нервный срыв...</h1>
+            <p style="text-align: center;">Настроение упало до критической отметки (20%). Вася больше не может игнорировать негатив и решил покинуть соцсети. Будь внимательнее в следующий раз!</p>
+            <button class="modal-btn-large" style="background: var(--danger-red);" onclick="restartGame()">Попробовать снова</button>
+        </div>
+    </div>
+    <div class="game-modal" id="winOverlay" style="display: none;">
+        <div class="game-modal-content">
+            <h1 style="color: var(--success-green);">Победа! Профиль в безопасности.</h1>
+            <p style="text-align: center;">Ты отлично справился! Вася сохранил ментальное здоровье, а его сообщество стало чище.</p>
+          <button class="modal-btn-large" style="background: var(--success-green);" onclick="window.location.href='lvl5.html'">Следующий уровень</button>
+        </div>
+    </div>
+
+    <div class="game-layout" id="gameLayout">
+    <div class="scene dark-ui">
+        <div class="hud-container">
+            <div class="hud-box">
+                <span class="hud-label">УРОВЕНЬ</span>
+                <span class="hud-value">4 <span class="hud-sub">/ 6</span></span>
+            </div>
+        </div>
+
+        <div class="mood-stats">
+            <span id="moodDisplay">😊 100%</span>
+            <div style="width:120px; height:8px; background:#333; border-radius:4px; overflow: hidden; ">
+                <div id="moodBar" style="width:100%; height:100%; background:var(--success-green); transition:0.5s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+            </div>
+        </div>
+
+    <div class="insta-container">
+        <aside class="sidebar_left">
+            <div class="icon"><img src="files/inst_icons/home.png"></div>
+            <div class="icon" id="dmBtn" style="position: relative;">
+                <img src="files/inst_icons/send.png">
+                <div class="notification-badge" id="badge" style="display: none;">1</div>
+            </div>
+            <div class="icon"><img src="files/inst_icons/compass.png"></div>
+            <div class="icon"><img src="files/inst_icons/heart.png"></div>
+            <div class="icon" ><img src="files/inst_icons/plus.png"></div>
+            <div class="icon"><img src="files/inst_icons/menu.png"></div>
+        </aside>
+        <main class="container">
+                <div class="profile">
+                    <div class="player-inf">
+                        <div class="avatar"></div>
+                        <div class="user-and-nickname">
+                            <h2 class="username">vasya_player_the_best</h2>
+                            <div class="stats">
+                                <li><b>1</b> публикаций</li>
+                                <li><b id="followersCount">125</b> подписчиков</li>
+                                <li><b id="followingCount">54</b> подписок</li>
+                            </div>
+                            <p class="nickname">Digital Creator | Gamer</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button>Редактировать</button>
+                        <button>Архив</button>
+                    </div>
+                </div>
+            <div class="posts-grid">
+                <div class="post-item" onclick="openPost()"  style="background-image: url('files/cool-guy-beachh.png');"></div>
+                <div class="post-item"  style="background-image: url('files/cool-guy.png');"></div>
+            </div>
+        </main>
+    </div>
+    
+
+    <div class="post-overlay" id="postOverlay">
+        <div class="post-container" id="postContainer">
+            <div class="post-media">
+                <img src="files/cool-guy-beachh.png" alt="Post Content">
+            </div>
+            <div class="post-details">
+                <div class="post-header">
+                    <div class="author-avatar" ><img class="author-avatar" src="files/cool-guy.png"></div>
+                    <span class="author-name">vasya_player_the_best</span>
+                </div>
+                <div class="comments-area" id="commentsArea"></div>
+                <div class="post-footer">
+                    <div class="post-actions">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/like--v1.png">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/speech-bubble.png">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/filled-sent.png">
+                    </div>
+                   <span style="display:block; width:100%; text-align:right; align-items:flex-start; font-weight:600; font-size:14px;"> 15,302 отметок "Нравится"</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialogue-box">
+        <div class="task-title" id="diagTitle">ЗАДАЧА</div>
+        <p class="dialogue-text" id="logText"> Нажми на новый пост в профиле, чтобы помочь Васе остановить буллинг!</p>
+    </div>
+
+    <div class="modal" id="actionModal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalText">Выберите действие</div>
+            <button class="modal-btn danger" onclick="takeAction('report')">Жалоба и блокировка</button>
+            <button class="modal-btn danger" onclick="takeAction('delete')">Удалить комментарий</button>
+            <button class="modal-btn" onclick="takeAction('reply')">Ответить (вступить в спор)</button>
+            <button class="modal-btn neutral" onclick="takeAction('ignore')">Игнорировать</button>
+        </div>
+    </div>
+    <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+        <section class="levels-list">
+            <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span>
+                <div class="level-info"><span class="level-title">В главное меню</span></div>
+            </button>
+
+            <button class="level-item active" onclick="window.location.href='lvl1.html'">
+                <span class="level-number">1</span>
+                <div class="level-info">
+                    <span class="level-title">Регистрация</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+
+            <button class="level-item active" onclick="location.reload()">
+                <span class="level-number">2</span>
+                <div class="level-info">
+                    <span class="level-title">Пароль</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">1/10</span>
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">3/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">13 428</span>
+            </div>
+        </footer>
+    </aside>
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl4.js"></script>
+    </body>
+</html>

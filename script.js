@@ -43,7 +43,18 @@ window.addEventListener('load', () => {
     
     if (path.includes('main.html') || path.includes('index.html') || path.endsWith('/')) {
         setTimeout(() => {
-            startTyping("Привет мир. Выбери задачу в меню справа."); 
+            startTyping("Добро пожаловать. Выберите первый уровень в меню справа, чтобы начать"); 
         }, 1000);
     }
 });
+
+function goToLevel(url) {
+    const curtain = document.getElementById('curtain');
+    if (curtain) {
+        curtain.classList.remove('fade-out');
+    }
+
+    setTimeout(() => {
+        window.location.href = url;
+    }, 400);
+}
