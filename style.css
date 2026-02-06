@@ -162,7 +162,7 @@ body {
     opacity: 1;
     transform: scale(1.02); 
     border-color: rgba(155, 155, 155, 0.158);
-    background: rgba(22, 27, 34, 1); 
+    background: rgba(22, 27, 34, 0.589); 
 }
 
 .hud-label {
