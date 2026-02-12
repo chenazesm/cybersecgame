@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="lvl8.css" />
+
+</head>
+<body>
+
+    <div id="startOverlay">
+        <div class="intro-card">
+            <h1 style="color: #0094F5; size: 16px; margin-bottom: 5px;">Фейки</h1> 
+            <p class="intro-text">
+                Вася зашел в Instapic полистать ленту. Но проблема в том, что алгоритмы подбрасывают ему всё подряд: от реальных открытий до опасных фейков.
+                <br><br>
+                <strong>Твоя задача:</strong> Помоги Васе не дать себя обмануть. Анализируй каждый пост. Если пропустишь фейк, его «Объективность» упадет.
+                <br><br>
+                <strong>Помни:</strong> Фейки бьют по эмоциям или обещают невозможное. Достоверные новости ссылаются на факты и официальные источники.
+            </p>
+            <button class="btn btn-real" style="width: 100%;" onclick="startGame()">Начать</button>
+        </div>
+    </div>
+
+<div id="curtain"></div>
+     <div class="game-layout" id="gameLayout">
+    <div class="scene dark-ui">
+        <div class="hud-container">
+            <div class="hud-box">
+                <span class="hud-label">УРОВЕНЬ</span>
+                <span class="hud-value">8 <span class="hud-sub">/ 6</span></span>
+                
+                
+            </div>    <div class="top-bar">
+        <!-- <div class="logo">Instapic</div> -->
+        <div class="stats">
+              <div class="header">
+        
+        <div class="stat-group">
+            <div class="stat-item">
+                <span class="stat-val" id="trustVal">100%</span>
+                <span class="stat-lbl">Объективность</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val" id="scoreVal">0/7</span>
+                <span class="stat-lbl">Постов</span>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+        </div>
+
+
+
+    <div class="main-game">
+               <div class="sidebar">
+            <h3 style="color: #c1c1c1; font-size: 16px; margin-bottom: 5px; text-align:right">Гайд по проверке</h3>
+            
+            <div class="tool-card">
+                <h4>ЭМОЦИОНАЛЬНОЕ ДАВЛЕНИЕ</h4>
+                Фейки часто используют капслок и восклицательные знаки, чтобы вызвать панику или гнев. Если пост заставляет вас сильно волноваться — это повод насторожиться.
+            </div>
+
+            <div class="tool-card">
+                <h4>ПЕРВОИСТОЧНИК</h4>
+                Серьезные новости всегда ссылаются на конкретные СМИ, научные журналы или официальные ведомства. «Ученые доказали» без указания университета — верный признак вброса.
+            </div>
+
+            <div class="tool-card">
+                <h4>ФАКТ ЧЕРЕЗ ВРЕМЯ</h4>
+                Часто за «сенсацию» выдают старые фото и видео из других стран. Проверьте, не публиковалась ли эта новость несколько лет назад.
+            </div>
+
+            <div class="tool-card">
+                <h4>ЗДРАВЫЙ СМЫСЛ</h4>
+                Чудесные исцеления за минуту или говорящие животные — это контент для привлечения внимания (кликбейт). Законы физики и биологии в соцсетях не меняются.
+            </div>
+
+            <div class="tool-card">
+                <h4>КОРЫСТНЫЙ МОТИВ</h4>
+                Если новость призывает срочно перевести деньги, перейти по сомнительной ссылке или ввести данные карты — перед вами мошенническая схема.
+            </div>
+
+            <div class="tool-card">
+                <h4>АНОНИМНЫЕ КАНАЛЫ</h4>
+                Обращайте внимание на профиль автора. Отсутствие истории публикаций или странное имя часто указывают на бота, созданного для распространения дезинформации.
+            </div>
+        </div>
+
+
+        <div class="news-container">
+            <div class="phone-mockup" id="phoneContainer">
+                <div id="toast"></div>
+                <div class="instapic-logo1">
+                <a href="#" class="logo">Instapic</a>
+            </div>
+                <div class="stories-bar">
+                    <div class="story-item"><div class="story-inner"><div class="story-img" style="background-image:url('https://img.freepik.com/premium-photo/sunrise-view-morning-mountains_38649-229.jpg')"></div></div></div>
+                    <div class="story-item"><div class="story-inner"><div class="story-img" style="background-image:url('https://img.freepik.com/free-vector/flat-university-building-background_23-2148186237.jpg')"></div></div></div>
+                    <div class="story-item"><div class="story-inner"><div class="story-img" style="background-image:url('https://fons.grizly.club/uploads/posts/2025-06/04/thumbs/17490411207327.jpg')"></div></div></div>
+                    <div class="story-item"><div class="story-inner"><div class="story-img" style="background-image:url('https://images.financialexpressdigital.com/2025/07/Untitled-design-10-1.png')"></div></div></div>
+                    <div class="story-item"><div class="story-inner"><div class="story-img" style="background-image:url('https://static.wikia.nocookie.net/jamescameronsavatar/images/5/53/EarthOrbit.jpg/revision/latest?cb=20240623201047')"></div></div></div>
+                </div>
+
+                <div class="instapic-feed" id="newsFeed">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="endModal">
+        <div class="modal-content">
+            <h2 id="endTitle" style="font-size: 28px;"></h2>
+            <p id="endDesc" style="margin: 20px 0; color: var(--text-dim); line-height: 1.6;"></p>
+            <div id="actionBtnContainer"></div>
+        </div>
+    </div>
+
+
+
+    <!-- БОКОВАЯ ПАНЕЛЬ (МЕНЮ) -->
+    <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+        <section class="levels-list">
+            <button class="level-item" onclick="window.location.href='main.html'" style="border: 1px solid #444;">
+                <span class="level-number">←</span>
+                <div class="level-info"><span class="level-title">В главное меню</span></div>
+            </button>
+
+            <button class="level-item active" onclick="window.location.href='lvl1.html'">
+                <span class="level-number">1</span>
+                <div class="level-info">
+                    <span class="level-title">Регистрация</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+
+            <button class="level-item active" onclick="location.reload()">
+                <span class="level-number">2</span>
+                <div class="level-info">
+                    <span class="level-title">Пароль</span>
+                    <span class="level-difficulty easy">Лёгкий</span>
+                </div>
+            </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">1/10</span>
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">3/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">13 428</span>
+            </div>
+        </footer>
+    </aside>
+
+
+
+
+            <!-- СКРИПТЫ -->
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl8.js"></script>
+</body>
+</html>

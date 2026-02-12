@@ -1,0 +1,259 @@
+:root {
+    --bg-dark: #0f111a;
+    --card-bg: #1a1d2b;
+    --border: #2d3142;
+    --accent: #3b82f6; 
+    --danger: #ff4d4d;
+    --success: #00ff88;
+    --text: #e1e1e1;
+    --text-dim: #8b949e;
+    --info-blue: #00d2ff;
+    --insta-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text); 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    overflow: hidden; 
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Intro Overlay */
+#startOverlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 2000;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+
+.intro-card {
+    width: 100%;
+    max-width: 550px; background: var(--card-bg); padding: 40px;
+    border-radius: 24px; border: 1px solid var(--border); text-align: center;
+}
+
+.intro-title { color: #fff; margin-bottom: 20px; font-size: clamp(28px, 5vw, 42px); font-family: 'Grand Hotel', cursive; }
+.intro-text { color: var(--text-dim); line-height: 1.6; margin-bottom: 30px; text-align: left; font-size: 15px; }
+
+/* UI Structure */
+.header {
+    padding: 15px 3%; background: #000; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.logo { font-family: 'Grand Hotel', cursive; font-size: 32px; color: #fff; text-decoration: none; }
+
+.main-game {
+    flex: 1; 
+    display: flex; 
+    padding: 20px 2%;
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto; 
+    align-items: stretch; 
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 0 1 350px;
+    min-width: 250px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 24px; padding: 20px; 
+    display: flex; flex-direction: column; gap: 15px;
+    height: 100%;
+    overflow-y: auto;
+    margin-right: 20px;
+}
+
+.tool-card {
+    background: rgba(0, 210, 255, 0.03); 
+    border: 1px dashed var(--info-blue);
+    padding: 15px; 
+    border-radius: 16px; 
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.tool-card h4 { 
+    color: var(--info-blue); 
+    margin-bottom: 8px; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+}
+
+.news-container {
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    min-width: 0;
+}
+
+.phone-mockup {
+    width: 100%; 
+    max-width: 420px; 
+    background: #0C1014; 
+    border: 8px solid #222; 
+    border-radius: 45px; 
+    overflow: hidden; 
+    height: 100%;
+    max-height: 850px; 
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.instapic-logo1{
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+/* Stories Bar */
+.stories-bar {
+    display: flex;
+    gap: 15px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #1a1a1a;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+}
+.stories-bar::-webkit-scrollbar { display: none; }
+.story-item {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    padding: 2px;
+    background: var(--insta-gradient);
+}
+.story-inner { width: 100%; height: 100%; border-radius: 50%; background: #000; padding: 2px; }
+.story-img { width: 100%; height: 100%; border-radius: 50%; background-size: cover; background-color: #222; }
+
+.instapic-feed { 
+    background: #0C1014; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.post-header { 
+    padding: 12px 15px; 
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0; 
+}
+.post-user-info { display: flex; align-items: center; gap: 10px; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--insta-gradient); padding: 2px; }
+.avatar-img { width: 100%; height: 100%; border-radius: 50%; background: #222; background-size: cover; }
+.username { font-size: 13px; font-weight: 700; color: #fff; }
+.btn-subscribe { 
+    background: transparent; border: none; color: var(--accent); 
+    padding: 6px 12px; border-radius: 8px;
+    font-weight: 700; font-size: 13px; cursor: pointer; 
+}
+
+.post-content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+}
+.post-content-scroll::-webkit-scrollbar { display: none; }
+
+.post-img-container {
+    position: relative;
+    width: 100%;
+    height: 35vh;
+    min-height: 280px;
+    flex-shrink: 0;
+}
+.post-img { width: 100%; height: 100%; background-size: cover; background-position: center; }
+
+.post-actions-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px 8px;
+    flex-shrink: 0;
+}
+.left-icons { display: flex; gap: 16px; }
+.icon-btn { 
+    background: none; border: none; color: #fff; cursor: pointer; 
+    display: flex; align-items: center; transition: transform 0.1s;
+}
+.icon-btn:active { transform: scale(1.2); }
+.icon-btn.liked { color: var(--danger); }
+
+.post-info { padding: 0 15px 15px; }
+.post-likes-count { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+.post-title { font-weight: 700; font-size: 0.95rem; color: #fff; margin-right: 5px; }
+.post-caption { font-size: 0.9rem; color: #eee; line-height: 1.4; }
+.view-comments { font-size: 13px; color: var(--text-dim); margin-top: 8px; }
+
+.post-footer-actions {
+    padding: 15px 20px 20px;
+    background: #0C1014;
+    border-top: 1px solid #1a1a1a;
+    flex-shrink: 0;
+}
+.news-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.btn {
+    padding: 14px; border-radius: 12px; border: none; cursor: pointer;
+    font-weight: 700; font-size: 12px; transition: 0.2s; color: white;
+    text-transform: uppercase; letter-spacing: 0.05em;
+}
+.btn-fake { background: #1a1a1a; border: 1px solid var(--border); }
+.btn-real { background: var(--accent); }
+
+/* Toast Notification */
+#toast {
+    position: absolute; top: 100px; left: 50%; transform: translateX(-50%);
+    padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 600;
+    z-index: 100; display: none; animation: slideDown 0.3s ease-out;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+@keyframes slideDown { from { top: 80px; opacity: 0; } to { top: 100px; opacity: 1; } }
+
+/* Stats */
+.stat-group { display: flex; gap: 20px; }
+.stat-val { display: block; font-size: 18px; font-weight: 700; color: #fff; }
+.stat-lbl { font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
+
+/* Result Overlay */
+.result-overlay {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.98);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 30px; text-align: center; z-index: 500;
+}
+
+.modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+    display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
+}
+.modal-content {
+    background: var(--card-bg); padding: 40px; border-radius: 32px;
+    width: 100%; max-width: 500px; text-align: center; border: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
+    .main-game { flex-direction: column; overflow-y: auto; }
+    .sidebar { width: 100%; order: 2; margin-right: 0; margin-top: 20px; }
+    .news-container { order: 1; }
+    .phone-mockup { height: 750px; }
+}

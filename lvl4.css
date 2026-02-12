@@ -195,6 +195,7 @@ background-image: url('files/cool-guy.png'); background-size: cover; background-
 .scene.dark-ui {
     justify-content: flex-start !important; 
     padding-top: 0; 
+        background-color: #0C1014;
 }
 
 .profile-grid {
@@ -233,7 +234,7 @@ background-image: url('files/cool-guy.png'); background-size: cover; background-
 .post-media { flex: 1.2; background: #111; display: flex; align-items: center; justify-content: center; position: relative;}
 .post-media img { width: 100%; height: 100%; object-fit: cover; }
 
-.post-details { flex: 0.8; display: flex; flex-direction: column; border-left: 1px solid var(--border-color); background: #000; }
+.post-details { flex: 0.8; display: flex; flex-direction: column; border-left: 1px solid var(--border-color); background: #0C1014; }
 .post-header { padding: 14px; display: flex; align-items: center; border-bottom: 1px solid var(--border-color); }
 .author-avatar { width: 32px; height: 32px; border-radius: 50%; background: #444; margin-right: 12px; }
 .author-name { font-size: 14px; font-weight: 600; }

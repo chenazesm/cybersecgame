@@ -304,3 +304,8 @@ input:checked + .slider:before { transform: translateX(16px); }
 .dialogue-box {
     bottom: 4%;
 }
+.scene.dark-ui {
+
+    background-color: #0b0e11;
+   
+}
