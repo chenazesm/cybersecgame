@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lvl 9</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="sidebar.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="lvl9.css" />
+</head>
+<body>
+
+    <!-- Intro -->
+    <div id="startOverlay">
+        <div class="alert-card shake-anim">
+            <div class="alert-title">Ошибка прошлого</div>
+            <p class="alert-text">
+Помнишь, как в начале ты оставил включенной опцию "Транслировать точную геопозицию"?
+
+Вася стал популярным, но теперь любой незнакомец знает, где он находится. Сталкер использует открытые данные, чтобы отследить его маршрут.
+
+                <br><br>
+                <strong>ЗАДАЧА:</strong> Зайди в настройки приложения и отключи геолокацию, пока сталкер не добрался до Васи!
+            </p>
+            <button class="btn btn-danger" onclick="startGame()">СПАСТИ ВАСЮ</button>
+        </div>
+    </div>
+
+    <div id="curtain"></div>
+     <div class="game-layout" id="gameLayout">
+    <div class="scene dark-ui">
+        <div class="hud-container">
+            <div class="hud-box">
+                <span class="hud-label">УРОВЕНЬ</span>
+                <span class="hud-value">9 <span class="hud-sub">/ 10</span></span>
+                
+                
+            </div>  
+        </div>
+
+    <div class="notif-container" id="notifContainer"></div>
+
+    <div class="game-split">
+        <!-- Phone UI -->
+        <div class="phone-wrapper">
+            <div class="phone-frame">
+                <div id="screenFeed" style="display:flex; flex-direction:column; height:100%;">
+                    <div class="app-header">
+                        <i data-lucide="camera" size="20" color="#fff"></i>
+                        <span style="font-family:'Grand Hotel', cursive; font-size:24px;">Instapic</span>
+                        <i data-lucide="menu" size="20" color="#fff" style="cursor:pointer;" onclick="navTo('settings')"></i>
+                    </div>
+                    <div class="app-content" id="feedPosts"></div>
+                </div>
+
+                <div class="phone-modal" id="screenSettings">
+                    <div class="app-header">
+                        <i data-lucide="chevron-left" color="#fff" onclick="navTo('feed')" style="cursor:pointer;"></i>
+                        <span style="font-weight:700;">Настройки</span>
+                        <div style="width:20px;"></div>
+                    </div>
+                    <div class="settings-list">
+                        <div class="settings-item" onclick="navTo('privacy')">
+                            <div class="settings-label"><i data-lucide="lock" size="18"></i> Конфиденциальность</div>
+                            <i data-lucide="chevron-right" size="16" color="#666"></i>
+                        </div>
+                        <div class="settings-item" onclick="navTo('security')">
+                            <div class="settings-label"><i data-lucide="shield" size="18"></i> Безопасность</div>
+                            <i data-lucide="chevron-right" size="16" color="#666"></i>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label"><i data-lucide="bell" size="18"></i> Уведомления</div>
+                            <i data-lucide="chevron-right" size="16" color="#666"></i>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label"><i data-lucide="user" size="18"></i> Аккаунт</div>
+                            <i data-lucide="chevron-right" size="16" color="#666"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phone-modal" id="screenPrivacy">
+                    <div class="app-header">
+                        <i data-lucide="chevron-left" color="#fff" onclick="navTo('settings')" style="cursor:pointer;"></i>
+                        <span style="font-weight:700;">Приватность</span>
+                        <div style="width:20px;"></div>
+                    </div>
+                    <div class="settings-item" onclick="toggleGeo()">
+                        <div>
+                            <div>Точная геопозиция</div>
+                            <div style="font-size:10px; color:var(--text-muted);">Передавать координаты постов</div>
+                        </div>
+                        <div class="toggle" id="geoToggle">
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                    <div class="settings-item" onclick="this.querySelector('.toggle').classList.toggle('off')">
+                        <div>
+                            <div>Закрытый профиль</div>
+                            <div style="font-size:10px; color:var(--text-muted);">Только одобренные подписчики</div>
+                        </div>
+                        <div class="toggle off"><div class="toggle-knob"></div></div>
+                    </div>
+                    <div class="settings-item" onclick="this.querySelector('.toggle').classList.toggle('off')">
+                        <div>
+                            <div>Сетевой статус</div>
+                            <div style="font-size:10px; color:var(--text-muted);">Показывать, когда вы в сети</div>
+                        </div>
+                        <div class="toggle"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+
+                <div class="phone-modal" id="screenSecurity">
+                    <div class="app-header">
+                        <i data-lucide="chevron-left" color="#fff" onclick="navTo('settings')" style="cursor:pointer;"></i>
+                        <span style="font-weight:700;">Безопасность</span>
+                        <div style="width:20px;"></div>
+                    </div>
+                    <div class="settings-item" onclick="clearHistory()">
+                        <span style="color:var(--danger)">Очистить историю меток</span>
+                        <i data-lucide="trash-2" size="16" color="var(--danger)"></i>
+                    </div>
+                    <div class="settings-item" onclick="this.querySelector('.toggle').classList.toggle('off'); showNotif('2FA включена', 'success')">
+                        <div>
+                            <div>Двухфакторная аутентификация</div>
+                            <div style="font-size:10px; color:var(--text-muted);">Дополнительная защита входа</div>
+                        </div>
+                        <div class="toggle off"><div class="toggle-knob"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map UI -->
+        <div class="map-wrapper">
+            <div class="tasks">
+                <div class="task-item" id="task1"><div class="task-check"></div>Отключить геопозицию</div>
+                <div class="task-item" id="task2"><div class="task-check"></div>Стереть историю меток</div>
+            </div>
+
+            <div class="map-grid" id="mapGrid">
+                <div class="map-marker marker-vasya" id="vasyaMarker" style="top:50%; left:50%;">V</div>
+                <div class="map-marker marker-stalker" id="stalkerMarker" style="top:15%; left:15%;">👤</div>
+            </div>
+
+            <!-- Realistic Message Box -->
+            <div class="dialogue-box">
+                <div class="msg-avatar">👤</div>
+                <div class="msg-content">
+                    <div class="msg-header">
+                        <span class="msg-author">Неизвестный номер</span>
+                        <span class="msg-time" id="msgTime">12:00</span>
+                    </div>
+                    <div class="msg-text" id="logText">Вижу тебя на карте. Твои фото очень помогают мне ориентироваться... Скоро буду.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Win/Loss Modals -->
+    <div id="endModal" style="display: none;">
+        <div class="alert-card" id="endCard">
+            <div class="alert-title" id="endTitle">ТЕБЯ НАШЛИ</div>
+            <p class="alert-text" id="endText"></p>
+            <button class="btn" id="endBtn" onclick="location.reload()">Переиграть</button>
+        </div>
+    </div>
+
+
+
+
+    <!-- БОКОВАЯ ПАНЕЛЬ (МЕНЮ) -->
+    <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+    <section class="levels-list">
+        <!-- УРОВНИ -->
+        <button class="level-item active">
+            <span class="level-number">1</span>
+
+            <div class="level-info" onclick="window.location.href='lvl1.html'">
+                <span class="level-title">Регистрация</span>
+                <span class="level-difficulty easy">Лёгкий</span>
+                
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">2</span>
+            <div class="level-info" onclick="window.location.href='lvl2.html'">
+
+                <span class="level-title">Фишинг</span>
+                <span class="level-difficulty easy">Лёгкий</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">3</span>
+            <div class="level-info" onclick="window.location.href='lvl3.html'">
+                <span class="level-title">Мошенничество</span>
+                <span class="level-difficulty easy">Средний</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">4</span>
+            <div class="level-info" onclick="window.location.href='lvl4.html'">
+                <span class="level-title">Буллинг</span>
+                <span class="level-difficulty easy">Средний</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">5</span>
+            <div class="level-info" onclick="window.location.href='lvl5.html'">
+                <span class="level-title">Вирусы</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">6</span>
+            <div class="level-info" onclick="window.location.href='lvl6.html'">
+                <span class="level-title">Щантаж</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">7</span>
+            <div class="level-info" onclick="window.location.href='lvl7.html'">
+                <span class="level-title">Донаты</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">8</span>
+            <div class="level-info" onclick="window.location.href='lvl8.html'">
+                <span class="level-title">Фейки</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+        
+        <button class="level-item active">
+            <span class="level-number">9</span>
+            <div class="level-info" onclick="window.location.href='lvl9.html'">
+                <span class="level-title">Ошибка</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+                 <button class="level-item locked" disabled>
+            <span class="level-number">10</span>
+            <div class="level-info">
+                <span class="level-title">Финал</span>
+                <span class="level-difficulty hard">Сложный</span>
+            </div>
+        </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">8/10</span>
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">24/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">13 428</span>
+            </div>
+        </footer>
+    </aside>
+
+
+
+
+    <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl9.js"></script>
+</body>
+</html>
