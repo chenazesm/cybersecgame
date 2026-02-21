@@ -153,12 +153,17 @@ function endGame(win) {
     modal.style.display = 'flex';
     card.className = win ? 'alert-card win-card' : 'alert-card';
 
+
     if (win) {
         
         document.getElementById('endTitle').innerText = "ВАСЯ В БЕЗОПАСНОСТИ";
         document.getElementById('endText').innerHTML = "Вася больше не делится свой геопозицией. Сталкер в замешательстве, а данные надежно защищены!";
         document.getElementById('endBtn').className = "btn btn-primary";
-        document.getElementById('endBtn').innerText = "КЛАСС!";
+        document.getElementById('endBtn').innerText = "ФИНАЛ";
+        // Переход на следующий уровень
+        endBtn.onclick = function () {
+            window.location.href = "lvl10.html";
+        };
     } else {
         
         document.getElementById('endTitle').innerText = "ВАСЮ НАШЛИ";

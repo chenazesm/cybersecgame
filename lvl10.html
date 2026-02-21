@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instapic: Звездный Финал</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="lvl10.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+</head>
+<body>
+
+    <div class="glow" style="top: -100px; left: -100px;"></div>
+    <div class="glow" style="bottom: -100px; right: -100px;"></div>
+
+      <div id="curtain"></div>
+
+    <!-- Начальный оверлей -->
+    <div id="startOverlay">
+        <div class="intro-card">
+            <p class="intro-subtitle">Финал</p>
+            <p class="intro-text">
+                Вася на пике популярности! За его блогом следят миллионы, а бренды стоят в очереди. 
+                Но чтобы получить <strong>статус геймера</strong>, администрация Instapic требует пройти финальную проверку знаний.
+                <br><br>
+                Помоги Васе отразить все кибер-угрозы на пути к успеху! Твои ответы напрямую влияют на его защищённость.
+            </p>
+            
+            <div class="theory-box">
+                <div class="theory-item">
+                    <i data-lucide="check-circle" class="theory-icon"></i>
+                    <span>Используй все знания полученные ранее.</span>
+                </div>
+                <div class="theory-item">
+                    <i data-lucide="shield-alert" class="theory-icon" style="color:var(--gold);"></i>
+                    <span>Один неверный клик может стоить Васе блога.</span>
+                </div>
+                <div class="theory-item">
+                    <i data-lucide="swords" class="theory-icon" style="color:var(--danger);"></i>
+                    <span>Правильные ответы уничтожают вирусы. Ошибки — ранят Васю!</span>
+                </div>
+            </div>
+
+            <button class="btn-start" onclick="startQuiz()">НАЧАТЬ ПУТЬ</button>
+        </div>
+    </div>
+
+
+        <div class="game-layout" id="gameLayout">
+    <div class="scene dark-ui">
+        <div class="hud-container">
+            <div class="hud-box">
+                <span class="hud-label">УРОВЕНЬ</span>
+                <span class="hud-value">10 <span class="hud-sub">/ 10</span></span>
+                
+                
+            </div> 
+
+</div>
+
+    <!-- Quiz & Game Section -->
+    <div id="quizSection">
+        
+        <!-- МИНИ-ИГРА -->
+        <div class="mini-game-board">
+            <div class="hp-container">
+                <span class="hp-label">Cyber HP:</span>
+                <div class="hp-track">
+                    <div class="hp-fill" id="hpFill"></div>
+                </div>
+            </div>
+            
+            <div class="game-track"></div>
+            
+           
+            <img src="files/vasya.png" alt="Вася" id="vasyaPlayer" class="player-char">
+            
+            <div id="enemyEntity" class="enemy-char">⚠️</div>
+            <div class="goal-flag">🏆</div>
+            
+            <div id="combatText" class="combat-text">УСПЕХ!</div>
+        </div>
+
+        <div class="progress-bar"><div class="progress-fill" id="pFill"></div></div>
+        
+        <div class="q-card" id="qCard">
+            <!-- Questions injected here -->
+        </div>
+    </div>
+
+    <!-- Victory Section -->
+    <div id="victorySection">
+        <!-- <h1 class="final-title">Instapic</h1> -->
+        <p class="final-subtitle" id="finalRank">Cyber Legend</p>
+        
+        <div class="vasya-hero">
+            <div class="vasya-frame">
+                <!-- ФИНАЛЬНОЕ ФОТО ВАСИ -->
+                <img src="files/cool-guy.png" alt="Vasya" class="vasya-img" id="vasyaFinalImg">
+            </div>
+            <div class="badge">🏆</div>
+        </div>
+
+        <h2 style="font-size: 32px; margin-bottom: 15px;" id="finalMessage">Вася получил статус геймера!</h2>
+        <p class="final-desc">Ты доказал, что разбираешся в информационной безопасности. Теперь @vasya_player_the_best пример для миллионов подписчиков в мире видеоигр и кибербезопасности!</p>
+        
+        <div class="stats-row">
+            <div class="stat-box">
+                <span class="stat-num" id="finalHpDisplay">100%</span>
+                <span class="stat-label">Защита</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num" id="finalScoreDisplay">10/10</span>
+                <span class="stat-label">Знания</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num">1.2M</span>
+                <span class="stat-label">Подписчиков</span>
+            </div>
+        </div>
+
+        <button class="share-btn" onclick="celebrateAgain()">
+            <i data-lucide="party-popper"></i> ЕЩЁ БОЛЬШЕ КОНФЕТТИ!
+        </button>
+    </div>
+    </div>
+
+
+
+    <!-- БОКОВАЯ ПАНЕЛЬ (МЕНЮ) -->
+    <button class="sidebar-toggle" id="openSidebar">
+        <div><img src="files/vector_left.png" alt="<"></div>
+    </button>
+
+    <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+        </header>
+
+    <section class="levels-list">
+        <!-- УРОВНИ -->
+        <button class="level-item active">
+            <span class="level-number">1</span>
+
+            <div class="level-info" onclick="window.location.href='lvl1.html'">
+                <span class="level-title">Регистрация</span>
+                <span class="level-difficulty easy">Лёгкий</span>
+                
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">2</span>
+            <div class="level-info" onclick="window.location.href='lvl2.html'">
+
+                <span class="level-title">Фишинг</span>
+                <span class="level-difficulty easy">Лёгкий</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">3</span>
+            <div class="level-info" onclick="window.location.href='lvl3.html'">
+                <span class="level-title">Мошенничество</span>
+                <span class="level-difficulty easy">Средний</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">4</span>
+            <div class="level-info" onclick="window.location.href='lvl4.html'">
+                <span class="level-title">Буллинг</span>
+                <span class="level-difficulty easy">Средний</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">5</span>
+            <div class="level-info" onclick="window.location.href='lvl5.html'">
+                <span class="level-title">Вирусы</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">6</span>
+            <div class="level-info" onclick="window.location.href='lvl6.html'">
+                <span class="level-title">Щантаж</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">7</span>
+            <div class="level-info" onclick="window.location.href='lvl7.html'">
+                <span class="level-title">Донаты</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+        <button class="level-item active">
+            <span class="level-number">8</span>
+            <div class="level-info" onclick="window.location.href='lvl8.html'">
+                <span class="level-title">Фейки</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+        
+        <button class="level-item active">
+            <span class="level-number">9</span>
+            <div class="level-info" onclick="window.location.href='lvl9.html'">
+                <span class="level-title">Ошибка</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+
+                 <button class="level-item active" disabled>
+            <span class="level-number">10</span>
+            <div class="level-info" onclick="window.location.href='lvl10.html'">
+                <span class="level-title">Финал</span>
+                <span class="level-difficulty easy">Сложный</span>
+            </div>
+        </button>
+        </section>
+
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value">10/10</span>
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value">30/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value">1.2m</span>
+            </div>
+        </footer>
+    </aside>
+
+
+
+
+  <script src="script.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lvl10.js"></script>
+</body>
+</html>
