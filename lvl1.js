@@ -196,6 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (curtain) {
                 curtain.classList.remove('fade-out');
             }
+            completeLevel(1);       
+            setFollowers(followersByLevel[1]);
+            updateFollowersUI();
+            updateStats();
+
 
             setTimeout(() => {
                 window.location.href = 'lvl2.html';

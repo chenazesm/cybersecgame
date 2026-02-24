@@ -132,7 +132,11 @@ if(fakeBtn) {
 function blockChat() {
     if(securityBanner) securityBanner.style.display = 'none';
     closeAll();
-    if(typewriterEl) typewriterEl.style.color = "#1db225"; 
+    if(typewriterEl) typewriterEl.style.color = "#1db225";
+    completeLevel(2);       
+            setFollowers(followersByLevel[2]);
+            updateFollowersUI();
+            updateStats(); 
     
     if (typeof startTyping === 'function') {
         startTyping(explanationGood, () => {
@@ -145,6 +149,12 @@ function ignoreChat() {
     if(securityBanner) securityBanner.style.display = 'none';
     closeAll();
     if(typewriterEl) typewriterEl.style.color = "#1db225";
+
+            completeLevel(2);       
+            setFollowers(followersByLevel[2]);
+            updateFollowersUI();
+            updateStats();
+
 
     if (typeof startTyping === 'function') {
         startTyping(explanationGood, () => {

@@ -87,6 +87,12 @@ function blockChat() {
     }
     const typewriter = document.getElementById('typewriter');
     if(typewriter) typewriter.style.color = "#ffffff";
+    
+ 
+            completeLevel(3);       
+            setFollowers(followersByLevel[3]);
+            updateFollowersUI();
+            updateStats();
 
     if (typeof startTyping === 'function') {
         startTyping("Отлично! Ты распознал мошенника. Бесплатный сыр только в мышеловке. Уровень пройден!", () => {

@@ -178,15 +178,17 @@
         <div><img src="files/vector_left.png" alt="<"></div>
     </button>
 
-    <aside class="levels-sidebar" id="levelsSidebar">
+     <aside class="levels-sidebar" id="levelsSidebar">
         <header class="sidebar-header">
             <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
             <h2>Выбери задачу</h2>
-            <button class="profile-button"><img src="files/user.png" alt="U"></button>
+            <button class="profile-button"  id="resetProfile"><img src="files/refresh-cw.png" alt="refresh"></button>
+            <button class="profile-button" onclick="window.location.href='main.html'"><img src="files/home_sb.png" alt="home"></button>
         </header>
 
     <section class="levels-list">
         <!-- УРОВНИ -->
+
         <button class="level-item active">
             <span class="level-number">1</span>
 
@@ -197,98 +199,98 @@
             </div>
         </button>
 
-        <button class="level-item active">
+        <button class="level-item locked">
             <span class="level-number">2</span>
-            <div class="level-info" onclick="window.location.href='lvl2.html'">
+            <div class="level-info">
 
                 <span class="level-title">Фишинг</span>
                 <span class="level-difficulty easy">Лёгкий</span>
             </div>
         </button>
 
-        <button class="level-item active">
+        <button class="level-item locked">
             <span class="level-number">3</span>
-            <div class="level-info" onclick="window.location.href='lvl3.html'">
+            <div class="level-info">
                 <span class="level-title">Мошенничество</span>
-                <span class="level-difficulty easy">Средний</span>
+                <span class="level-difficulty medium">Средний</span>
             </div>
         </button>
 
-        <button class="level-item active">
+        <button class="level-item locked" >
             <span class="level-number">4</span>
-            <div class="level-info" onclick="window.location.href='lvl4.html'">
+            <div class="level-info">
                 <span class="level-title">Буллинг</span>
-                <span class="level-difficulty easy">Средний</span>
+                <span class="level-difficulty medium">Средний</span>
             </div>
         </button>
 
-        <button class="level-item active">
+        <button class="level-item locked" >
             <span class="level-number">5</span>
-            <div class="level-info" onclick="window.location.href='lvl5.html'">
+            <div class="level-info">
                 <span class="level-title">Вирусы</span>
-                <span class="level-difficulty easy">Сложный</span>
+                <span class="level-difficulty hard">Сложный</span>
             </div>
         </button>
 
-        <button class="level-item active">
+        <button class="level-item locked" >
             <span class="level-number">6</span>
-            <div class="level-info" onclick="window.location.href='lvl6.html'">
+            <div class="level-info">
                 <span class="level-title">Щантаж</span>
-                <span class="level-difficulty easy">Сложный</span>
+                <span class="level-difficulty hard">Сложный</span>
             </div>
         </button>
 
-        <button class="level-item active">
+        <button class="level-item locked" >
             <span class="level-number">7</span>
-            <div class="level-info" onclick="window.location.href='lvl7.html'">
+            <div class="level-info">
                 <span class="level-title">Донаты</span>
-                <span class="level-difficulty easy">Сложный</span>
+                <span class="level-difficulty hard">Сложный</span>
             </div>
         </button>
 
-        <button class="level-item active">
+        <button class="level-item locked" >
             <span class="level-number">8</span>
-            <div class="level-info" onclick="window.location.href='lvl8.html'">
+            <div class="level-info">
                 <span class="level-title">Фейки</span>
-                <span class="level-difficulty easy">Сложный</span>
+                <span class="level-difficulty hard">Сложный</span>
             </div>
         </button>
         
-        <button class="level-item active">
+         <button class="level-item locked" >
             <span class="level-number">9</span>
-            <div class="level-info" onclick="window.location.href='lvl9.html'">
+            <div class="level-info">
                 <span class="level-title">Ошибка</span>
-                <span class="level-difficulty easy">Сложный</span>
+                <span class="level-difficulty hard">Сложный</span>
             </div>
         </button>
 
-                 <button class="level-item locked" disabled>
+                 <button class="level-item locked">
             <span class="level-number">10</span>
             <div class="level-info">
                 <span class="level-title">Финал</span>
                 <span class="level-difficulty hard">Сложный</span>
             </div>
         </button>
-        </section>
+
+
+        
+    </section>
 
         <footer class="stats-panel">
             <div class="stat-card stat-completed">
                 <span class="stat-label">Завершено</span>
-                <span class="stat-value">8/10</span>
+                <span class="stat-value" id="completedCount">0/10</span>
             </div>
             <div class="stat-card stat-stars">
                 <span class="stat-label">Звёзды</span>
-                <span class="stat-value">24/30</span>
+                <span class="stat-value" id="starsCount">0/30</span>
             </div>
             <div class="stat-card stat-followers">
                 <span class="stat-label">Подписчики</span>
-                <span class="stat-value">13 428</span>
+                <span class="stat-value" id="followersCount">0</span>
             </div>
         </footer>
     </aside>
-
-
-
 
     <script src="script.js"></script>
     <script src="sidebar.js"></script>

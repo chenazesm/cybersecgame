@@ -153,6 +153,10 @@ function showFinal() {
     
     const rank = document.getElementById('finalRank');
     const message = document.getElementById('finalMessage');
+       completeLevel(10);       
+            setFollowers(followersByLevel[10]);
+            updateFollowersUI();
+            updateStats();
 
     if(health === 100) {
         rank.innerText = "Cyber Legend";

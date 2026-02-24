@@ -160,6 +160,10 @@ function endGame(win) {
         document.getElementById('endText').innerHTML = "Вася больше не делится свой геопозицией. Сталкер в замешательстве, а данные надежно защищены!";
         document.getElementById('endBtn').className = "btn btn-primary";
         document.getElementById('endBtn').innerText = "ФИНАЛ";
+           completeLevel(9);       
+            setFollowers(followersByLevel[9]);
+            updateFollowersUI();
+            updateStats();
         // Переход на следующий уровень
         endBtn.onclick = function () {
             window.location.href = "lvl10.html";

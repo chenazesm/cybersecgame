@@ -27,16 +27,17 @@
     
 </button>
 
-<aside class="levels-sidebar" id="levelsSidebar">
-
-    <header class="sidebar-header">
-         <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt=""></button>
-        <h2>Выбери задачу</h2>
-        <button class="profile-button" id="profileSidebar"><img src="files/user.png" alt=""></button>
-    </header>
+ <aside class="levels-sidebar" id="levelsSidebar">
+        <header class="sidebar-header">
+            <button class="close-button" id="closeSidebar"><img src="files/cross.png" alt="X"></button>
+            <h2>Выбери задачу</h2>
+            <button class="profile-button"  id="resetProfile"><img src="files/refresh-cw.png" alt="refresh"></button>
+            <button class="profile-button" onclick="window.location.href='main.html'"><img src="files/home_sb.png" alt="home"></button>
+        </header>
 
     <section class="levels-list">
         <!-- УРОВНИ -->
+
         <button class="level-item active">
             <span class="level-number">1</span>
 
@@ -47,7 +48,7 @@
             </div>
         </button>
 
-        <button class="level-item unlocked">
+        <button class="level-item locked">
             <span class="level-number">2</span>
             <div class="level-info">
 
@@ -56,7 +57,7 @@
             </div>
         </button>
 
-        <button class="level-item unlocked">
+        <button class="level-item locked">
             <span class="level-number">3</span>
             <div class="level-info">
                 <span class="level-title">Мошенничество</span>
@@ -64,7 +65,7 @@
             </div>
         </button>
 
-        <button class="level-item locked" disabled>
+        <button class="level-item locked" >
             <span class="level-number">4</span>
             <div class="level-info">
                 <span class="level-title">Буллинг</span>
@@ -72,7 +73,7 @@
             </div>
         </button>
 
-        <button class="level-item locked" disabled>
+        <button class="level-item locked" >
             <span class="level-number">5</span>
             <div class="level-info">
                 <span class="level-title">Вирусы</span>
@@ -80,7 +81,7 @@
             </div>
         </button>
 
-        <button class="level-item locked" disabled>
+        <button class="level-item locked" >
             <span class="level-number">6</span>
             <div class="level-info">
                 <span class="level-title">Щантаж</span>
@@ -88,7 +89,7 @@
             </div>
         </button>
 
-        <button class="level-item locked" disabled>
+        <button class="level-item locked" >
             <span class="level-number">7</span>
             <div class="level-info">
                 <span class="level-title">Донаты</span>
@@ -96,7 +97,7 @@
             </div>
         </button>
 
-        <button class="level-item locked" disabled>
+        <button class="level-item locked" >
             <span class="level-number">8</span>
             <div class="level-info">
                 <span class="level-title">Фейки</span>
@@ -104,7 +105,7 @@
             </div>
         </button>
         
-         <button class="level-item locked" disabled>
+         <button class="level-item locked" >
             <span class="level-number">9</span>
             <div class="level-info">
                 <span class="level-title">Ошибка</span>
@@ -112,27 +113,34 @@
             </div>
         </button>
 
+                 <button class="level-item locked">
+            <span class="level-number">10</span>
+            <div class="level-info">
+                <span class="level-title">Финал</span>
+                <span class="level-difficulty hard">Сложный</span>
+            </div>
+        </button>
+
 
         
     </section>
-    <footer class="stats-panel">
-    <div class="stat-card stat-completed">
-        <span class="stat-label">Завершено</span>
-        <span class="stat-value" id="completedCount">1/10</span>
-    </div>
 
-    <div class="stat-card stat-stars">
-        <span class="stat-label">Звёзды</span>
-        <span class="stat-value" id="starsCount">3/30</span>
-    </div>
-
-    <div class="stat-card stat-followers">
-        <span class="stat-label">Подписчики</span>
-        <span class="stat-value" id="followersCount">15 748</span>
-    </div>
-</footer>
-
-</aside>
+        <footer class="stats-panel">
+            <div class="stat-card stat-completed">
+                <span class="stat-label">Завершено</span>
+                <span class="stat-value" id="completedCount">0/10</span>
+            </div>
+            <div class="stat-card stat-stars">
+                <span class="stat-label">Звёзды</span>
+                <span class="stat-value" id="starsCount">0/30</span>
+            </div>
+            <div class="stat-card stat-followers">
+                <span class="stat-label">Подписчики</span>
+                <span class="stat-value" id="followersCount">0</span>
+            </div>
+        </footer>
+    </aside>
+    
 <script src="script.js"></script>
 <script src="sidebar.js"></script>
 </body>

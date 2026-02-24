@@ -224,8 +224,12 @@ function endGame(desc, win) {
     btn.style.width = '100%';
     btn.style.background = 'var(--accent)';
     if (win) {
+           completeLevel(8);       
+            setFollowers(followersByLevel[8]);
+            updateFollowersUI();
+            updateStats();
         btn.innerText = "К следующему уровню";
-        btn.onclick = () => { window.location.href = 'lvl9.html'; };
+        btn.onclick = () => { window.location.href = 'lvl10.html'; };
     } else {
         btn.innerText = "Попробовать снова";
         btn.onclick = () => { location.reload(); };

@@ -136,10 +136,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isTrapActive) {
             const typewriter = document.getElementById('typewriter');
 
-            startTyping("Отлично! Ты заметил скрытый майнер. Всегда читай, что устанавливаешь, даже если файл от друга.");
+            startTyping("Отлично! Ты заметил скрытый майнер. Всегда читай, что устанавливаешь, даже если файл от друга.", () => {
+                goToLevel('lvl6.html');
+            });
+            
+                     completeLevel(5);       
+            setFollowers(followersByLevel[5]);
+            updateFollowersUI();
+        updateStats();
+
             
         } else {
-            startTyping("Ты отменил установку. Лучше перестраховаться.");
+            startTyping("Ты отменил установку. Лучше перестраховаться.", () => { 
+                goToLevel('lvl6.html');
+        });
+                     completeLevel(5);       
+            setFollowers(followersByLevel[5]);
+            updateFollowersUI();
+        updateStats();
+
         }
     });
 

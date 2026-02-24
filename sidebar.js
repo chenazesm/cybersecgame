@@ -26,3 +26,53 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(openMenu, 3300);
     }
 });
+
+
+
+//LS
+
+function unlockLevels() {
+
+    let progress = getProgress();
+    const levels = document.querySelectorAll(".level-item");
+
+    levels.forEach((levelBtn, index) => {
+
+        let levelNumber = index + 1;
+
+        if (
+            levelNumber === 1 ||
+            progress.completedLevels.includes(levelNumber - 1)
+        ) {
+
+            levelBtn.classList.remove("locked");
+            levelBtn.classList.add("active");
+
+            levelBtn.onclick = function () {
+                window.location.href = `lvl${levelNumber}.html`;
+            };
+
+        } else {
+            levelBtn.classList.add("locked");
+            levelBtn.onclick = null;
+        }
+
+    });
+}
+
+function updateDifficultyStyles() {
+
+    const levels = document.querySelectorAll(".level-item");
+
+    levels.forEach(level => {
+
+        const difficulty = level.querySelector(".level-difficulty");
+        if (!difficulty) return;
+
+        if (level.classList.contains("active")) {
+            difficulty.classList.remove("hard", "medium");
+            difficulty.classList.add("easy");
+        }
+
+    });
+}

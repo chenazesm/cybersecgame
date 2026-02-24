@@ -61,3 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 6000);
 
 });
+
+    // ВСТАВИТЬ ПРИ WIN СРАЗУ ПЕРЕД ПЕРЕХОДОМ НА НОВЫЙ УРОВЕНЬ
+    // completeLevel(7);       
+    // setFollowers(followersByLevel[7]);
+    // updateFollowersUI();
+    // updateStats();
