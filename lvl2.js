@@ -132,7 +132,7 @@ if(fakeBtn) {
 function blockChat() {
     if(securityBanner) securityBanner.style.display = 'none';
     closeAll();
-    if(typewriterEl) typewriterEl.style.color = "#1db225";
+    if(typewriterEl) typewriterEl.style.color = "#ffffff";
     completeLevel(2);       
             setFollowers(followersByLevel[2]);
             updateFollowersUI();
@@ -148,7 +148,7 @@ function blockChat() {
 function ignoreChat() {
     if(securityBanner) securityBanner.style.display = 'none';
     closeAll();
-    if(typewriterEl) typewriterEl.style.color = "#1db225";
+    if(typewriterEl) typewriterEl.style.color = "#ffffff";
 
             completeLevel(2);       
             setFollowers(followersByLevel[2]);

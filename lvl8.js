@@ -170,7 +170,7 @@ function verify(playerSaysFake) {
 
     if (!isCorrect) {
         stats.trust -= 25;
-        updateStats();
+        updateLevelStats();
         showToast("Ошибка! Вася запутался.", "error");
     } else {
         showToast("Верно! Хороший анализ.", "success");
@@ -196,14 +196,16 @@ function nextStep() {
     renderNews();
 }
 
-function updateStats() {
+function updateLevelStats() {
     stats.trust = Math.max(0, stats.trust);
     trustVal.innerText = stats.trust + '%';
+
     if (stats.trust < 40) trustVal.style.color = 'var(--danger)';
     else if (stats.trust < 70) trustVal.style.color = '#ffcc00';
     else trustVal.style.color = 'var(--success)';
 
-    if (stats.trust <= 0) endGame("Вася потерял способность отличать правду от вымысла. Теперь он верит всему подряд.", false);
+    if (stats.trust <= 0)
+        endGame("Вася потерял способность отличать правду от вымысла. Теперь он верит всему подряд.", false);
 }
 
 function checkEndGame() {
@@ -229,7 +231,7 @@ function endGame(desc, win) {
             updateFollowersUI();
             updateStats();
         btn.innerText = "К следующему уровню";
-        btn.onclick = () => { window.location.href = 'lvl10.html'; };
+        btn.onclick = () => { window.location.href = 'lvl9.html'; };
     } else {
         btn.innerText = "Попробовать снова";
         btn.onclick = () => { location.reload(); };

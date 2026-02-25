@@ -54,7 +54,7 @@ body {
     text-transform: uppercase; width: 100%;
 }
 .btn-danger { background: var(--danger); }
-.btn-primary { background: var(--accent); }
+.btn-primary { background: var(--success); }
 
 .win-card { border-color: var(--success); box-shadow: 0 0 50px rgba(0, 255, 136, 0.2); }
 .win-card .alert-title { color: var(--success); }

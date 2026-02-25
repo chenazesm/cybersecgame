@@ -149,10 +149,10 @@ function checkWinCondition() {
         gameActive = false;
         clearInterval(spawnInterval);
 
-                    ;
-            completeLevel(4);       
-            setFollowers(followersByLevel[4]);
-            updateFollowersUI();
+                    
+        completeLevel(4);       
+        setFollowers(followersByLevel[4]);
+        updateFollowersUI();
         updateStats();
         setTimeout(() => {
             document.getElementById('winOverlay').style.display = 'flex';

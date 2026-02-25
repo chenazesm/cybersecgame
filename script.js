@@ -2,7 +2,7 @@
 let typingTimer = null;
 const textElement = document.getElementById('typewriter');
 const followersByLevel = {
-    1: 0,
+    1: 125,
     2: 125,
     3: 1250,
     4: 1500,
@@ -14,10 +14,10 @@ const followersByLevel = {
     10: 1200000
 };
 
-// gameProgress = {
-//   completedLevels: [1,2,3], // массив пройденных
-//   totalStars: 9
-// }
+ gameProgress = {
+ completedLevels: [1,2,3], // массив пройденных
+ totalStars: 9
+}
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 

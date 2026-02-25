@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof startTyping === 'function') {
             startTyping("Твой аккаунт постепенно развивается. Популярность растет на глазах!");
         }
-        animateNumbers("followersCount", 125, 1250, 4000);
+        animateNumbers("profileFollowers", 125, 1250, 4000);
         animateNumbers("followingCount", 54, 540, 4000);
     }, 1000); 
 
@@ -80,6 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function blockChat() {
+    completeLevel(3);       
+    setFollowers(followersByLevel[3]);
+    updateFollowersUI();
+    updateStats();
     closeDM(); 
     const dialogueBox = document.querySelector('.dialogue-box');
     if (dialogueBox) {
@@ -89,10 +93,7 @@ function blockChat() {
     if(typewriter) typewriter.style.color = "#ffffff";
     
  
-            completeLevel(3);       
-            setFollowers(followersByLevel[3]);
-            updateFollowersUI();
-            updateStats();
+    
 
     if (typeof startTyping === 'function') {
         startTyping("Отлично! Ты распознал мошенника. Бесплатный сыр только в мышеловке. Уровень пройден!", () => {

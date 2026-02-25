@@ -68,12 +68,14 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background-image: url(https://i.pinimg.com/originals/d9/d8/8e/d9d88e3d1f74e2b8ced3df051cecb81d.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     flex-shrink: 0;
     border: 2px solid #0C1014;
     box-shadow: 0 0 0 2px #343b56;
 }
-
 .user-and-nickname {
     text-align: left;
     flex-grow: 1;
@@ -399,6 +401,17 @@
     justify-content:center;
 }
 
+.chat-avatar-non {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #262626;
+
+    display:flex;
+    align-items:center; 
+    justify-content:center;
+}
+
 .chat-info .name {
     display: block;
     font-weight: 400;
@@ -458,7 +471,7 @@
 }
 
 .security-banner {
-    background: #1a1e21;
+    background: #181E24;
     padding: 15px 20px;
     border-bottom: 1px solid #262626;
     text-align: center;

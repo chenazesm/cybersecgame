@@ -165,11 +165,11 @@ function showFinal() {
     } else if (health >= 60) {
         rank.innerText = "Advanced User";
         rank.style.color = "var(--gold)";
-        message.innerText = "Хороший результат! Галочка получена.";
+        message.innerText = "Хороший результат! Статус геймера получен.";
     } else {
         rank.innerText = "Lucky Survivor";
         rank.style.color = "var(--danger)";
-        message.innerText = "Чудом выжили! Галочку дали авансом.";
+        message.innerText = "Чудом выжили! Статус геймера дали авансом.";
     }
 
     celebrate();
