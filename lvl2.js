@@ -32,7 +32,7 @@ function closeAll() {
 document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof startTyping === 'function') {
-        startTyping("Помогите Васе сделать первую публикацию в Instagram.");
+        startTyping("Помогите Васе сделать первую публикацию в Instapic.");
     }
 
     const curtain = document.getElementById('curtain');

@@ -175,34 +175,49 @@ function takeAction(action) {
     const btn = document.getElementById(`btn-${activeIdx}`);
     modal.style.display = 'none';
 
-    if(action === 'report') {
+if(action === 'report') {
+    if(e.type === 'positive') {
+        updateLog("Ты пожаловался на позитивный комментарий.");
+        updateMood(-5); 
+    } else {
         updateLog("Жалоба отправлена. Настроение Васи улучшилось.");
         updateMood(12);
-        if(element) {
-            element.innerHTML = '<i>[Комментарий скрыт после жалобы]</i>';
-            element.style.opacity = '0.4';
-        }
-    } else if(action === 'delete') {
+    }
+
+    if(element) {
+        element.innerHTML = '<i>[Комментарий скрыт после жалобы]</i>';
+        element.style.opacity = '0.4';
+    }
+
+} else if(action === 'delete') {
+    if(e.type === 'positive') {
+        updateLog("Удалён позитивный комментарий.");
+        updateMood(-3); 
+    } else {
         updateLog("Комментарий удален. В ленте стало чище.");
         updateMood(8);
-        if(element) element.remove();
-    } else if(action === 'reply') {
-        if(e.type === 'positive') {
-            updateLog("Вася ответил фанату! Поддержка очень важна.");
-            updateMood(15);
-        } else {
-            updateLog("Вася начал спорить с хейтером. Это огромный стресс!");
-            updateMood(-25);
-        }
-    } else if(action === 'ignore') {
-        if(e.type === 'toxic' || e.type === 'threat') {
-            updateLog("ТАКТИКА: Игнорирование — лучший способ борьбы с троллями.");
-            updateMood(7);
-            if(element) element.style.opacity = '0.6';
-        } else {
-            updateLog("Проигнорирован обычный комментарий.");
-        }
     }
+
+    if(element) element.remove();
+
+} else if(action === 'reply') {
+    if(e.type === 'positive') {
+        updateLog("Вася ответил фанату! Поддержка очень важна.");
+        updateMood(15);
+    } else {
+        updateLog("Вася начал спорить с хейтером. Это огромный стресс!");
+        updateMood(-25);
+    }
+
+} else if(action === 'ignore') {
+    if(e.type === 'toxic' || e.type === 'threat') {
+        updateLog("ТАКТИКА: Игнорирование — лучший способ борьбы с троллями.");
+        updateMood(7);
+        if(element) element.style.opacity = '0.6';
+    } else {
+        updateLog("Проигнорирован обычный комментарий.");
+    }
+}
 
     if (btn) {
         btn.innerText = "Решено";
